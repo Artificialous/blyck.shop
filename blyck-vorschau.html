@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Einzeldatei-Vorschau: CSS und JS sind inline. Quelle bleibt index.html + assets/. -->
+<title>BLYCK — Handverlesene Produktempfehlungen</title>
+<meta name="description" content="Handverlesene Produktempfehlungen für Arbeitsplatz und Küche. Mit echten Klickzahlen statt gekaufter Sterne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BLYCK — Prototyp Startseite
+   Design-System v0.2 · Werte gemessen aus Referenz-Theme Iffiliate
+   ============================================================ */
+
+:root{
+  --white:#FFFFFF;
+  --band:#F7F7F7;
+  --navy:#232F3D;
+  --navy-footer:#283142;
+  --orange:#ED8F12;
+  --orange-dark:#D47F0C;
+  --heading:#1F1F1F;
+  --body:#777777;
+  --tag:#9A9A9A;
+  --hair:#E5E5E5;
+  --soon:#C4C4C4;
+
+  --container:1200px;
+  --gutter:24px;
+  --radius:3px;
+
+  --tile-grey:#E8E8E8;
+  --tile-red:#A32B2E;
+  --tile-lav:#C9C6D6;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px;
+  line-height:1.6;
+  color:var(--body);
+  background:var(--white);
+}
+
+h1,h2,h3,h4{margin:0;color:var(--heading);font-weight:600;line-height:1.3}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+del{color:var(--tag);font-weight:400;margin-right:6px}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}
+
+/* --- Icons: durchgehend dünne Outline, kein Fill --- */
+.ic{
+  width:20px;height:20px;flex:none;
+  fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.ic--12{width:12px;height:12px;stroke-width:2}
+.ic--14{width:14px;height:14px;stroke-width:1.8}
+.ic--18{width:18px;height:18px}
+.ic--26{width:26px;height:26px;stroke-width:1.4}
+.ic--30{width:30px;height:30px;stroke-width:1.3}
+.ic--34{width:34px;height:34px;stroke-width:1.3}
+
+/* --- Produkt-Platzhalter (ersetzen später echte Fotos) --- */
+.ph{
+  width:100%;height:100%;
+  fill:none;stroke:#C9C9C9;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-block;
+  padding:11px 22px;
+  border:0;border-radius:var(--radius);
+  font-family:inherit;font-size:11px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  text-align:center;cursor:pointer;
+  transition:background-color .16s ease;
+}
+.btn--primary{background:var(--orange);color:#fff}
+.btn--primary:hover,.btn--primary:focus-visible{background:var(--orange-dark)}
+.btn--sm{padding:9px 18px;font-size:10px}
+.btn--block{display:block;width:100%}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.topbar{background:var(--white);padding:18px 0}
+.topbar__inner{
+  display:grid;
+  grid-template-columns:auto minmax(280px,1fr) auto;
+  align-items:center;gap:40px;
+}
+
+.logo{display:flex;align-items:center;gap:8px}
+.logo__mark{width:24px;height:24px;fill:var(--orange);stroke:none}
+.logo__word{
+  font-size:28px;font-weight:700;letter-spacing:-.02em;
+  color:var(--navy);line-height:1;
+}
+
+.search{
+  display:flex;align-items:stretch;min-width:0;
+  border:1px solid var(--hair);border-radius:var(--radius);
+  overflow:hidden;background:#fff;
+}
+.search__cat{
+  display:flex;align-items:center;gap:6px;
+  padding:0 12px 0 16px;
+  border-right:1px solid var(--hair);
+  color:var(--body);
+}
+.search__cat select{
+  appearance:none;border:0;background:none;
+  font-family:inherit;font-size:13px;color:var(--body);
+  padding:12px 0;cursor:pointer;outline:none;
+}
+.search__field{
+  flex:1;min-width:0;border:0;outline:none;
+  padding:12px 16px;font-family:inherit;font-size:13px;color:var(--heading);
+}
+.search__field::placeholder{color:var(--tag)}
+.search__btn{
+  width:54px;border:0;background:var(--orange);color:#fff;
+  display:grid;place-items:center;cursor:pointer;
+  transition:background-color .16s ease;
+}
+.search__btn:hover{background:var(--orange-dark)}
+
+.search-wrap{display:flex;flex-direction:column;gap:6px;min-width:0}
+.search-wrap__soon{font-size:10.5px;color:var(--soon)}
+
+.account{display:flex;align-items:center;gap:32px}
+.account__item{display:flex;align-items:center;gap:10px;color:var(--navy)}
+.account__badge-wrap{position:relative;display:block}
+.account__txt{display:flex;flex-direction:column;line-height:1.25}
+.account__txt small{font-size:11px;color:var(--body)}
+.account__txt strong{font-size:13px;font-weight:600;color:var(--heading)}
+.badge-count{
+  position:absolute;top:-6px;right:-8px;
+  min-width:18px;height:18px;padding:0 5px;
+  border-radius:9px;background:var(--orange);color:#fff;
+  font-size:10px;font-weight:600;line-height:18px;text-align:center;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.mainnav{
+  background:var(--navy);color:#fff;
+  position:sticky;top:0;z-index:30;
+  transition:box-shadow .2s ease;
+}
+.mainnav.is-stuck{box-shadow:0 4px 14px rgba(0,0,0,.16)}
+.mainnav__inner{display:flex;align-items:center;gap:24px;min-height:52px}
+.mainnav__cats{
+  display:flex;align-items:center;gap:10px;
+  border:0;background:none;cursor:pointer;
+  font-family:inherit;font-size:13px;font-weight:500;color:#fff;
+}
+.mainnav__div{width:1px;height:22px;background:rgba(255,255,255,.2)}
+.mainnav__links{display:flex;flex-wrap:wrap;gap:28px;flex:1;min-width:0}
+.mainnav__links a{font-size:13px;color:rgba(255,255,255,.88);transition:color .16s}
+.mainnav__links a:hover,.mainnav__links a.is-active{color:var(--orange)}
+.mainnav__aside{font-size:13px;color:rgba(255,255,255,.88)}
+.mainnav__aside:hover{color:var(--orange)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:32px 0 0}
+.hero__grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+
+.hero__main{
+  position:relative;display:grid;grid-template-columns:1.3fr 1fr;
+  align-items:center;gap:20px;
+  background:#111417;border-radius:var(--radius);
+  padding:52px 48px;min-height:400px;overflow:hidden;
+}
+.hero__copy{position:relative;z-index:1}
+.hero__eyebrow{font-size:20px;font-weight:300;color:rgba(255,255,255,.85);margin-bottom:6px}
+.hero__title{font-size:36px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.hero__meta{margin-top:18px;font-size:13px;color:rgba(255,255,255,.7)}
+.hero__price{margin-top:22px;font-size:34px;font-weight:700;color:var(--orange);line-height:1}
+.hero__price span{font-size:14px;font-weight:400;color:rgba(255,255,255,.8);margin-right:8px}
+.hero__copy .btn{margin-top:26px}
+
+.hero__slide{opacity:0;pointer-events:none;transition:opacity .5s ease}
+.hero__slide.is-active{position:relative;z-index:1;opacity:1;pointer-events:auto}
+.hero__slide:not(.is-active){position:absolute;inset:0}
+
+.hero__dots{display:flex;gap:8px;margin-top:26px;position:relative;z-index:2}
+.hero__dots button{
+  width:9px;height:9px;padding:0;border-radius:50%;
+  border:1px solid rgba(255,255,255,.6);background:none;cursor:pointer;
+  transition:background-color .16s,border-color .16s;
+}
+.hero__dots button.is-on{background:#fff;border-color:#fff}
+@media (prefers-reduced-motion: reduce){
+  .hero__slide{transition:none}
+}
+.hero__art{display:grid;place-items:center}
+.ph--hero{max-width:340px;stroke:rgba(255,255,255,.38);stroke-width:1.4}
+
+.hero__promo{
+  background:#E9D9C6;border-radius:var(--radius);
+  padding:36px 30px;display:flex;flex-direction:column;
+}
+.hero__promo-art{display:grid;place-items:center;flex:1;min-height:150px}
+.ph--promo{max-width:150px;stroke:rgba(0,0,0,.28);stroke-width:1.8}
+.hero__eyebrow--dark{color:rgba(0,0,0,.65);font-size:19px;margin-top:12px}
+.hero__promo-title{font-size:24px;font-weight:700}
+.hero__meta--dark{color:rgba(0,0,0,.6);margin-top:12px}
+
+/* ============================================================
+   TRUST-LEISTE
+   ============================================================ */
+.trust{background:var(--band);margin-top:36px;padding:26px 0}
+.trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.trust__item{display:flex;align-items:center;gap:14px;color:var(--tag)}
+.trust__item strong{display:block;font-size:14px;font-weight:600;color:var(--heading)}
+.trust__item small{display:block;font-size:12.5px;color:var(--body)}
+
+/* ============================================================
+   SEKTIONEN
+   ============================================================ */
+.section{padding:64px 0}
+.section--tight{padding-top:0}
+.section--band{background:var(--band)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease-out,transform .5s ease-out}
+.reveal.is-visible{opacity:1;transform:none}
+.reveal--left{transform:translateX(-48px)}
+.reveal--right{transform:translateX(48px)}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* Zentrierter Kopf: Haarlinie läuft links und rechts vom Titel durch.
+   Flexbox statt Freistellung — funktioniert auf jedem Sektionshintergrund. */
+.section__title--center{
+  display:flex;align-items:center;gap:26px;
+  font-size:22px;margin-bottom:44px;
+}
+.section__title--center::before,
+.section__title--center::after{
+  content:"";flex:1;height:1px;background:var(--hair);
+}
+
+/* Linksbündiger Kopf mit Tabs / Link rechts */
+.section__head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+  padding-bottom:16px;border-bottom:1px solid var(--hair);
+  margin-bottom:36px;
+}
+.section__title{font-size:20px}
+.section__link{font-size:13px;color:var(--body)}
+.section__link:hover{color:var(--orange)}
+
+.tabs{display:flex;gap:20px;flex-wrap:wrap}
+.tabs__btn{
+  border:0;background:none;cursor:pointer;padding:0;
+  font-family:inherit;font-size:11px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--tag);
+  transition:color .16s;
+}
+.tabs__btn:hover{color:var(--heading)}
+.tabs__btn.is-active{color:var(--orange)}
+
+/* ============================================================
+   KATEGORIEN
+   ============================================================ */
+.cats{display:grid;grid-template-columns:repeat(8,1fr);gap:16px}
+.cats__item{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:18px 8px;color:var(--heading);text-align:center;
+  transition:color .16s;
+}
+a.cats__item:hover{color:var(--orange)}
+.cats__item span{font-size:12.5px;font-weight:500}
+.cats__item.is-soon{color:var(--soon);cursor:default}
+.cats__pill{
+  font-style:normal;font-size:10px;font-weight:600;color:#fff;
+  background:var(--orange);border-radius:9px;padding:2px 9px;
+}
+.cats__soon{font-style:normal;font-size:10.5px;color:var(--soon)}
+
+/* ============================================================
+   PROMO-KACHELN
+   ============================================================ */
+.promos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.promo{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-radius:var(--radius);overflow:hidden;min-height:190px;
+}
+.promo__art{display:grid;place-items:center;padding:20px}
+.ph--promo-tile{max-width:110px;stroke:rgba(0,0,0,.25);stroke-width:2}
+.promo__art--grey{background:#D9D9D9}
+.promo__art--red{background:#8E2225}
+.promo__art--red .ph{stroke:rgba(255,255,255,.5)}
+.promo__art--lav{background:#B7B3C7}
+.promo__body{
+  display:flex;flex-direction:column;align-items:flex-start;
+  justify-content:center;gap:6px;padding:24px 22px;
+}
+.promo__body--grey{background:var(--tile-grey)}
+.promo__body--red{background:var(--tile-red);color:#fff}
+.promo__body--red .promo__title{color:#fff}
+.promo__body--red .promo__eyebrow{color:rgba(255,255,255,.8)}
+.promo__body--lav{background:var(--tile-lav)}
+.promo__eyebrow{font-size:12px;color:var(--body)}
+.promo__title{font-size:17px;font-weight:600;line-height:1.35}
+.promo__body .btn{margin-top:12px}
+
+/* ============================================================
+   PRODUKTRASTER — rahmenlos auf Weiß
+   ============================================================ */
+.grid{display:grid;gap:30px}
+.grid--5{grid-template-columns:repeat(5,1fr)}
+.grid--6{grid-template-columns:repeat(6,1fr)}
+.grid--3{grid-template-columns:repeat(3,1fr)}
+
+.product{
+  display:flex;flex-direction:column;
+  background:none;border:0;box-shadow:none;
+  padding:18px;border-radius:var(--radius);
+  transition:box-shadow .18s ease;
+}
+.product:hover{
+  box-shadow:0 0 0 1px rgba(0,0,0,.1),0 26px 42px -12px rgba(0,0,0,.35);
+}
+.product__media{
+  position:relative;overflow:hidden;
+  aspect-ratio:1/1;
+  display:grid;place-items:center;
+  padding:14px;margin-bottom:16px;
+  background:var(--band);border-radius:var(--radius);
+}
+.product__media .ph{max-width:94%;max-height:94%;transition:transform .25s ease}
+.product:hover .product__media .ph{transform:scale(1.06)}
+@media (prefers-reduced-motion: reduce){
+  .product,.product__media .ph{transition:none}
+}
+
+.tagbadge{
+  position:absolute;top:0;left:0;
+  background:var(--orange);color:#fff;
+  font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 10px;border-radius:var(--radius);
+}
+.rank{
+  position:absolute;top:0;left:0;
+  width:26px;height:26px;border-radius:var(--radius);
+  background:var(--orange);color:#fff;
+  font-size:13px;font-weight:700;
+  display:grid;place-items:center;
+}
+.wish{
+  position:absolute;top:0;right:0;
+  width:30px;height:30px;border:0;background:none;padding:0;
+  display:grid;place-items:center;cursor:pointer;
+  color:var(--tag);transition:color .16s;
+}
+.wish:hover{color:var(--orange)}
+.wish.is-on{color:var(--orange)}
+.wish.is-on .ic{fill:var(--orange)}
+.wish.is-pop{animation:wishPop .2s ease}
+@keyframes wishPop{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.2)}
+  100%{transform:scale(1)}
+}
+@media (prefers-reduced-motion: reduce){
+  .wish.is-pop{animation:none}
+}
+
+.product__cat{
+  font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--tag);margin-bottom:7px;
+}
+.product__title{
+  font-size:14px;font-weight:500;line-height:1.45;
+  margin-bottom:10px;
+}
+.product__desc{font-size:12.5px;line-height:1.65;margin-bottom:12px}
+
+.pop{
+  display:flex;align-items:center;gap:6px;
+  font-size:12.5px;font-weight:600;color:var(--orange);
+  margin-bottom:8px;
+}
+.price{font-size:15px;font-weight:700;color:var(--orange)}
+.price__note{font-size:10.5px;color:var(--tag);margin:4px 0 14px}
+.product .btn{margin-top:auto}
+
+/* Orange Promo-Kachel im Raster */
+.ranktile{
+  display:flex;flex-direction:column;justify-content:center;
+  gap:8px;padding:28px 22px;text-align:center;
+  background:var(--orange);color:#fff;border-radius:var(--radius);
+  transition:background-color .16s;
+}
+.ranktile:hover{background:var(--orange-dark)}
+.ranktile strong{font-size:17px;font-weight:600;line-height:1.35;color:#fff}
+.ranktile span{font-size:12px;color:rgba(255,255,255,.9)}
+
+/* ============================================================
+   MAGAZIN
+   ============================================================ */
+.post{display:flex;flex-direction:column}
+.post__media{
+  position:relative;aspect-ratio:16/10;
+  background:var(--band);display:grid;place-items:center;
+  margin-bottom:16px;border-radius:var(--radius);
+}
+.ph--post{max-width:45%;stroke:#C9C9C9}
+.datebadge{
+  position:absolute;top:14px;left:14px;
+  background:#fff;padding:10px 14px;border-radius:var(--radius);
+  text-align:center;line-height:1.15;
+}
+.datebadge strong{display:block;font-size:22px;font-weight:700;color:var(--heading)}
+.datebadge small{display:block;font-size:11px;color:var(--body)}
+.post__title{font-size:16px;font-weight:600;line-height:1.4;margin-bottom:10px}
+.post .btn{margin-top:auto;align-self:flex-start}
+
+/* ============================================================
+   HINWEISE / DISCLOSURE
+   ============================================================ */
+.disclosure{
+  font-size:11px;color:var(--tag);margin-top:26px;
+}
+.disclosure--center{text-align:center}
+.disclosure--hero{margin-top:14px}
+#heroSentinel{display:block;height:0}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{background:var(--navy-footer);color:#B8BFC9;padding:64px 0 0;margin-top:24px}
+.footer__grid{
+  display:grid;grid-template-columns:1.2fr 1fr 1fr 1.4fr;gap:40px;
+  padding-bottom:48px;
+}
+.footer__head{font-size:16px;font-weight:600;color:#fff;margin-bottom:22px}
+.footer__head--2{margin-top:32px}
+.footer__row{
+  display:flex;gap:12px;align-items:flex-start;
+  font-size:13px;line-height:1.7;margin-bottom:14px;
+}
+.footer__row .ic{color:var(--orange);margin-top:3px}
+.footer__list li{margin-bottom:11px}
+.footer__list a{
+  display:flex;align-items:center;gap:9px;
+  font-size:13px;color:#B8BFC9;transition:color .16s;
+}
+.footer__list a .ic{color:var(--orange)}
+.footer__list a:hover{color:#fff}
+.footer__text{font-size:13px;line-height:1.75;margin-bottom:20px}
+
+.nl{display:flex;border-radius:var(--radius);overflow:hidden;background:#fff}
+.nl__field{
+  flex:1;min-width:0;border:0;outline:none;
+  padding:14px 16px;font-family:inherit;font-size:13px;color:var(--heading);
+}
+.nl__field::placeholder{color:var(--tag)}
+.nl__btn{
+  width:52px;border:0;background:var(--orange);color:#fff;
+  display:grid;place-items:center;cursor:pointer;transition:background-color .16s;
+}
+.nl__btn:hover{background:var(--orange-dark)}
+.nl.is-disabled{opacity:.5}
+.nl.is-disabled .nl__field,.nl.is-disabled .nl__btn{cursor:not-allowed}
+.footer__note{font-size:11px;color:#8F98A4;margin-top:12px}
+.footer__note a{text-decoration:underline}
+
+.wish-email{margin-top:28px}
+.wish-email .footer__text{margin-bottom:14px}
+
+.footer__bottom{
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-block:22px 26px;
+  font-size:12px;color:#8F98A4;
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast{
+  position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);
+  background:var(--navy);color:#fff;
+  padding:12px 22px;border-radius:var(--radius);
+  font-size:13px;opacity:0;pointer-events:none;
+  transition:opacity .2s ease,transform .2s ease;z-index:99;
+}
+.toast.is-on{opacity:1;transform:translate(-50%,0)}
+
+/* ============================================================
+   RESPONSIV
+   ============================================================ */
+@media (max-width:1100px){
+  .grid--5{grid-template-columns:repeat(3,1fr)}
+  .grid--6{grid-template-columns:repeat(3,1fr)}
+  .cats{grid-template-columns:repeat(4,1fr)}
+  .promos{grid-template-columns:1fr}
+  .promo{min-height:160px}
+  .footer__grid{grid-template-columns:1fr 1fr}
+}
+
+@media (max-width:900px){
+  /* Logo und Konto in einer Zeile, Suche darunter über volle Breite */
+  .topbar__inner{grid-template-columns:auto auto;justify-content:space-between;gap:16px}
+  .search-wrap{grid-column:1/-1;order:3}
+  .account{gap:22px}
+  .hero__grid{grid-template-columns:1fr}
+  .hero__main{grid-template-columns:1fr;padding:36px 28px;min-height:0}
+  .hero__art{display:none}
+  .hero__title{font-size:32px}
+  .trust__grid{grid-template-columns:repeat(2,1fr)}
+  .mainnav__inner{flex-wrap:wrap;padding-block:12px}
+  .mainnav__links{gap:18px;order:3;flex-basis:100%}
+  .mainnav__aside{display:none}
+}
+
+@media (max-width:640px){
+  .section{padding:44px 0}
+  .grid{gap:24px}
+  .grid--5,.grid--6,.grid--3{grid-template-columns:repeat(2,1fr)}
+  .cats{grid-template-columns:repeat(3,1fr)}
+  .promo{grid-template-columns:1fr}
+  .promo__art{min-height:120px}
+  .footer__grid{grid-template-columns:1fr;gap:32px}
+  .section__head{flex-direction:column;align-items:flex-start;gap:12px}
+  /* Bei umbrechendem Titel bleibt für die Haarlinien kein Platz — weglassen */
+  .section__title--center{justify-content:center;text-align:center;gap:0;font-size:19px}
+  .section__title--center::before,
+  .section__title--center::after{display:none}
+  .footer__bottom{flex-direction:column;gap:6px}
+  .account__txt{display:none}
+  .ranktile{grid-column:1/-1;padding:22px}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ==================== ICON-SPRITE ==================== -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5l-7.3-7A4.6 4.6 0 1112 6.6a4.6 4.6 0 117.3 6.9z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-chev-d" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-chev-r2" viewBox="0 0 24 24"><path d="M7 6l5 6-5 6M13 6l5 6-5 6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8.2-8 9.5C7.4 20.2 4 17 4 12V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-click" viewBox="0 0 24 24"><path d="M9 4.5v9.8l2.6-2.3 2.1 4.6 2.3-1-2.1-4.6h3.4z"/><path d="M4.5 9h-2M6.2 5.2L4.8 3.8M9 2.5v-2"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12.5V4h8.5L21 13.5 13.5 21z"/><circle cx="7.5" cy="7.5" r="1.4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.3l3.2 2"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3L3 10.5l7 2.8 2.8 7z"/><path d="M21 3l-11 11"/></symbol>
+
+  <!-- Kategorie-Icons -->
+  <symbol id="c-desk" viewBox="0 0 32 32"><rect x="7" y="6" width="18" height="12" rx="1"/><path d="M4 21h24M8 21v5M24 21v5"/></symbol>
+  <symbol id="c-coffee" viewBox="0 0 32 32"><path d="M6 11h17v8a7 7 0 01-7 7h-3a7 7 0 01-7-7z"/><path d="M23 13h3a3.5 3.5 0 010 7h-3"/><path d="M11 4v3M16 4v3"/></symbol>
+  <symbol id="c-lamp" viewBox="0 0 32 32"><path d="M10 15l4-9h6l3 9z"/><path d="M16 15v9M11 28h10"/></symbol>
+  <symbol id="c-audio" viewBox="0 0 32 32"><path d="M6 19v-3a10 10 0 0120 0v3"/><rect x="4" y="18" width="5" height="8" rx="2"/><rect x="23" y="18" width="5" height="8" rx="2"/></symbol>
+  <symbol id="c-tool" viewBox="0 0 32 32"><path d="M21 5a6 6 0 00-7.4 8L5 21.6 8.4 25l8.6-8.6A6 6 0 0025 9l-3.4 3.4-3-3z"/></symbol>
+  <symbol id="c-box" viewBox="0 0 32 32"><path d="M4 10l12-5 12 5-12 5z"/><path d="M4 10v12l12 5 12-5V10"/><path d="M16 15v12"/></symbol>
+  <symbol id="c-trip" viewBox="0 0 32 32"><rect x="4" y="11" width="24" height="15" rx="2"/><path d="M12 11V7h8v4"/></symbol>
+  <symbol id="c-care" viewBox="0 0 32 32"><path d="M16 4s8 8.6 8 13.4A8 8 0 018 17.4C8 12.6 16 4 16 4z"/></symbol>
+
+  <!-- Produkt-Platzhalter -->
+  <symbol id="p-arm" viewBox="0 0 120 120"><rect x="26" y="26" width="58" height="36" rx="2"/><path d="M55 62v8M84 44h14v34M98 78h-9M40 78h12v14H28V78h6"/></symbol>
+  <symbol id="p-lamp" viewBox="0 0 120 120"><path d="M40 24h30l10 20H50z"/><path d="M62 44l-8 30M40 92h44M54 74h16v18H54z"/></symbol>
+  <symbol id="p-grind" viewBox="0 0 120 120"><rect x="38" y="20" width="44" height="30" rx="3"/><path d="M44 50v30h32V50"/><rect x="48" y="80" width="24" height="18" rx="2"/><path d="M60 20v-6"/></symbol>
+  <symbol id="p-key" viewBox="0 0 120 120"><rect x="16" y="42" width="88" height="38" rx="4"/><path d="M28 54h8M42 54h8M56 54h8M70 54h8M84 54h8M28 66h8M42 66h30M78 66h14"/></symbol>
+  <symbol id="p-drip" viewBox="0 0 120 120"><path d="M34 34h52l-16 30H50z"/><path d="M52 64v10h16V64"/><path d="M40 96h40M56 74v22"/></symbol>
+  <symbol id="p-chair" viewBox="0 0 120 120"><path d="M36 20h48v34H36z"/><path d="M32 54h56M44 54v34M76 54v34M44 74h32"/></symbol>
+  <symbol id="p-photo" viewBox="0 0 120 120"><rect x="18" y="26" width="84" height="62" rx="3"/><circle cx="42" cy="48" r="8"/><path d="M18 78l24-22 20 18 14-12 26 22"/></symbol>
+</svg>
+
+<!-- ==================== HEADER ==================== -->
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="logo" href="#" aria-label="BLYCK Startseite">
+      <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18l-7-4.5L5 21z"/></svg>
+      <span class="logo__word">blyck</span>
+    </a>
+
+    <div class="search-wrap">
+      <form class="search" role="search">
+        <label class="search__cat">
+          <span class="sr-only">Kategorie wählen</span>
+          <select>
+            <option>Alle Kategorien</option>
+            <option>Arbeitsplatz</option>
+            <option>Kaffee &amp; Küche</option>
+          </select>
+          <svg class="ic ic--12"><use href="#i-chev-d"/></svg>
+        </label>
+        <input class="search__field" type="search" placeholder="Produkte suchen…" aria-label="Produkte suchen">
+        <button class="search__btn" type="submit" aria-label="Suchen">
+          <svg class="ic ic--18"><use href="#i-search"/></svg>
+        </button>
+      </form>
+      <p class="search-wrap__soon">Bald aktiv — bis dahin die Kategorien nutzen</p>
+    </div>
+
+    <div class="account">
+      <a class="account__item" href="#merkliste" id="wishlistLink">
+        <span class="account__badge-wrap">
+          <svg class="ic ic--26"><use href="#i-heart"/></svg>
+          <span class="badge-count" data-wishlist-count>0</span>
+        </span>
+        <span class="account__txt"><small>Merkliste</small><strong><span data-wishlist-count>0</span> Artikel</strong></span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="mainnav">
+  <div class="container mainnav__inner">
+    <button class="mainnav__cats" type="button">
+      <svg class="ic ic--18"><use href="#i-menu"/></svg>
+      Alle Kategorien
+      <svg class="ic ic--14"><use href="#i-chev-d"/></svg>
+    </button>
+    <span class="mainnav__div" aria-hidden="true"></span>
+    <ul class="mainnav__links">
+      <li><a href="#" class="is-active">Start</a></li>
+      <li><a href="#empfehlungen">Arbeitsplatz</a></li>
+      <li><a href="#empfehlungen">Kaffee &amp; Küche</a></li>
+      <li><a href="#magazin">Magazin</a></li>
+      <li><a href="#">Über uns</a></li>
+    </ul>
+    <a class="mainnav__aside" href="#">Wie wir testen</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="container hero__grid">
+    <article class="hero__main">
+      <div class="hero__copy">
+        <div class="hero__slide is-active" data-slide="0">
+          <p class="hero__eyebrow">Neu im Test</p>
+          <h1 class="hero__title">Der Schreibtisch 2026</h1>
+          <p class="hero__meta">Ergonomisch &nbsp;|&nbsp; Leise &nbsp;|&nbsp; Langlebig</p>
+          <p class="hero__price"><span>Ab</span> 89 €</p>
+          <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
+        </div>
+        <div class="hero__slide" data-slide="1">
+          <p class="hero__eyebrow">Bestseller</p>
+          <h1 class="hero__title">Espresso ohne Kompromiss</h1>
+          <p class="hero__meta">Stufenlos &nbsp;|&nbsp; Präzise &nbsp;|&nbsp; Kegelmahlwerk</p>
+          <p class="hero__price"><span>Ab</span> 249 €</p>
+          <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
+        </div>
+        <div class="hero__slide" data-slide="2">
+          <p class="hero__eyebrow">Meistgeklickt</p>
+          <h1 class="hero__title">Ruhiger sitzen, länger bleiben</h1>
+          <p class="hero__meta">Lordosenstütze &nbsp;|&nbsp; Atmungsaktiv &nbsp;|&nbsp; 5 Jahre Garantie</p>
+          <p class="hero__price"><span>Ab</span> 389 €</p>
+          <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
+        </div>
+        <div class="hero__dots" role="tablist" aria-label="Hero-Slides">
+          <button type="button" class="is-on" data-dot="0" role="tab" aria-selected="true" aria-label="Slide 1 anzeigen"></button>
+          <button type="button" data-dot="1" role="tab" aria-selected="false" aria-label="Slide 2 anzeigen"></button>
+          <button type="button" data-dot="2" role="tab" aria-selected="false" aria-label="Slide 3 anzeigen"></button>
+        </div>
+      </div>
+      <div class="hero__art"><svg class="ph ph--hero"><use href="#p-arm"/></svg></div>
+    </article>
+
+    <aside class="hero__promo">
+      <div class="hero__promo-art"><svg class="ph ph--promo"><use href="#p-lamp"/></svg></div>
+      <p class="hero__eyebrow hero__eyebrow--dark">Redaktions-Tipp</p>
+      <h2 class="hero__promo-title">Licht am Arbeitsplatz</h2>
+      <p class="hero__meta hero__meta--dark">Warmweiß &nbsp;|&nbsp; Dimmbar &nbsp;|&nbsp; CRI 95</p>
+    </aside>
+  </div>
+  <p class="container disclosure disclosure--hero">Werbung · Enthält Affiliate-Links</p>
+  <span id="heroSentinel" aria-hidden="true"></span>
+</section>
+
+<!-- ==================== TRUST-LEISTE ==================== -->
+<section class="trust">
+  <div class="container trust__grid">
+    <div class="trust__item">
+      <svg class="ic ic--30"><use href="#i-shield"/></svg>
+      <div><strong>Ehrlich getestet</strong><small>Keine bezahlten Platzierungen</small></div>
+    </div>
+    <div class="trust__item">
+      <svg class="ic ic--30"><use href="#i-click"/></svg>
+      <div><strong>Echte Klickzahlen</strong><small>Beliebtheit statt Sternchen</small></div>
+    </div>
+    <div class="trust__item">
+      <svg class="ic ic--30"><use href="#i-tag"/></svg>
+      <div><strong>Preis mit Datum</strong><small>Stand jeder Empfehlung sichtbar</small></div>
+    </div>
+    <div class="trust__item">
+      <svg class="ic ic--30"><use href="#i-mail"/></svg>
+      <div><strong>Newsletter</strong><small>Einmal im Monat, sonst nichts</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KATEGORIEN ==================== -->
+<section class="section reveal" id="kategorien">
+  <div class="container">
+    <h2 class="section__title section__title--center">Kategorien im Überblick</h2>
+    <ul class="cats">
+      <li><a class="cats__item" href="#empfehlungen"><svg class="ic ic--34"><use href="#c-desk"/></svg><span>Arbeitsplatz</span><em class="cats__pill">24</em></a></li>
+      <li><a class="cats__item" href="#empfehlungen"><svg class="ic ic--34"><use href="#c-coffee"/></svg><span>Kaffee &amp; Küche</span><em class="cats__pill">16</em></a></li>
+      <li><span class="cats__item is-soon"><svg class="ic ic--34"><use href="#c-lamp"/></svg><span>Licht</span><em class="cats__soon">Bald verfügbar</em></span></li>
+      <li><span class="cats__item is-soon"><svg class="ic ic--34"><use href="#c-audio"/></svg><span>Audio</span><em class="cats__soon">Bald verfügbar</em></span></li>
+      <li><span class="cats__item is-soon"><svg class="ic ic--34"><use href="#c-tool"/></svg><span>Werkzeug</span><em class="cats__soon">Bald verfügbar</em></span></li>
+      <li><span class="cats__item is-soon"><svg class="ic ic--34"><use href="#c-box"/></svg><span>Ordnung</span><em class="cats__soon">Bald verfügbar</em></span></li>
+      <li><span class="cats__item is-soon"><svg class="ic ic--34"><use href="#c-trip"/></svg><span>Reise</span><em class="cats__soon">Bald verfügbar</em></span></li>
+      <li><span class="cats__item is-soon"><svg class="ic ic--34"><use href="#c-care"/></svg><span>Pflege</span><em class="cats__soon">Bald verfügbar</em></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== PROMO-KACHELN ==================== -->
+<section class="section section--tight">
+  <div class="container promos">
+    <article class="promo reveal reveal--left">
+      <div class="promo__art promo__art--grey"><svg class="ph ph--promo-tile"><use href="#p-arm"/></svg></div>
+      <div class="promo__body promo__body--grey">
+        <p class="promo__eyebrow">Bestseller</p>
+        <h3 class="promo__title">Monitorarme im Vergleich</h3>
+        <a class="btn btn--primary btn--sm" href="#empfehlungen">Jetzt ansehen</a>
+      </div>
+    </article>
+    <article class="promo reveal">
+      <div class="promo__art promo__art--red"><svg class="ph ph--promo-tile"><use href="#p-grind"/></svg></div>
+      <div class="promo__body promo__body--red">
+        <p class="promo__eyebrow">Neu</p>
+        <h3 class="promo__title">Espresso ohne Kompromiss</h3>
+        <a class="btn btn--primary btn--sm" href="#empfehlungen">Jetzt ansehen</a>
+      </div>
+    </article>
+    <article class="promo reveal reveal--right">
+      <div class="promo__art promo__art--lav"><svg class="ph ph--promo-tile"><use href="#p-lamp"/></svg></div>
+      <div class="promo__body promo__body--lav">
+        <p class="promo__eyebrow">Guide</p>
+        <h3 class="promo__title">Licht richtig einstellen</h3>
+        <a class="btn btn--primary btn--sm" href="#magazin">Zum Magazin</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ==================== HANDVERLESENE EMPFEHLUNGEN ==================== -->
+<section class="section reveal" id="empfehlungen">
+  <div class="container">
+    <h2 class="section__title section__title--center">Handverlesene Empfehlungen</h2>
+
+    <div class="grid grid--5">
+
+      <article class="product" data-id="p1" data-clicks="1284">
+        <div class="product__media">
+          <button class="wish" type="button" data-wish="p1" aria-label="Zur Merkliste hinzufügen">
+            <svg class="ic ic--18"><use href="#i-heart"/></svg>
+          </button>
+          <svg class="ph"><use href="#p-arm"/></svg>
+        </div>
+        <p class="product__cat">Arbeitsplatz</p>
+        <h3 class="product__title">Monitorarm Gasfeder, zwei Gelenke, VESA 75/100</h3>
+        <p class="product__desc">Trägt bis 9 kg, hält die Position auch nach Monaten. Der Punkt, an dem billigere Arme scheitern.</p>
+        <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="p1">1.284</span> Klicks</p>
+        <p class="price">€ 89,00</p>
+        <p class="price__note">Preis kann abweichen · Stand 04.08.2026</p>
+        <a class="btn btn--primary btn--block" href="#" rel="nofollow sponsored noopener" data-offer="p1">Zum Angebot</a>
+      </article>
+
+      <article class="product" data-id="p2" data-clicks="962">
+        <div class="product__media">
+          <span class="tagbadge">Tipp</span>
+          <button class="wish" type="button" data-wish="p2" aria-label="Zur Merkliste hinzufügen">
+            <svg class="ic ic--18"><use href="#i-heart"/></svg>
+          </button>
+          <svg class="ph"><use href="#p-lamp"/></svg>
+        </div>
+        <p class="product__cat">Licht</p>
+        <h3 class="product__title">Schreibtischlampe dimmbar, CRI 95, warmweiß</h3>
+        <p class="product__desc">Blendfrei bei acht Stunden Bildschirmarbeit. Farbwiedergabe hoch genug für Layoutkontrolle.</p>
+        <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="p2">962</span> Klicks</p>
+        <p class="price"><del>€ 129,00</del> € 99,00</p>
+        <p class="price__note">Preis kann abweichen · Stand 04.08.2026</p>
+        <a class="btn btn--primary btn--block" href="#" rel="nofollow sponsored noopener" data-offer="p2">Zum Angebot</a>
+      </article>
+
+      <article class="product" data-id="p3" data-clicks="3412">
+        <div class="product__media">
+          <button class="wish" type="button" data-wish="p3" aria-label="Zur Merkliste hinzufügen">
+            <svg class="ic ic--18"><use href="#i-heart"/></svg>
+          </button>
+          <svg class="ph"><use href="#p-grind"/></svg>
+        </div>
+        <p class="product__cat">Kaffee &amp; Küche</p>
+        <h3 class="product__title">Espressomühle Kegelmahlwerk, stufenlos</h3>
+        <p class="product__desc">Stufenlose Verstellung statt Rastung. Der Unterschied, den man im ersten Schluck schmeckt.</p>
+        <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="p3">3.412</span> Klicks</p>
+        <p class="price">€ 249,00</p>
+        <p class="price__note">Preis kann abweichen · Stand 04.08.2026</p>
+        <a class="btn btn--primary btn--block" href="#" rel="nofollow sponsored noopener" data-offer="p3">Zum Angebot</a>
+      </article>
+
+      <article class="product" data-id="p4" data-clicks="704">
+        <div class="product__media">
+          <button class="wish" type="button" data-wish="p4" aria-label="Zur Merkliste hinzufügen">
+            <svg class="ic ic--18"><use href="#i-heart"/></svg>
+          </button>
+          <svg class="ph"><use href="#p-key"/></svg>
+        </div>
+        <p class="product__cat">Arbeitsplatz</p>
+        <h3 class="product__title">Mechanische Tastatur, leise Schalter, TKL</h3>
+        <p class="product__desc">Leise genug fürs Großraumbüro, ohne den Anschlag zu verlieren. Kompakt, Ziffernblock fehlt bewusst.</p>
+        <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="p4">704</span> Klicks</p>
+        <p class="price">€ 139,00</p>
+        <p class="price__note">Preis kann abweichen · Stand 04.08.2026</p>
+        <a class="btn btn--primary btn--block" href="#" rel="nofollow sponsored noopener" data-offer="p4">Zum Angebot</a>
+      </article>
+
+      <article class="product" data-id="p5" data-clicks="1907">
+        <div class="product__media">
+          <button class="wish" type="button" data-wish="p5" aria-label="Zur Merkliste hinzufügen">
+            <svg class="ic ic--18"><use href="#i-heart"/></svg>
+          </button>
+          <svg class="ph"><use href="#p-drip"/></svg>
+        </div>
+        <p class="product__cat">Kaffee &amp; Küche</p>
+        <h3 class="product__title">Handfilter Keramik, Größe 02, mit Karaffe</h3>
+        <p class="product__desc">Hält die Temperatur besser als Kunststoff. Fällt erst auf, wenn man beides nebeneinander hatte.</p>
+        <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="p5">1.907</span> Klicks</p>
+        <p class="price">€ 34,00</p>
+        <p class="price__note">Preis kann abweichen · Stand 04.08.2026</p>
+        <a class="btn btn--primary btn--block" href="#" rel="nofollow sponsored noopener" data-offer="p5">Zum Angebot</a>
+      </article>
+
+    </div>
+    <p class="disclosure disclosure--center">Werbung · Enthält Affiliate-Links</p>
+  </div>
+</section>
+
+<!-- ==================== MEISTGEKLICKT ==================== -->
+<section class="section section--band reveal" id="meistgeklickt">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">Meistgeklickt diesen Monat</h2>
+      <div class="tabs" role="tablist">
+        <button class="tabs__btn is-active" data-filter="alle" role="tab" aria-selected="true">Alle</button>
+        <button class="tabs__btn" data-filter="arbeitsplatz" role="tab" aria-selected="false">Arbeitsplatz</button>
+        <button class="tabs__btn" data-filter="kaffee" role="tab" aria-selected="false">Kaffee &amp; Küche</button>
+        <button class="tabs__btn" data-filter="licht" role="tab" aria-selected="false">Licht</button>
+      </div>
+    </div>
+
+    <div class="grid grid--6" id="rankGrid">
+
+      <article class="product" data-cat="kaffee" data-id="p3" data-clicks="3412">
+        <div class="product__media">
+          <span class="rank">1</span>
+          <button class="wish" type="button" data-wish="p3" aria-label="Zur Merkliste hinzufügen"><svg class="ic ic--18"><use href="#i-heart"/></svg></button>
+          <svg class="ph"><use href="#p-grind"/></svg>
+        </div>
+        <p class="product__cat">Kaffee &amp; Küche</p>
+        <h3 class="product__title">Espressomühle Kegelmahlwerk</h3>
+        <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="p3">3.412</span> Klicks</p>
+        <p class="price">€ 249,00</p>
+      </article>
+
+      <article class="product" data-cat="arbeitsplatz" data-id="p6" data-clicks="2987">
+        <div class="product__media">
+          <span class="rank">2</span>
+          <button class="wish" type="button" data-wish="p6" aria-label="Zur Merkliste hinzufügen"><svg class="ic ic--18"><use href="#i-heart"/></svg></button>
+          <svg class="ph"><use href="#p-chair"/></svg>
+        </div>
+        <p class="product__cat">Arbeitsplatz</p>
+        <h3 class="product__title">Bürostuhl mit Lordosenstütze</h3>
+        <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="p6">2.987</span> Klicks</p>
+        <p class="price">€ 389,00</p>
+      </article>
+
+      <article class="product" data-cat="kaffee" data-id="p5" data-clicks="1907">
+        <div class="product__media">
+          <span class="rank">3</span>
+          <button class="wish" type="button" data-wish="p5" aria-label="Zur Merkliste hinzufügen"><svg class="ic ic--18"><use href="#i-heart"/></svg></button>
+          <svg class="ph"><use href="#p-drip"/></svg>
+        </div>
+        <p class="product__cat">Kaffee &amp; Küche</p>
+        <h3 class="product__title">Handfilter Keramik Größe 02</h3>
+        <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="p5">1.907</span> Klicks</p>
+        <p class="price">€ 34,00</p>
+      </article>
+
+      <article class="product" data-cat="arbeitsplatz" data-id="p1" data-clicks="1284">
+        <div class="product__media">
+          <span class="rank">4</span>
+          <button class="wish" type="button" data-wish="p1" aria-label="Zur Merkliste hinzufügen"><svg class="ic ic--18"><use href="#i-heart"/></svg></button>
+          <svg class="ph"><use href="#p-arm"/></svg>
+        </div>
+        <p class="product__cat">Arbeitsplatz</p>
+        <h3 class="product__title">Monitorarm Gasfeder, zwei Gelenke</h3>
+        <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="p1">1.284</span> Klicks</p>
+        <p class="price">€ 89,00</p>
+      </article>
+
+      <article class="product" data-cat="licht" data-id="p2" data-clicks="962">
+        <div class="product__media">
+          <span class="rank">5</span>
+          <button class="wish" type="button" data-wish="p2" aria-label="Zur Merkliste hinzufügen"><svg class="ic ic--18"><use href="#i-heart"/></svg></button>
+          <svg class="ph"><use href="#p-lamp"/></svg>
+        </div>
+        <p class="product__cat">Licht</p>
+        <h3 class="product__title">Schreibtischlampe dimmbar CRI 95</h3>
+        <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="p2">962</span> Klicks</p>
+        <p class="price">€ 99,00</p>
+      </article>
+
+      <a class="ranktile" href="#empfehlungen">
+        <strong>Alle 24 Empfehlungen</strong>
+        <span>Nach Beliebtheit sortiert</span>
+      </a>
+
+    </div>
+    <p class="disclosure">Werbung · Enthält Affiliate-Links</p>
+  </div>
+</section>
+
+<!-- ==================== MAGAZIN ==================== -->
+<section class="section reveal" id="magazin">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">Neueste Artikel</h2>
+      <a class="section__link" href="#">Alle Artikel ansehen</a>
+    </div>
+
+    <div class="grid grid--3">
+
+      <article class="post">
+        <div class="post__media">
+          <span class="datebadge"><strong>04</strong><small>Aug 2026</small></span>
+          <svg class="ph ph--post"><use href="#p-photo"/></svg>
+        </div>
+        <p class="product__cat">Arbeitsplatz</p>
+        <h3 class="post__title">Sechs Dinge, die meinen Schreibtisch ruhiger gemacht haben</h3>
+        <p class="product__desc">Nicht die teuersten Anschaffungen haben den Unterschied gemacht, sondern die, die man nach einer Woche nicht mehr bemerkt…</p>
+        <a class="btn btn--primary btn--sm" href="#">Weiterlesen</a>
+      </article>
+
+      <article class="post">
+        <div class="post__media">
+          <span class="datebadge"><strong>28</strong><small>Jul 2026</small></span>
+          <svg class="ph ph--post"><use href="#p-photo"/></svg>
+        </div>
+        <p class="product__cat">Kaffee &amp; Küche</p>
+        <h3 class="post__title">Warum der Mahlgrad wichtiger ist als die Maschine</h3>
+        <p class="product__desc">Eine Mühle für 200 Euro an einer Maschine für 300 schlägt die umgekehrte Verteilung deutlich. Warum das so ist…</p>
+        <a class="btn btn--primary btn--sm" href="#">Weiterlesen</a>
+      </article>
+
+      <article class="post">
+        <div class="post__media">
+          <span class="datebadge"><strong>19</strong><small>Jul 2026</small></span>
+          <svg class="ph ph--post"><use href="#p-photo"/></svg>
+        </div>
+        <p class="product__cat">Licht</p>
+        <h3 class="post__title">Eine Lampe, drei Jahre, kein Bedauern</h3>
+        <p class="product__desc">Was sich nach drei Jahren täglicher Nutzung über Farbwiedergabe und Blendung sagen lässt, das im Datenblatt fehlt…</p>
+        <a class="btn btn--primary btn--sm" href="#">Weiterlesen</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer" id="merkliste">
+  <div class="container footer__grid">
+
+    <div class="footer__col">
+      <h4 class="footer__head">Kontakt</h4>
+      <p class="footer__row"><svg class="ic ic--18"><use href="#i-pin"/></svg>Musterstraße 12, 20095 Hamburg, Deutschland</p>
+      <p class="footer__row"><svg class="ic ic--18"><use href="#i-mail"/></svg>hallo@blyck.shop</p>
+      <p class="footer__row"><svg class="ic ic--18"><use href="#i-clock"/></svg>Antwort meist innerhalb von 24 Stunden</p>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__head">Kategorien</h4>
+      <ul class="footer__list">
+        <li><a href="#empfehlungen"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Arbeitsplatz</a></li>
+        <li><a href="#empfehlungen"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Kaffee &amp; Küche</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Licht</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Audio</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Werkzeug</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Ordnung</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Reise</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Pflege</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__head">Rechtliches</h4>
+      <ul class="footer__list">
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Impressum</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Datenschutzerklärung</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Cookie-Einstellungen</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Kontakt</a></li>
+      </ul>
+      <h4 class="footer__head footer__head--2">Über BLYCK</h4>
+      <ul class="footer__list">
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Wie wir testen</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Über uns</a></li>
+        <li><a href="#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Merkliste</a></li>
+      </ul>
+      <div class="wish-email">
+        <p class="footer__text">Merkliste per E-Mail sichern — kein Passwort, nur ein Link für andere Geräte.</p>
+        <form class="nl" id="wishEmailForm">
+          <input class="nl__field" type="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail für Merkliste-Link" required>
+          <button class="nl__btn" type="submit" aria-label="Merkliste-Link anfordern">
+            <svg class="ic ic--18"><use href="#i-send"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__head">Newsletter</h4>
+      <p class="footer__text">Einmal im Monat neue Empfehlungen und Artikel. Kein Spam, Abmeldung jederzeit.</p>
+      <form class="nl is-disabled">
+        <input class="nl__field" type="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse" disabled>
+        <button class="nl__btn" type="submit" aria-label="Newsletter abonnieren" disabled>
+          <svg class="ic ic--18"><use href="#i-send"/></svg>
+        </button>
+      </form>
+      <p class="footer__note">Newsletter startet in Kürze.</p>
+    </div>
+
+  </div>
+
+  <div class="container footer__bottom">
+    <p>© 2026 BLYCK · Alle Rechte vorbehalten.</p>
+    <p>Werbung · Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   BLYCK — Prototyp-Logik
+   Zwei Features aus dem Konzept, hier lokal simuliert:
+   1. Merkliste (ersetzt den Warenkorb)
+   2. Beliebtheitswert (eigener Klickzähler statt Amazon-Sternen)
+
+   Speicher: localStorage. Beim Umstieg auf WordPress wandert der
+   Zähler in eine eigene DB-Tabelle bzw. einen REST-Endpoint —
+   siehe pushClick() unten. Es werden bewusst keine personen-
+   bezogenen Daten erfasst, nur ein Zählwert pro Produkt.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var WISH_KEY = 'blyck.wishlist.v1';
+  var CLICK_KEY = 'blyck.clicks.v1';
+  var nf = new Intl.NumberFormat('de-DE');
+
+  /* ---------- Speicher-Helfer (defensiv: Private Mode, Quota) ---------- */
+  function read(key, fallback) {
+    try {
+      var raw = window.localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (e) {
+      return fallback;
+    }
+  }
+  function write(key, value) {
+    try {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+      /* Speicher nicht verfügbar — UI funktioniert weiter, nur ohne Persistenz */
+    }
+  }
+
+  /* ============================================================
+     MERKLISTE
+     ============================================================ */
+  var wishlist = read(WISH_KEY, []);
+
+  function renderWishCount() {
+    var n = wishlist.length;
+    document.querySelectorAll('[data-wishlist-count]').forEach(function (el) {
+      el.textContent = n;
+    });
+  }
+
+  function renderWishButtons() {
+    document.querySelectorAll('[data-wish]').forEach(function (btn) {
+      var on = wishlist.indexOf(btn.dataset.wish) !== -1;
+      btn.classList.toggle('is-on', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute(
+        'aria-label',
+        on ? 'Von der Merkliste entfernen' : 'Zur Merkliste hinzufügen'
+      );
+    });
+  }
+
+  function toggleWish(id) {
+    var i = wishlist.indexOf(id);
+    if (i === -1) {
+      wishlist.push(id);
+      toast('Zur Merkliste hinzugefügt');
+    } else {
+      wishlist.splice(i, 1);
+      toast('Von der Merkliste entfernt');
+    }
+    write(WISH_KEY, wishlist);
+    renderWishCount();
+    renderWishButtons();
+  }
+
+  /* ============================================================
+     BELIEBTHEITSWERT
+     Basiswert steht im Markup (data-clicks), lokale Klicks kommen
+     obendrauf. So bleibt der Prototyp ohne Backend realistisch.
+     ============================================================ */
+  var localClicks = read(CLICK_KEY, {});
+
+  function baseClicks(id) {
+    var el = document.querySelector('[data-id="' + id + '"][data-clicks]');
+    return el ? parseInt(el.dataset.clicks, 10) || 0 : 0;
+  }
+
+  function renderClicks(id) {
+    var total = baseClicks(id) + (localClicks[id] || 0);
+    document.querySelectorAll('[data-clickcount="' + id + '"]').forEach(function (el) {
+      el.textContent = nf.format(total);
+    });
+  }
+
+  function renderAllClicks() {
+    var seen = {};
+    document.querySelectorAll('[data-clickcount]').forEach(function (el) {
+      var id = el.dataset.clickcount;
+      if (!seen[id]) {
+        seen[id] = true;
+        renderClicks(id);
+      }
+    });
+  }
+
+  /* Später serverseitig: fetch('/wp-json/blyck/v1/click', {method:'POST', ...})
+     Hier nur lokal, damit das Verhalten beurteilbar ist. */
+  function pushClick(id) {
+    localClicks[id] = (localClicks[id] || 0) + 1;
+    write(CLICK_KEY, localClicks);
+    renderClicks(id);
+  }
+
+  /* ============================================================
+     FILTER-TABS (Meistgeklickt)
+     ============================================================ */
+  function initTabs() {
+    var tabs = document.querySelectorAll('.tabs__btn');
+    var grid = document.getElementById('rankGrid');
+    if (!tabs.length || !grid) return;
+
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        tabs.forEach(function (b) {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+
+        var filter = btn.dataset.filter;
+        grid.querySelectorAll('.product').forEach(function (card) {
+          var show = filter === 'alle' || card.dataset.cat === filter;
+          card.hidden = !show;
+        });
+      });
+    });
+  }
+
+  /* ============================================================
+     STICKY-HEADER (.mainnav)
+     .mainnav ist per CSS position:sticky und rastet automatisch
+     oben ein. Der IntersectionObserver auf dem Sentinel am Ende
+     der Hero-Sektion setzt nur .is-stuck für den Schatten, sobald
+     wirklich über die Hero-Höhe hinaus gescrollt wurde.
+     ============================================================ */
+  function initStickyNav() {
+    var nav = document.querySelector('.mainnav');
+    var sentinel = document.getElementById('heroSentinel');
+    if (!nav || !sentinel || !('IntersectionObserver' in window)) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        nav.classList.toggle('is-stuck', !entry.isIntersecting);
+      });
+    }, { threshold: 0 });
+    observer.observe(sentinel);
+  }
+
+  /* ============================================================
+     HERO-SLIDER (Crossfade)
+     ============================================================ */
+  function initHeroSlider() {
+    var slides = document.querySelectorAll('.hero__slide');
+    var dots = document.querySelectorAll('.hero__dots [data-dot]');
+    if (!slides.length || !dots.length) return;
+
+    var AUTOPLAY_MS = 5500;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var current = 0;
+    var timer = null;
+
+    function show(index) {
+      slides.forEach(function (slide, i) {
+        slide.classList.toggle('is-active', i === index);
+      });
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('is-on', i === index);
+        dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+      current = index;
+    }
+
+    function next() {
+      show((current + 1) % slides.length);
+    }
+
+    function stopAutoplay() {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    function startAutoplay() {
+      if (reduceMotion) return;
+      stopAutoplay();
+      timer = window.setInterval(next, AUTOPLAY_MS);
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        show(i);
+        startAutoplay(); /* Autoplay nach manueller Interaktion neu starten, nicht stehen lassen */
+      });
+    });
+
+    show(0);
+    startAutoplay();
+  }
+
+  /* ============================================================
+     SCROLL-REVEAL
+     Blendet .reveal-Sektionen beim ersten Erscheinen sanft ein,
+     löst pro Sektion nur einmal aus.
+     ============================================================ */
+  function initScrollReveal() {
+    var targets = document.querySelectorAll('.reveal');
+    if (!targets.length) return;
+
+    if (
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      !('IntersectionObserver' in window)
+    ) {
+      targets.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    targets.forEach(function (el) { observer.observe(el); });
+  }
+
+  /* ============================================================
+     MERKLISTE PER E-MAIL (Magic-Link statt Login)
+     Kein Passwort, keine Session — Nutzer bekommt einen Link, um
+     die Merkliste geräteübergreifend abzurufen. Hier nur simuliert.
+     TODO: POST /wp-json/blyck/v1/wishlist-link { email }
+     ============================================================ */
+  function initWishlistEmail() {
+    var form = document.getElementById('wishEmailForm');
+    if (!form) return;
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var field = form.querySelector('.nl__field');
+      var email = field.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        toast('Bitte gültige E-Mail-Adresse eingeben');
+        return;
+      }
+      toast('Merkliste-Link angefragt (Demo — Versand folgt)');
+      form.reset();
+    });
+  }
+
+  /* ============================================================
+     SUCHE (Platzhalter)
+     Unter 50 Produkten ersetzt die Kategorien-Navigation eine
+     echte Suche vollständig — siehe Konzeptdokument Punkt 7.
+     ============================================================ */
+  function initSearchPlaceholder() {
+    var form = document.querySelector('.search');
+    if (!form) return;
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      toast('Suche startet bald — nutze die Kategorien');
+    });
+  }
+
+  /* ============================================================
+     TOAST
+     ============================================================ */
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+
+  function toast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add('is-on');
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function () {
+      toastEl.classList.remove('is-on');
+    }, 1800);
+  }
+
+  /* ============================================================
+     EVENTS
+     ============================================================ */
+  document.addEventListener('click', function (ev) {
+    var wishBtn = ev.target.closest('[data-wish]');
+    if (wishBtn) {
+      ev.preventDefault();
+      toggleWish(wishBtn.dataset.wish);
+      wishBtn.classList.remove('is-pop');
+      void wishBtn.offsetWidth; /* Reflow erzwingen, damit die Animation bei schnellen Klicks neu startet */
+      wishBtn.classList.add('is-pop');
+      wishBtn.addEventListener('animationend', function handler() {
+        wishBtn.classList.remove('is-pop');
+        wishBtn.removeEventListener('animationend', handler);
+      });
+      return;
+    }
+
+    var offer = ev.target.closest('[data-offer]');
+    if (offer) {
+      /* Im Prototyp gibt es kein Ziel — Klick wird nur gezählt.
+         Produktiv: href zeigt auf den Affiliate-Link, preventDefault entfällt. */
+      ev.preventDefault();
+      pushClick(offer.dataset.offer);
+      toast('Klick gezählt · Weiterleitung zu Amazon');
+    }
+  });
+
+  /* ============================================================
+     INIT
+     ============================================================ */
+  renderWishCount();
+  renderWishButtons();
+  renderAllClicks();
+  initTabs();
+  initWishlistEmail();
+  initSearchPlaceholder();
+  initStickyNav();
+  initHeroSlider();
+  initScrollReveal();
+})();
+
+</script>
+</body>
+</html>
