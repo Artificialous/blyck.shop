@@ -1,0 +1,11 @@
+{#- Artikel-Teaserkarte fürs Magazin-Grid. Erwartet: a = ein Artikel-Objekt -#}
+<article class="post">
+  <div class="post__media">
+    <span class="datebadge"><strong>{{ a.dateDay }}</strong><small>{{ a.dateMonthYear }}</small></span>
+    <svg class="ph ph--post"><use href="#{{ a.cover or 'p-photo' }}"/></svg>
+  </div>
+  <p class="product__cat">{{ a.categoryKey | catLabel }}</p>
+  <h3 class="post__title">{{ a.title }}</h3>
+  <p class="product__desc">{{ a.teaser }}</p>
+  <a class="btn btn--primary btn--sm" href="artikel-{{ a.slug }}.html">Weiterlesen</a>
+</article>

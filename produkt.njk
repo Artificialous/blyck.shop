@@ -1,0 +1,86 @@
+---
+pagination:
+  data: collections.productsWithDetailPage
+  size: 1
+  alias: product
+layout: layout.njk
+navActive: arbeitsplatz
+permalink: "produkt-{{ product.slug }}.html"
+eleventyComputed:
+  title: "{{ product.title }} — BLYCK"
+  description: "{{ product.lead or product.shortDesc }}"
+  ogTitle: "{{ product.title }} — BLYCK"
+  ogDescription: "{{ product.lead or product.shortDesc }}"
+  permalinkPath: "produkt-{{ product.slug }}.html"
+---
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Start</a>
+    <svg class="ic"><use href="#i-chev-r2"/></svg>
+    <a href="index.html#empfehlungen">{{ product.categoryKey | catLabel }}</a>
+    <svg class="ic"><use href="#i-chev-r2"/></svg>
+    <strong>{{ product.title }}</strong>
+  </nav>
+</div>
+
+<!-- ==================== PRODUKT-DETAIL ==================== -->
+<section class="section" id="{{ product.id }}" data-id="{{ product.id }}" data-clicks="{{ product.baseClicks }}">
+  <div class="container pd__grid">
+
+    <div class="pd__media">
+      <svg class="ph"><use href="#{{ product.icon }}"/></svg>
+    </div>
+
+    <div class="pd__info">
+      <p class="pd__cat">{{ product.categoryKey | catLabel }}</p>
+      <h1 class="pd__title">{{ product.title }}</h1>
+      <p class="pd__lead">{{ product.lead }}</p>
+
+      <p class="pd__pop pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="{{ product.id }}">{{ product.baseClicks | deNumber }}</span> Klicks diesen Monat</p>
+
+      <p class="pd__price">{% if product.oldPrice %}<del>€ {{ product.oldPrice }}</del> {% endif %}€ {{ product.price }}</p>
+      <p class="pd__price-note">Preis kann abweichen · Stand {{ product.priceDate }}</p>
+
+      <div class="pd__actions">
+        <a class="btn btn--primary" href="{{ product.amazonLink or '#' }}" rel="nofollow sponsored noopener" data-offer="{{ product.id }}">Zum Angebot bei Amazon</a>
+        <button class="wish pd__wish" type="button" data-wish="{{ product.id }}" aria-label="Zur Merkliste hinzufügen">
+          <svg class="ic ic--18"><use href="#i-heart"/></svg>
+        </button>
+      </div>
+      <p class="disclosure">Werbung · Enthält Affiliate-Links</p>
+    </div>
+  </div>
+
+  {%- if product.pros.length or product.cons.length %}
+  <div class="container">
+    <div class="proscons">
+      <div class="proscons__col">
+        <p class="proscons__head">Vorteile</p>
+        <ul class="proscons__list">
+          {%- for item in product.pros %}
+          <li><svg class="ic ic--14"><use href="#i-check"/></svg>{{ item }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div class="proscons__col">
+        <p class="proscons__head">Nachteile</p>
+        <ul class="proscons__list proscons__list--con">
+          {%- for item in product.cons %}
+          <li><svg class="ic ic--14"><use href="#i-minus"/></svg>{{ item }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {%- endif %}
+
+  <div class="container">
+    <h2 class="pd__section-title">Das könnte dir auch gefallen</h2>
+    <div class="grid grid--3">
+      {%- for p in product | relatedProducts(collections.productsData) %}
+      {% include "product-card.njk" %}
+      {%- endfor %}
+    </div>
+    <p class="disclosure disclosure--center">Werbung · Enthält Affiliate-Links</p>
+  </div>
+</section>

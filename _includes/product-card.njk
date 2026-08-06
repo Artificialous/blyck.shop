@@ -1,0 +1,25 @@
+{#- Volle Produktkarte. Erwartet: p = ein Produkt-Objekt aus collections.products -#}
+<article class="product" data-id="{{ p.id }}" data-clicks="{{ p.baseClicks }}">
+  <div class="product__media">
+    {%- if p.badge %}<span class="tagbadge">{{ p.badge }}</span>{% endif %}
+    <button class="wish" type="button" data-wish="{{ p.id }}" aria-label="Zur Merkliste hinzufügen">
+      <svg class="ic ic--18"><use href="#i-heart"/></svg>
+    </button>
+    {%- if p.hasDetailPage %}
+    <a href="produkt-{{ p.slug }}.html" aria-label="Zur Produktseite: {{ p.title }}">
+      <svg class="ph"><use href="#{{ p.icon }}"/></svg>
+    </a>
+    {%- else %}
+    <svg class="ph"><use href="#{{ p.icon }}"/></svg>
+    {%- endif %}
+  </div>
+  <p class="product__cat">{{ p.categoryKey | catLabel }}</p>
+  <h3 class="product__title">{% if p.hasDetailPage %}<a class="product__link" href="produkt-{{ p.slug }}.html">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>
+  {%- if p.shortDesc %}
+  <p class="product__desc">{{ p.shortDesc }}</p>
+  {%- endif %}
+  <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="{{ p.id }}">{{ p.baseClicks | deNumber }}</span> Klicks</p>
+  <p class="price">{% if p.oldPrice %}<del>€ {{ p.oldPrice }}</del> {% endif %}€ {{ p.price }}</p>
+  <p class="price__note">Preis kann abweichen · Stand {{ p.priceDate }}</p>
+  <a class="btn btn--primary btn--block" href="{{ p.amazonLink or '#' }}" rel="nofollow sponsored noopener" data-offer="{{ p.id }}">Zum Angebot</a>
+</article>

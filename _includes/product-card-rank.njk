@@ -1,0 +1,12 @@
+{#- Kompakte Karte fürs Meistgeklickt-Ranking. Erwartet: p, rank -#}
+<article class="product" data-cat="{{ p.categoryKey }}" data-id="{{ p.id }}" data-clicks="{{ p.baseClicks }}">
+  <div class="product__media">
+    <span class="rank">{{ rank }}</span>
+    <button class="wish" type="button" data-wish="{{ p.id }}" aria-label="Zur Merkliste hinzufügen"><svg class="ic ic--18"><use href="#i-heart"/></svg></button>
+    <svg class="ph"><use href="#{{ p.icon }}"/></svg>
+  </div>
+  <p class="product__cat">{{ p.categoryKey | catLabel }}</p>
+  <h3 class="product__title">{{ p.title }}</h3>
+  <p class="pop"><svg class="ic ic--14"><use href="#i-click"/></svg><span data-clickcount="{{ p.id }}">{{ p.baseClicks | deNumber }}</span> Klicks</p>
+  <p class="price">€ {{ p.price }}</p>
+</article>

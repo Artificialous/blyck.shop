@@ -1,0 +1,13 @@
+{
+  "name": "blyck-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BLYCK — statische Seite mit Eleventy-Build und Decap-CMS-Anbindung",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

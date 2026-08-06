@@ -3,6 +3,28 @@
    Design-System v0.2 · Werte gemessen aus Referenz-Theme Iffiliate
    ============================================================ */
 
+/* Selbst gehostet statt von fonts.googleapis.com geladen — Google Fonts
+   per <link> lädt Schriften direkt von Google-Servern und überträgt dabei
+   die IP-Adresse des Besuchers ohne Einwilligung (LG München I, Az. 3 O
+   17493/20). Lokale Dateien vermeiden das Problem komplett, keine
+   Datenschutz-Abwägung nötig. Nur "latin"-Subset (deckt inkl. Umlaute/ß). */
+@font-face{
+  font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;
+  src:url("../fonts/poppins-400.woff2") format("woff2");
+}
+@font-face{
+  font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;
+  src:url("../fonts/poppins-500.woff2") format("woff2");
+}
+@font-face{
+  font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;
+  src:url("../fonts/poppins-600.woff2") format("woff2");
+}
+@font-face{
+  font-family:"Poppins";font-style:normal;font-weight:700;font-display:swap;
+  src:url("../fonts/poppins-700.woff2") format("woff2");
+}
+
 :root{
   --white:#FFFFFF;
   --band:#F7F7F7;
@@ -361,6 +383,15 @@ a.cats__item:hover{color:var(--orange)}
   font-size:13px;font-weight:700;
   display:grid;place-items:center;
 }
+
+/* KI-Kennzeichnung nach Art. 50 EU AI Act — nur auf tatsächlich
+   KI-generierten/-manipulierten Bildern setzen, nicht auf echten Fotos. */
+.ai-tag{
+  position:absolute;bottom:6px;left:6px;
+  background:rgba(31,31,31,.82);color:#fff;
+  font-size:10px;font-weight:600;letter-spacing:.03em;
+  padding:3px 8px;border-radius:var(--radius);
+}
 .wish{
   position:absolute;top:0;right:0;
   width:30px;height:30px;border:0;background:none;padding:0;
@@ -388,6 +419,8 @@ a.cats__item:hover{color:var(--orange)}
   font-size:14px;font-weight:500;line-height:1.45;
   margin-bottom:10px;
 }
+.product__link{transition:color .16s}
+.product__link:hover{color:var(--orange)}
 .product__desc{font-size:12.5px;line-height:1.65;margin-bottom:12px}
 
 .pop{
@@ -489,6 +522,10 @@ a.cats__item:hover{color:var(--orange)}
   padding-block:22px 26px;
   font-size:12px;color:#8F98A4;
 }
+.footer__bottom--ai{
+  border-top:0;padding-block:0 26px;
+  font-size:11px;color:#7A8391;
+}
 
 /* ============================================================
    TOAST
@@ -501,6 +538,82 @@ a.cats__item:hover{color:var(--orange)}
   transition:opacity .2s ease,transform .2s ease;z-index:99;
 }
 .toast.is-on{opacity:1;transform:translate(-50%,0)}
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.breadcrumb{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  font-size:12px;color:var(--tag);padding-block:22px 0;
+}
+.breadcrumb a{color:var(--tag);transition:color .16s}
+.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .ic{width:10px;height:10px;stroke-width:2}
+.breadcrumb strong{color:var(--heading);font-weight:500}
+
+/* ============================================================
+   PRODUKT-DETAILSEITE
+   ============================================================ */
+.pd__grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;
+  padding-block:28px 8px;
+}
+.pd__media{
+  position:relative;aspect-ratio:1/1;background:var(--band);
+  border-radius:var(--radius);display:grid;place-items:center;padding:36px;
+}
+.pd__media .ph{max-width:80%;max-height:80%;stroke:#C9C9C9}
+.pd__info{display:flex;flex-direction:column}
+.pd__cat{
+  font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--tag);margin-bottom:10px;
+}
+.pd__title{font-size:26px;font-weight:600;line-height:1.3;margin-bottom:14px}
+.pd__lead{font-size:14px;line-height:1.75;color:var(--body);margin-bottom:20px}
+.pd__pop{margin-bottom:14px}
+.pd__price{font-size:28px;font-weight:700;color:var(--orange);line-height:1}
+.pd__price-note{font-size:11px;color:var(--tag);margin:8px 0 22px}
+.pd__actions{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.pd__actions .btn{flex:1}
+.pd__wish{
+  position:static;width:48px;height:48px;border:1px solid var(--hair);
+  border-radius:var(--radius);flex:none;
+}
+
+.proscons{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:32px 0}
+.proscons__head{font-size:13px;font-weight:600;margin-bottom:12px}
+.proscons__list li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:13px;line-height:1.6;color:var(--body);margin-bottom:10px;
+}
+.proscons__list .ic{margin-top:4px;color:var(--orange)}
+.proscons__list--con .ic{color:var(--tag)}
+
+.pd__section-title{font-size:18px;margin:48px 0 24px}
+
+/* ============================================================
+   ARTIKELSEITE
+   ============================================================ */
+.article__head{max-width:760px;margin-inline:auto;text-align:center;padding-block:32px 8px}
+.article__meta{
+  display:flex;justify-content:center;gap:16px;flex-wrap:wrap;
+  font-size:12px;color:var(--tag);margin-top:14px;
+}
+.article__meta span{display:flex;align-items:center;gap:6px}
+.article__meta .ic{width:13px;height:13px}
+.article__cover{
+  aspect-ratio:21/9;background:var(--band);border-radius:var(--radius);
+  display:grid;place-items:center;margin:28px 0 8px;
+}
+.article__cover .ph{max-width:22%;stroke:#C9C9C9}
+.article__body{max-width:680px;margin-inline:auto;padding-block:24px}
+.article__body p{font-size:14.5px;line-height:1.85;color:var(--body);margin-bottom:20px}
+.article__body h2{font-size:19px;margin:36px 0 14px}
+.article__embed{
+  max-width:340px;margin:32px auto;padding:22px;
+  border:1px solid var(--hair);border-radius:var(--radius);
+}
+.article__disclosure{max-width:680px;margin-inline:auto}
 
 /* ============================================================
    RESPONSIV
@@ -527,6 +640,7 @@ a.cats__item:hover{color:var(--orange)}
   .mainnav__inner{flex-wrap:wrap;padding-block:12px}
   .mainnav__links{gap:18px;order:3;flex-basis:100%}
   .mainnav__aside{display:none}
+  .pd__grid{grid-template-columns:1fr;gap:28px}
 }
 
 @media (max-width:640px){
@@ -545,4 +659,7 @@ a.cats__item:hover{color:var(--orange)}
   .footer__bottom{flex-direction:column;gap:6px}
   .account__txt{display:none}
   .ranktile{grid-column:1/-1;padding:22px}
+  .proscons{grid-template-columns:1fr;gap:20px}
+  .pd__actions{flex-direction:column;align-items:stretch}
+  .pd__wish{align-self:center}
 }

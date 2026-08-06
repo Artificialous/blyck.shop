@@ -1,0 +1,84 @@
+---
+pagination:
+  data: collections.articlesData
+  size: 1
+  alias: article
+layout: layout.njk
+navActive: magazin
+permalink: "artikel-{{ article.slug }}.html"
+eleventyComputed:
+  title: "{{ article.title }} — BLYCK Magazin"
+  description: "{{ article.teaser }}"
+  ogTitle: "{{ article.title }} — BLYCK Magazin"
+  ogDescription: "{{ article.teaser }}"
+  ogType: "article"
+  permalinkPath: "artikel-{{ article.slug }}.html"
+---
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Start</a>
+    <svg class="ic"><use href="#i-chev-r2"/></svg>
+    <a href="index.html#magazin">Magazin</a>
+    <svg class="ic"><use href="#i-chev-r2"/></svg>
+    <strong>{{ article.title }}</strong>
+  </nav>
+</div>
+
+<!-- ==================== ARTIKEL ==================== -->
+<article class="section">
+
+  <div class="article__head">
+    <p class="product__cat">{{ article.categoryKey | catLabel }}</p>
+    <h1 class="pd__title">{{ article.title }}</h1>
+    <div class="article__meta">
+      <span><svg class="ic"><use href="#i-calendar"/></svg>{{ article.date | readableDate }}</span>
+      <span><svg class="ic"><use href="#i-clock"/></svg>{{ article.readTime }}</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="article__cover">
+      <svg class="ph ph--post"><use href="#{{ article.cover or 'p-photo' }}"/></svg>
+    </div>
+  </div>
+
+  <p class="disclosure article__disclosure">Werbung · Dieser Artikel enthält Affiliate-Links. Wir erhalten ggf. eine Provision, für dich entstehen keine Mehrkosten.</p>
+
+  <div class="article__body">
+    <p>{{ article.intro }}</p>
+
+    {%- for section in article.sections %}
+    <h2>{{ section.heading }}</h2>
+    <p>{{ section.text }}</p>
+
+    {%- if section.embedProductId %}
+    {%- set embedProduct = section.embedProductId | findProduct(collections.productsData) %}
+    {%- if embedProduct %}
+    <div class="article__embed">
+      {% set p = embedProduct %}
+      {% include "product-card.njk" %}
+    </div>
+    {%- endif %}
+    {%- endif %}
+    {%- endfor %}
+  </div>
+
+  <div class="container">
+    <h2 class="pd__section-title">Ähnliche Artikel</h2>
+    <div class="grid grid--3">
+      {%- set others = collections.articlesData | rejectattr_id(article.id) %}
+      {%- for a in others | limit(2) %}
+      {% include "post-card.njk" %}
+      {%- endfor %}
+      <article class="post">
+        <div class="post__media">
+          <svg class="ph ph--post"><use href="#p-arm"/></svg>
+        </div>
+        <p class="product__cat">{{ article.categoryKey | catLabel }}</p>
+        <h3 class="post__title">Alle Empfehlungen für {{ article.categoryKey | catLabel }}</h3>
+        <p class="product__desc">Die komplette, handverlesene Liste — sortiert nach echten Klickzahlen, nicht nach gekauften Platzierungen.</p>
+        <a class="btn btn--primary btn--sm" href="index.html#empfehlungen">Zu den Empfehlungen</a>
+      </article>
+    </div>
+  </div>
+</article>

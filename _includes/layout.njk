@@ -1,0 +1,198 @@
+{%- set pageTitle = title or site.defaultTitle -%}
+{%- set pageDescription = description or site.defaultDescription -%}
+{%- set pageOgImage = ogImage or site.defaultOgImage -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ ogTitle or pageTitle }}">
+<meta property="og:description" content="{{ ogDescription or pageDescription }}">
+<meta property="og:image" content="{{ site.domain }}/{{ pageOgImage }}">
+<meta property="og:url" content="{{ site.domain }}/{{ permalinkPath or '' }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ ogTitle or pageTitle }}">
+<meta name="twitter:description" content="{{ ogDescription or pageDescription }}">
+<meta name="twitter:image" content="{{ site.domain }}/{{ pageOgImage }}">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ==================== ICON-SPRITE ==================== -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5l-7.3-7A4.6 4.6 0 1112 6.6a4.6 4.6 0 117.3 6.9z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-chev-d" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-chev-r2" viewBox="0 0 24 24"><path d="M7 6l5 6-5 6M13 6l5 6-5 6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8.2-8 9.5C7.4 20.2 4 17 4 12V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-click" viewBox="0 0 24 24"><path d="M9 4.5v9.8l2.6-2.3 2.1 4.6 2.3-1-2.1-4.6h3.4z"/><path d="M4.5 9h-2M6.2 5.2L4.8 3.8M9 2.5v-2"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12.5V4h8.5L21 13.5 13.5 21z"/><circle cx="7.5" cy="7.5" r="1.4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.3l3.2 2"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3L3 10.5l7 2.8 2.8 7z"/><path d="M21 3l-11 11"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 7"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+
+  <!-- Kategorie-Icons -->
+  <symbol id="c-desk" viewBox="0 0 32 32"><rect x="7" y="6" width="18" height="12" rx="1"/><path d="M4 21h24M8 21v5M24 21v5"/></symbol>
+  <symbol id="c-coffee" viewBox="0 0 32 32"><path d="M6 11h17v8a7 7 0 01-7 7h-3a7 7 0 01-7-7z"/><path d="M23 13h3a3.5 3.5 0 010 7h-3"/><path d="M11 4v3M16 4v3"/></symbol>
+  <symbol id="c-lamp" viewBox="0 0 32 32"><path d="M10 15l4-9h6l3 9z"/><path d="M16 15v9M11 28h10"/></symbol>
+  <symbol id="c-audio" viewBox="0 0 32 32"><path d="M6 19v-3a10 10 0 0120 0v3"/><rect x="4" y="18" width="5" height="8" rx="2"/><rect x="23" y="18" width="5" height="8" rx="2"/></symbol>
+  <symbol id="c-tool" viewBox="0 0 32 32"><path d="M21 5a6 6 0 00-7.4 8L5 21.6 8.4 25l8.6-8.6A6 6 0 0025 9l-3.4 3.4-3-3z"/></symbol>
+  <symbol id="c-box" viewBox="0 0 32 32"><path d="M4 10l12-5 12 5-12 5z"/><path d="M4 10v12l12 5 12-5V10"/><path d="M16 15v12"/></symbol>
+  <symbol id="c-trip" viewBox="0 0 32 32"><rect x="4" y="11" width="24" height="15" rx="2"/><path d="M12 11V7h8v4"/></symbol>
+  <symbol id="c-care" viewBox="0 0 32 32"><path d="M16 4s8 8.6 8 13.4A8 8 0 018 17.4C8 12.6 16 4 16 4z"/></symbol>
+
+  <!-- Produkt-/Artikel-Platzhalter -->
+  <symbol id="p-arm" viewBox="0 0 120 120"><rect x="26" y="26" width="58" height="36" rx="2"/><path d="M55 62v8M84 44h14v34M98 78h-9M40 78h12v14H28V78h6"/></symbol>
+  <symbol id="p-lamp" viewBox="0 0 120 120"><path d="M40 24h30l10 20H50z"/><path d="M62 44l-8 30M40 92h44M54 74h16v18H54z"/></symbol>
+  <symbol id="p-grind" viewBox="0 0 120 120"><rect x="38" y="20" width="44" height="30" rx="3"/><path d="M44 50v30h32V50"/><rect x="48" y="80" width="24" height="18" rx="2"/><path d="M60 20v-6"/></symbol>
+  <symbol id="p-key" viewBox="0 0 120 120"><rect x="16" y="42" width="88" height="38" rx="4"/><path d="M28 54h8M42 54h8M56 54h8M70 54h8M84 54h8M28 66h8M42 66h30M78 66h14"/></symbol>
+  <symbol id="p-drip" viewBox="0 0 120 120"><path d="M34 34h52l-16 30H50z"/><path d="M52 64v10h16V64"/><path d="M40 96h40M56 74v22"/></symbol>
+  <symbol id="p-chair" viewBox="0 0 120 120"><path d="M36 20h48v34H36z"/><path d="M32 54h56M44 54v34M76 54v34M44 74h32"/></symbol>
+  <symbol id="p-photo" viewBox="0 0 120 120"><rect x="18" y="26" width="84" height="62" rx="3"/><circle cx="42" cy="48" r="8"/><path d="M18 78l24-22 20 18 14-12 26 22"/></symbol>
+</svg>
+
+<!-- ==================== HEADER ==================== -->
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="logo" href="index.html" aria-label="BLYCK Startseite">
+      <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18l-7-4.5L5 21z"/></svg>
+      <span class="logo__word">blyck</span>
+    </a>
+
+    <div class="search-wrap">
+      <form class="search" role="search">
+        <label class="search__cat">
+          <span class="sr-only">Kategorie wählen</span>
+          <select>
+            <option>Alle Kategorien</option>
+            <option>Arbeitsplatz</option>
+            <option>Kaffee &amp; Küche</option>
+          </select>
+          <svg class="ic ic--12"><use href="#i-chev-d"/></svg>
+        </label>
+        <input class="search__field" type="search" placeholder="Produkte suchen…" aria-label="Produkte suchen">
+        <button class="search__btn" type="submit" aria-label="Suchen">
+          <svg class="ic ic--18"><use href="#i-search"/></svg>
+        </button>
+      </form>
+      <p class="search-wrap__soon">Bald aktiv — bis dahin die Kategorien nutzen</p>
+    </div>
+
+    <div class="account">
+      <a class="account__item" href="index.html#merkliste" id="wishlistLink">
+        <span class="account__badge-wrap">
+          <svg class="ic ic--26"><use href="#i-heart"/></svg>
+          <span class="badge-count" data-wishlist-count>0</span>
+        </span>
+        <span class="account__txt"><small>Merkliste</small><strong><span data-wishlist-count>0</span> Artikel</strong></span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="mainnav">
+  <div class="container mainnav__inner">
+    <button class="mainnav__cats" type="button">
+      <svg class="ic ic--18"><use href="#i-menu"/></svg>
+      Alle Kategorien
+      <svg class="ic ic--14"><use href="#i-chev-d"/></svg>
+    </button>
+    <span class="mainnav__div" aria-hidden="true"></span>
+    <ul class="mainnav__links">
+      <li><a href="index.html" {% if navActive == 'start' %}class="is-active"{% endif %}>Start</a></li>
+      <li><a href="index.html#empfehlungen" {% if navActive == 'arbeitsplatz' %}class="is-active"{% endif %}>Arbeitsplatz</a></li>
+      <li><a href="index.html#empfehlungen" {% if navActive == 'kaffee' %}class="is-active"{% endif %}>Kaffee &amp; Küche</a></li>
+      <li><a href="index.html#magazin" {% if navActive == 'magazin' %}class="is-active"{% endif %}>Magazin</a></li>
+      <li><a href="index.html#">Über uns</a></li>
+    </ul>
+    <a class="mainnav__aside" href="index.html#">Wie wir testen</a>
+  </div>
+</nav>
+
+{{ content | safe }}
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer" id="merkliste">
+  <div class="container footer__grid">
+
+    <div class="footer__col">
+      <h4 class="footer__head">Kontakt</h4>
+      <p class="footer__row"><svg class="ic ic--18"><use href="#i-pin"/></svg>Anschrift folgt (siehe Impressum)</p>
+      <p class="footer__row"><svg class="ic ic--18"><use href="#i-mail"/></svg>{{ site.email }}</p>
+      <p class="footer__row"><svg class="ic ic--18"><use href="#i-clock"/></svg>Antwort meist innerhalb von 24 Stunden</p>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__head">Kategorien</h4>
+      <ul class="footer__list">
+        {%- for cat in categories %}
+        <li><a href="{{ cat.status == 'active' and ('index.html#empfehlungen') or 'index.html#' }}"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>{{ cat.label }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__head">Rechtliches</h4>
+      <ul class="footer__list">
+        <li><a href="impressum.html"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Impressum</a></li>
+        <li><a href="datenschutz.html"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Datenschutzerklärung</a></li>
+        <li><a href="index.html#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Kontakt</a></li>
+      </ul>
+      <h4 class="footer__head footer__head--2">Über BLYCK</h4>
+      <ul class="footer__list">
+        <li><a href="index.html#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Wie wir testen</a></li>
+        <li><a href="index.html#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Über uns</a></li>
+        <li><a href="index.html#merkliste"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Merkliste</a></li>
+      </ul>
+      <div class="wish-email">
+        <p class="footer__text">Merkliste per E-Mail sichern — kein Passwort, nur ein Link für andere Geräte.</p>
+        <form class="nl" id="wishEmailForm">
+          <input class="nl__field" type="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail für Merkliste-Link" required>
+          <button class="nl__btn" type="submit" aria-label="Merkliste-Link anfordern">
+            <svg class="ic ic--18"><use href="#i-send"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__head">Newsletter</h4>
+      <p class="footer__text">Einmal im Monat neue Empfehlungen und Artikel. Kein Spam, Abmeldung jederzeit.</p>
+      <form class="nl is-disabled">
+        <input class="nl__field" type="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse" disabled>
+        <button class="nl__btn" type="submit" aria-label="Newsletter abonnieren" disabled>
+          <svg class="ic ic--18"><use href="#i-send"/></svg>
+        </button>
+      </form>
+      <p class="footer__note">Newsletter startet in Kürze.</p>
+    </div>
+
+  </div>
+
+  <div class="container footer__bottom">
+    <p>© 2026 BLYCK · Alle Rechte vorbehalten.</p>
+    <p>Werbung · Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+  </div>
+  <div class="container footer__bottom footer__bottom--ai">
+    <p>Transparenzhinweis nach Art. 50 EU AI Act: Texte auf dieser Seite werden mit KI-Unterstützung erstellt, aber vor Veröffentlichung von uns redaktionell geprüft und verantwortet. Einzelne Bilder können KI-generiert sein — diese sind direkt am Bild als "KI-generiertes Bild" gekennzeichnet.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

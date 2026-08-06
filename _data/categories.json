@@ -1,0 +1,10 @@
+[
+  { "key": "arbeitsplatz", "label": "Arbeitsplatz", "icon": "c-desk", "status": "active" },
+  { "key": "kaffee", "label": "Kaffee & Küche", "icon": "c-coffee", "status": "active" },
+  { "key": "licht", "label": "Licht", "icon": "c-lamp", "status": "soon" },
+  { "key": "audio", "label": "Audio", "icon": "c-audio", "status": "soon" },
+  { "key": "werkzeug", "label": "Werkzeug", "icon": "c-tool", "status": "soon" },
+  { "key": "ordnung", "label": "Ordnung", "icon": "c-box", "status": "soon" },
+  { "key": "reise", "label": "Reise", "icon": "c-trip", "status": "soon" },
+  { "key": "pflege", "label": "Pflege", "icon": "c-care", "status": "soon" }
+]

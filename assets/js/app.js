@@ -170,6 +170,7 @@
     function show(index) {
       slides.forEach(function (slide, i) {
         slide.classList.toggle('is-active', i === index);
+        slide.setAttribute('aria-hidden', i === index ? 'false' : 'true');
       });
       dots.forEach(function (dot, i) {
         dot.classList.toggle('is-on', i === index);
@@ -307,11 +308,15 @@
 
     var offer = ev.target.closest('[data-offer]');
     if (offer) {
-      /* Im Prototyp gibt es kein Ziel — Klick wird nur gezählt.
-         Produktiv: href zeigt auf den Affiliate-Link, preventDefault entfällt. */
-      ev.preventDefault();
       pushClick(offer.dataset.offer);
-      toast('Klick gezählt · Weiterleitung zu Amazon');
+      var href = offer.getAttribute('href');
+      if (!href || href === '#') {
+        /* Noch kein Amazon-Link im CMS hinterlegt — Klick wird nur gezählt. */
+        ev.preventDefault();
+        toast('Kein Angebotslink hinterlegt');
+      } else {
+        toast('Klick gezählt · Weiterleitung zu Amazon');
+      }
     }
   });
 

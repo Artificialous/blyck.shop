@@ -1,0 +1,122 @@
+backend:
+  name: github
+  repo: DEIN-GITHUB-USERNAME/blyck-website
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+# Nur eingeloggte GitHub-Accounts mit Schreibrechten auf dem Repo
+# koennen sich hier anmelden -- alle anderen sehen nur die normale,
+# statische Seite. Zugriff wird also ueber dein GitHub-Repo geregelt,
+# nicht ueber ein separates Passwort.
+
+publish_mode: simple
+media_folder: "assets/uploads"
+public_folder: "assets/uploads"
+
+collections:
+  - name: "products"
+    label: "Produkte"
+    folder: "content/products"
+    create: true
+    slug: "{{fields.slug}}"
+    identifier_field: title
+    summary: "{{title}} — {{price}} € · Reihenfolge {{order}}"
+    fields:
+      - { label: "Sichtbar auf der Seite", name: "published", widget: "boolean", default: true }
+      - { label: "Reihenfolge (kleiner = weiter vorne)", name: "order", widget: "number", value_type: "int", default: 99 }
+      - { label: "Produkt-ID (intern, nie aendern)", name: "id", widget: "string", pattern: ["^p[0-9]+$", "Format: p gefolgt von einer Zahl, z. B. p7"] }
+      - { label: "URL-Slug (fuer die Adresse der Detailseite)", name: "slug", widget: "string" }
+      - { label: "Titel", name: "title", widget: "string" }
+      - label: "Kategorie"
+        name: "categoryKey"
+        widget: "select"
+        options:
+          - { label: "Arbeitsplatz", value: "arbeitsplatz" }
+          - { label: "Kaffee & Küche", value: "kaffee" }
+          - { label: "Licht", value: "licht" }
+          - { label: "Audio", value: "audio" }
+          - { label: "Werkzeug", value: "werkzeug" }
+          - { label: "Ordnung", value: "ordnung" }
+          - { label: "Reise", value: "reise" }
+          - { label: "Pflege", value: "pflege" }
+      - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
+        name: "icon"
+        widget: "select"
+        options: ["p-arm", "p-lamp", "p-grind", "p-key", "p-drip", "p-chair", "p-photo"]
+      - { label: "Kurzbeschreibung (Kartenansicht, 1 Satz)", name: "shortDesc", widget: "text", required: false }
+      - { label: "Ausführlicher Lead-Text (nur Detailseite)", name: "lead", widget: "text", required: false }
+      - { label: "Preis (nur Zahl, z. B. 89,00)", name: "price", widget: "string" }
+      - { label: "Alter Preis (optional, für durchgestrichenen Preis)", name: "oldPrice", widget: "string", required: false }
+      - { label: "Preis-Stand (z. B. 06.08.2026)", name: "priceDate", widget: "string" }
+      - { label: "Klickzahl-Basiswert", name: "baseClicks", widget: "number", value_type: "int", default: 0 }
+      - { label: "Amazon-Affiliate-Link", name: "amazonLink", widget: "string", required: false, hint: "Leer lassen, bis der echte PartnerNet-Link da ist. Ohne Link zeigt der Button nur eine Hinweismeldung." }
+      - { label: "Badge (z. B. Tipp, Neu) — optional", name: "badge", widget: "string", required: false }
+      - { label: "Eigene Produktseite anlegen?", name: "hasDetailPage", widget: "boolean", default: false }
+      - { label: "Vorteile (nur bei eigener Produktseite)", name: "pros", widget: "list", required: false }
+      - { label: "Nachteile (nur bei eigener Produktseite)", name: "cons", widget: "list", required: false }
+      - label: "Verwandte Produkte (nur bei eigener Produktseite, sonst automatisch)"
+        name: "relatedIds"
+        widget: "relation"
+        collection: "products"
+        search_fields: ["title"]
+        value_field: "id"
+        display_fields: ["title"]
+        multiple: true
+        required: false
+
+  - name: "articles"
+    label: "Magazin-Artikel"
+    folder: "content/articles"
+    create: true
+    slug: "{{fields.slug}}"
+    identifier_field: title
+    summary: "{{title}} — {{date}}"
+    fields:
+      - { label: "Sichtbar auf der Seite", name: "published", widget: "boolean", default: true }
+      - { label: "Artikel-ID (intern, nie aendern)", name: "id", widget: "string", pattern: ["^a[0-9]+$", "Format: a gefolgt von einer Zahl, z. B. a2"] }
+      - { label: "URL-Slug (fuer die Adresse des Artikels)", name: "slug", widget: "string" }
+      - { label: "Titel", name: "title", widget: "string" }
+      - label: "Kategorie"
+        name: "categoryKey"
+        widget: "select"
+        options:
+          - { label: "Arbeitsplatz", value: "arbeitsplatz" }
+          - { label: "Kaffee & Küche", value: "kaffee" }
+          - { label: "Licht", value: "licht" }
+          - { label: "Audio", value: "audio" }
+          - { label: "Werkzeug", value: "werkzeug" }
+          - { label: "Ordnung", value: "ordnung" }
+          - { label: "Reise", value: "reise" }
+          - { label: "Pflege", value: "pflege" }
+      - { label: "Datum", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Datum, Tag (z. B. 06)", name: "dateDay", widget: "string" }
+      - { label: "Datum, Monat + Jahr (z. B. Aug 2026)", name: "dateMonthYear", widget: "string" }
+      - { label: "Lesezeit (z. B. 4 Min. Lesezeit)", name: "readTime", widget: "string" }
+      - label: "Platzhalter-Titelbild (bis echtes Foto da ist)"
+        name: "cover"
+        widget: "select"
+        options: ["p-photo", "p-arm", "p-lamp", "p-grind"]
+      - { label: "Teaser-Text (Kartenansicht auf der Startseite)", name: "teaser", widget: "text" }
+      - { label: "Einleitung (erster Absatz im Artikel)", name: "intro", widget: "text" }
+      - label: "Abschnitte"
+        name: "sections"
+        widget: "list"
+        fields:
+          - { label: "Überschrift", name: "heading", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Produkt einbetten (Produkt-ID, optional)", name: "embedProductId", widget: "string", required: false }
+
+  - name: "settings"
+    label: "Einstellungen"
+    files:
+      - label: "Kontakt & Website"
+        name: "site"
+        file: "_data/site.json"
+        fields:
+          - { label: "Seitenname", name: "name", widget: "string" }
+          - { label: "Domain (mit https://)", name: "domain", widget: "string" }
+          - { label: "Kontakt-E-Mail", name: "email", widget: "string" }
+          - { label: "Standard-Seitentitel", name: "defaultTitle", widget: "string" }
+          - { label: "Standard-Beschreibung", name: "defaultDescription", widget: "text" }
+          - { label: "Standard-Vorschaubild (Pfad ab Projektordner)", name: "defaultOgImage", widget: "string" }

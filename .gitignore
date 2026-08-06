@@ -3,3 +3,10 @@
 .AppleDouble
 .Spotlight-V100
 .Trashes
+
+# Build
+node_modules/
+_site/
+.cache/
+_verify/
+_verify2/

@@ -1,0 +1,178 @@
+---
+layout: layout.njk
+navActive: start
+title: "BLYCK — Handverlesene Produktempfehlungen"
+description: "Handverlesene Produktempfehlungen für Arbeitsplatz und Küche. Mit echten Klickzahlen statt gekaufter Sterne."
+permalinkPath: ""
+---
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="container hero__grid">
+    <article class="hero__main">
+      <div class="hero__copy">
+        <div class="hero__slide is-active" data-slide="0">
+          <p class="hero__eyebrow">Neu im Test</p>
+          <h1 class="hero__title">Der Schreibtisch 2026</h1>
+          <p class="hero__meta">Ergonomisch &nbsp;|&nbsp; Leise &nbsp;|&nbsp; Langlebig</p>
+          <p class="hero__price"><span>Ab</span> 89 €</p>
+          <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
+        </div>
+        <div class="hero__slide" data-slide="1">
+          <p class="hero__eyebrow">Bestseller</p>
+          <p class="hero__title">Espresso ohne Kompromiss</p>
+          <p class="hero__meta">Stufenlos &nbsp;|&nbsp; Präzise &nbsp;|&nbsp; Kegelmahlwerk</p>
+          <p class="hero__price"><span>Ab</span> 249 €</p>
+          <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
+        </div>
+        <div class="hero__slide" data-slide="2">
+          <p class="hero__eyebrow">Meistgeklickt</p>
+          <p class="hero__title">Ruhiger sitzen, länger bleiben</p>
+          <p class="hero__meta">Lordosenstütze &nbsp;|&nbsp; Atmungsaktiv &nbsp;|&nbsp; 5 Jahre Garantie</p>
+          <p class="hero__price"><span>Ab</span> 389 €</p>
+          <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
+        </div>
+        <div class="hero__dots" role="tablist" aria-label="Hero-Slides">
+          <button type="button" class="is-on" data-dot="0" role="tab" aria-selected="true" aria-label="Slide 1 anzeigen"></button>
+          <button type="button" data-dot="1" role="tab" aria-selected="false" aria-label="Slide 2 anzeigen"></button>
+          <button type="button" data-dot="2" role="tab" aria-selected="false" aria-label="Slide 3 anzeigen"></button>
+        </div>
+      </div>
+      <div class="hero__art"><svg class="ph ph--hero"><use href="#p-arm"/></svg></div>
+    </article>
+
+    <aside class="hero__promo">
+      <div class="hero__promo-art"><svg class="ph ph--promo"><use href="#p-lamp"/></svg></div>
+      <p class="hero__eyebrow hero__eyebrow--dark">Redaktions-Tipp</p>
+      <h2 class="hero__promo-title">Licht am Arbeitsplatz</h2>
+      <p class="hero__meta hero__meta--dark">Warmweiß &nbsp;|&nbsp; Dimmbar &nbsp;|&nbsp; CRI 95</p>
+    </aside>
+  </div>
+  <p class="container disclosure disclosure--hero">Werbung · Enthält Affiliate-Links</p>
+  <span id="heroSentinel" aria-hidden="true"></span>
+</section>
+
+<!-- ==================== TRUST-LEISTE ==================== -->
+<section class="trust">
+  <div class="container trust__grid">
+    <div class="trust__item">
+      <svg class="ic ic--30"><use href="#i-shield"/></svg>
+      <div><strong>Ehrlich getestet</strong><small>Keine bezahlten Platzierungen</small></div>
+    </div>
+    <div class="trust__item">
+      <svg class="ic ic--30"><use href="#i-click"/></svg>
+      <div><strong>Echte Klickzahlen</strong><small>Beliebtheit statt Sternchen</small></div>
+    </div>
+    <div class="trust__item">
+      <svg class="ic ic--30"><use href="#i-tag"/></svg>
+      <div><strong>Preis mit Datum</strong><small>Stand jeder Empfehlung sichtbar</small></div>
+    </div>
+    <div class="trust__item">
+      <svg class="ic ic--30"><use href="#i-mail"/></svg>
+      <div><strong>Newsletter</strong><small>Einmal im Monat, sonst nichts</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KATEGORIEN ==================== -->
+<section class="section reveal" id="kategorien">
+  <div class="container">
+    <h2 class="section__title section__title--center">Kategorien im Überblick</h2>
+    <ul class="cats">
+      {%- for cat in categories %}
+      {%- if cat.status == 'active' %}
+      <li><a class="cats__item" href="#empfehlungen"><svg class="ic ic--34"><use href="#{{ cat.icon }}"/></svg><span>{{ cat.label }}</span><em class="cats__pill">{{ cat.key | catCount(collections.productsData) }}</em></a></li>
+      {%- else %}
+      <li><span class="cats__item is-soon"><svg class="ic ic--34"><use href="#{{ cat.icon }}"/></svg><span>{{ cat.label }}</span><em class="cats__soon">Bald verfügbar</em></span></li>
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== PROMO-KACHELN ==================== -->
+<section class="section section--tight reveal">
+  <div class="container promos">
+    <article class="promo reveal reveal--left">
+      <div class="promo__art promo__art--grey"><svg class="ph ph--promo-tile"><use href="#p-arm"/></svg></div>
+      <div class="promo__body promo__body--grey">
+        <p class="promo__eyebrow">Bestseller</p>
+        <h3 class="promo__title">Monitorarme im Vergleich</h3>
+        <a class="btn btn--primary btn--sm" href="#empfehlungen">Jetzt ansehen</a>
+      </div>
+    </article>
+    <article class="promo reveal">
+      <div class="promo__art promo__art--red"><svg class="ph ph--promo-tile"><use href="#p-grind"/></svg></div>
+      <div class="promo__body promo__body--red">
+        <p class="promo__eyebrow">Neu</p>
+        <h3 class="promo__title">Espresso ohne Kompromiss</h3>
+        <a class="btn btn--primary btn--sm" href="#empfehlungen">Jetzt ansehen</a>
+      </div>
+    </article>
+    <article class="promo reveal reveal--right">
+      <div class="promo__art promo__art--lav"><svg class="ph ph--promo-tile"><use href="#p-lamp"/></svg></div>
+      <div class="promo__body promo__body--lav">
+        <p class="promo__eyebrow">Guide</p>
+        <h3 class="promo__title">Licht richtig einstellen</h3>
+        <a class="btn btn--primary btn--sm" href="#magazin">Zum Magazin</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ==================== HANDVERLESENE EMPFEHLUNGEN ==================== -->
+<section class="section reveal" id="empfehlungen">
+  <div class="container">
+    <h2 class="section__title section__title--center">Handverlesene Empfehlungen</h2>
+
+    <div class="grid grid--6">
+      {%- for p in collections.productsData %}
+      {% include "product-card.njk" %}
+      {%- endfor %}
+    </div>
+    <p class="disclosure disclosure--center">Werbung · Enthält Affiliate-Links</p>
+  </div>
+</section>
+
+<!-- ==================== MEISTGEKLICKT ==================== -->
+<section class="section section--band reveal" id="meistgeklickt">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">Meistgeklickt diesen Monat</h2>
+      <div class="tabs" role="tablist">
+        <button class="tabs__btn is-active" data-filter="alle" role="tab" aria-selected="true">Alle</button>
+        <button class="tabs__btn" data-filter="arbeitsplatz" role="tab" aria-selected="false">Arbeitsplatz</button>
+        <button class="tabs__btn" data-filter="kaffee" role="tab" aria-selected="false">Kaffee &amp; Küche</button>
+        <button class="tabs__btn" data-filter="licht" role="tab" aria-selected="false">Licht</button>
+      </div>
+    </div>
+
+    <div class="grid grid--6" id="rankGrid">
+      {%- for p in collections.topClicked %}
+      {% set rank = loop.index %}
+      {% include "product-card-rank.njk" %}
+      {%- endfor %}
+
+      <a class="ranktile" href="#empfehlungen">
+        <strong>Alle Empfehlungen</strong>
+        <span>Nach Beliebtheit sortiert</span>
+      </a>
+    </div>
+    <p class="disclosure">Werbung · Enthält Affiliate-Links</p>
+  </div>
+</section>
+
+<!-- ==================== MAGAZIN ==================== -->
+<section class="section reveal" id="magazin">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">Neueste Artikel</h2>
+      <a class="section__link" href="#magazin">Alle Artikel ansehen</a>
+    </div>
+
+    <div class="grid grid--3">
+      {%- for a in collections.articlesData %}
+      {% include "post-card.njk" %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+layout: layout.njk
+title: "Datenschutzerklärung — BLYCK"
+description: "Datenschutzerklärung von BLYCK."
+permalink: "datenschutz.html"
+permalinkPath: "datenschutz.html"
+---
+<!--
+  ENTWURF, kein fertiges Rechtsdokument. Vor Veröffentlichung:
+  1) Platzhalter-Anschrift durch echte ladungsfähige Geschäftsadresse ersetzen (siehe impressum.njk).
+  2) Sobald ein echter Versanddienst für Newsletter/Merkliste-Link angebunden ist, Abschnitt entsprechend konkretisieren (Anbietername, Serverstandort, AVV).
+  3) Von einer Fachperson (Anwalt/Datenschutzbeauftragte:r) gegenprüfen lassen.
+-->
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Start</a>
+    <svg class="ic"><use href="#i-chev-r2"/></svg>
+    <strong>Datenschutzerklärung</strong>
+  </nav>
+</div>
+
+<article class="section">
+  <div class="article__head" style="text-align:left;max-width:680px;margin-inline:auto">
+    <h1 class="pd__title">Datenschutzerklärung</h1>
+  </div>
+
+  <div class="article__body">
+    <h2>1. Verantwortlicher</h2>
+    <p>
+      Hans Daglioglu, handelnd unter der Marke BLYCK<br>
+      <strong>[PLATZHALTER — ladungsfähige Geschäftsadresse folgt]</strong><br>
+      E-Mail: {{ site.email }}
+    </p>
+
+    <h2>2. Hosting</h2>
+    <p>Diese Website wird bei Netlify, Inc. gehostet. Beim Aufruf der Seite verarbeitet Netlify technisch notwendige Server-Logdaten (u. a. IP-Adresse, Datum/Uhrzeit des Zugriffs, aufgerufene Seite, verwendeter Browser), um die Auslieferung der Seite zu ermöglichen und Missbrauch zu verhindern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an sicherem, funktionsfähigem Betrieb). Da Netlify auch außerhalb der EU verarbeitet, erfolgt die Übermittlung auf Grundlage von EU-Standardvertragsklauseln.</p>
+
+    <h2>3. Lokale Speicherung im Browser (Merkliste &amp; Beliebtheitswert)</h2>
+    <p>Diese Seite verwendet keine klassischen Tracking-Cookies. Zwei Funktionen speichern Daten lokal im Browser (<code>localStorage</code>), nicht auf unseren Servern:</p>
+    <p><strong>Merkliste:</strong> Welche Produkte du dir gemerkt hast, wird ausschließlich auf deinem Gerät gespeichert. Wir erhalten davon keine Kenntnis, solange du keinen Merkliste-Link per E-Mail anfragst (siehe Punkt 4).</p>
+    <p><strong>Klickzähler (Beliebtheitswert):</strong> Wie oft ein "Zum Angebot"-Button geklickt wurde, wird als reiner Zählwert pro Produkt lokal gespeichert und fließt anonymisiert in die "Meistgeklickt"-Anzeige ein. Es wird keine Zuordnung zu einer Person oder einem Gerätekennzeichen vorgenommen, die über den lokalen Browser hinaus nutzbar wäre.</p>
+    <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer funktionierenden, nutzerfreundlichen Seite ohne Warenkorb-System). Du kannst diese Daten jederzeit über die Browsereinstellungen löschen.</p>
+
+    <h2>4. Merkliste per E-Mail sichern</h2>
+    <p>Wenn du deine Merkliste per E-Mail-Link geräteübergreifend abrufbar machen möchtest, verarbeiten wir deine E-Mail-Adresse ausschließlich zu diesem Zweck. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch aktives Absenden des Formulars). Eine Weitergabe an Dritte erfolgt nicht. Du kannst diese Einwilligung jederzeit per E-Mail an {{ site.email }} widerrufen.</p>
+
+    <h2>5. Newsletter</h2>
+    <p>Der Newsletter ist aktuell noch nicht aktiv. Sobald er startet, erfolgt die Anmeldung im Double-Opt-in-Verfahren; diese Erklärung wird dann um Angaben zum eingesetzten Versanddienst ergänzt.</p>
+
+    <h2>6. Schriftarten</h2>
+    <p>Die Schriftart Poppins wird lokal von unserem eigenen Server ausgeliefert, nicht von Google-Servern geladen. Dadurch findet beim Laden der Schriftart keine Übertragung deiner IP-Adresse an Dritte statt.</p>
+
+    <h2>7. Amazon-Partnerprogramm</h2>
+    <p>Diese Seite enthält Links zu Amazon.de. Beim Klick auf einen "Zum Angebot"-Button wirst du zu Amazon weitergeleitet; Amazon kann dort eigene Cookies setzen, um den Kauf unserem Partnerprogramm-Konto zuzuordnen. Auf diese Verarbeitung haben wir keinen Einfluss. Informationen zum Datenschutz bei Amazon findest du in der Datenschutzerklärung von Amazon.de.</p>
+
+    <h2>8. Deine Rechte</h2>
+    <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung deiner personenbezogenen Daten. Wende dich dazu an {{ site.email }}. Außerdem besteht ein Beschwerderecht bei der zuständigen Datenschutzaufsichtsbehörde.</p>
+  </div>
+</article>
