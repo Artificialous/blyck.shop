@@ -1,0 +1,37 @@
+---
+permalink: "sitemap.xml"
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ site.domain }}/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>{{ site.domain }}/impressum.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>{{ site.domain }}/datenschutz.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+{%- for a in collections.articlesData %}
+  <url>
+    <loc>{{ site.domain }}/artikel-{{ a.slug }}.html</loc>
+    <lastmod>{{ a.date | isoDate }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+{%- endfor %}
+{%- for p in collections.productsWithDetailPage %}
+  <url>
+    <loc>{{ site.domain }}/produkt-{{ p.slug }}.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+{%- endfor %}
+</urlset>

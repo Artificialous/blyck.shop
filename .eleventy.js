@@ -19,6 +19,14 @@ module.exports = function (eleventyConfig) {
     return Number(n).toLocaleString("de-DE");
   });
 
+  // ISO-Datum fuer sitemap.xml <lastmod> — Eleventy hat keinen
+  // eingebauten date-Filter mit Formatstring.
+  eleventyConfig.addFilter("isoDate", function (dateInput) {
+    var d = new Date(dateInput);
+    if (isNaN(d)) return "";
+    return d.toISOString().slice(0, 10);
+  });
+
   eleventyConfig.addFilter("catLabel", function (key) {
     var found = categories.find(function (c) { return c.key === key; });
     return found ? found.label : key;
