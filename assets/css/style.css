@@ -298,7 +298,7 @@ del{color:var(--tag);font-weight:400;margin-right:6px}
 /* ============================================================
    KATEGORIEN
    ============================================================ */
-.cats{display:grid;grid-template-columns:repeat(8,1fr);gap:16px}
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
 .cats__item{
   display:flex;flex-direction:column;align-items:center;gap:10px;
   padding:18px 8px;color:var(--heading);text-align:center;

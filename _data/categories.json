@@ -6,5 +6,8 @@
   { "key": "werkzeug", "label": "Werkzeug", "icon": "c-tool", "status": "soon" },
   { "key": "ordnung", "label": "Ordnung", "icon": "c-box", "status": "soon" },
   { "key": "reise", "label": "Reise", "icon": "c-trip", "status": "soon" },
-  { "key": "pflege", "label": "Pflege", "icon": "c-care", "status": "soon" }
+  { "key": "pflege", "label": "Pflege", "icon": "c-care", "status": "soon" },
+  { "key": "elektronik", "label": "Elektronik", "icon": "c-chip", "status": "soon" },
+  { "key": "gaming", "label": "Gaming", "icon": "c-gamepad", "status": "soon" },
+  { "key": "trends", "label": "Trends", "icon": "c-trend", "status": "soon" }
 ]
