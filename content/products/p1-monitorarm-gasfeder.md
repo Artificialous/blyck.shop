@@ -12,7 +12,7 @@ price: "89,00"
 oldPrice: ""
 priceDate: "04.08.2026"
 baseClicks: 1284
-amazonLink: ""
+amazonLink: "https://www.amazon.de/dp/B0CKPC6YM3?tag=blyck21-21&linkCode=ll2&linkId=011b8503b6f612e4afbf333aa2160d4a&ref_=as_li_ss_tl"
 badge: ""
 hasDetailPage: true
 published: true
