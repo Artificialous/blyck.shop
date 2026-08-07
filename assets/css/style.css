@@ -513,6 +513,14 @@ a.cats__item:hover{color:var(--orange)}
 .footer__note{font-size:11px;color:#8F98A4;margin-top:12px}
 .footer__note a{text-decoration:underline}
 
+.check-row{
+  display:flex;align-items:flex-start;gap:10px;margin-top:14px;
+  font-size:12px;line-height:1.6;color:#B8BFC9;cursor:pointer;
+}
+.check-row input{
+  flex:none;width:16px;height:16px;margin-top:1px;accent-color:var(--orange);cursor:pointer;
+}
+
 .wish-email{margin-top:28px}
 .wish-email .footer__text{margin-bottom:14px}
 

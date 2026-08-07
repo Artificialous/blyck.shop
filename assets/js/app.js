@@ -239,12 +239,16 @@
   /* ============================================================
      MERKLISTE PER E-MAIL (Magic-Link statt Login)
      Kein Passwort, keine Session — Nutzer bekommt einen Link, um
-     die Merkliste geräteübergreifend abzurufen. Hier nur simuliert.
-     TODO: POST /wp-json/blyck/v1/wishlist-link { email }
+     die Merkliste geräteübergreifend abzurufen. Die Checkbox meldet
+     zusätzlich zu neuen Artikeln an — ersetzt das separate
+     Newsletter-Feld, ein Formular statt zwei E-Mail-Abfragen.
+     Hier nur simuliert.
+     TODO: POST /wp-json/blyck/v1/wishlist-link { email, notifyOnNewArticles }
      ============================================================ */
   function initWishlistEmail() {
     var form = document.getElementById('wishEmailForm');
     if (!form) return;
+    var newsletterCheck = document.getElementById('wishEmailNewsletter');
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       var field = form.querySelector('.nl__field');
@@ -253,7 +257,12 @@
         toast('Bitte gültige E-Mail-Adresse eingeben');
         return;
       }
-      toast('Merkliste-Link angefragt (Demo — Versand folgt)');
+      var subscribed = newsletterCheck && newsletterCheck.checked;
+      toast(
+        subscribed
+          ? 'Merkliste-Link angefragt, Artikel-Benachrichtigung aktiviert (Demo — Versand folgt)'
+          : 'Merkliste-Link angefragt (Demo — Versand folgt)'
+      );
       form.reset();
     });
   }
