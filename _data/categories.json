@@ -1,7 +1,7 @@
 [
   { "key": "arbeitsplatz", "label": "Arbeitsplatz", "icon": "c-desk", "status": "active" },
   { "key": "kaffee", "label": "Kaffee & Küche", "icon": "c-coffee", "status": "active" },
-  { "key": "licht", "label": "Licht", "icon": "c-lamp", "status": "soon" },
+  { "key": "licht", "label": "Licht", "icon": "c-lamp", "status": "active" },
   { "key": "audio", "label": "Audio", "icon": "c-audio", "status": "soon" },
   { "key": "werkzeug", "label": "Werkzeug", "icon": "c-tool", "status": "soon" },
   { "key": "ordnung", "label": "Ordnung", "icon": "c-box", "status": "soon" },
