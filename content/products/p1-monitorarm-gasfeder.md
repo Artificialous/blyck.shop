@@ -1,7 +1,7 @@
 ---
 images:
-  - assets/uploads/61gjjzxkbel._ac_sl1500_.jpg
   - src: assets/uploads/bontec_monitor-halterung_2.png
+  - assets/uploads/61gjjzxkbel._ac_sl1500_.jpg
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz
