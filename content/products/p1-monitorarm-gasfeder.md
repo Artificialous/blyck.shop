@@ -1,7 +1,8 @@
 ---
 images:
-  - assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
   - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
+  - assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
+heroImage: assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
 heroFocus: null
 icon: p-arm
 badge: ""
@@ -31,9 +32,9 @@ relatedIds:
   - p6
   - p2
 published: true
-order: 1
 slug: monitorarm-gasfeder
 permalink: false
+order: 1
 tags: products
 id: p1
 ---
