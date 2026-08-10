@@ -12,8 +12,8 @@ lead: Trägt bis 9 kg und hält die Position auch nach Monaten täglicher Nutzun
   durchhängen. Für alle, die den Monitor mehrmals täglich verschieben, statt ihn
   einmal einzustellen und nie wieder anzufassen.
 baseClicks: 0
-price: 89,00
-oldPrice: ""
+price: 23,71
+oldPrice: 29,99
 priceDate: 04.08.2026
 amazonLink: https://www.amazon.de/dp/B0CKPC6YM3?tag=blyck21-21&linkCode=ll2&linkId=011b8503b6f612e4afbf333aa2160d4a&ref_=as_li_ss_tl
 hasDetailPage: true
