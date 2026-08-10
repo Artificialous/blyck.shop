@@ -23,11 +23,12 @@ collections:
     identifier_field: title
     summary: "{{title}} — {{price}} € · Reihenfolge {{order}}"
     fields:
-      - { label: "Sichtbar auf der Seite", name: "published", widget: "boolean", default: true }
-      - { label: "Reihenfolge (kleiner = weiter vorne)", name: "order", widget: "number", value_type: "int", default: 99 }
-      - { label: "Produkt-ID (intern, nie aendern)", name: "id", widget: "string", pattern: ["^p[0-9]+$", "Format: p gefolgt von einer Zahl, z. B. p7"] }
-      - { label: "URL-Slug (fuer die Adresse der Detailseite)", name: "slug", widget: "string" }
-      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Produktfoto (ersetzt das Platzhalter-Icon, sobald vorhanden)", name: "image", widget: "image", required: false, hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder KI-generierte Bilder, die nicht vom Amazon-Foto abgeleitet sind." }
+      - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
+        name: "icon"
+        widget: "select"
+        options: ["p-arm", "p-lamp", "p-grind", "p-key", "p-drip", "p-chair", "p-photo"]
+      - { label: "Badge (z. B. Tipp, Neu) — optional", name: "badge", widget: "string", required: false }
       - label: "Kategorie"
         name: "categoryKey"
         widget: "select"
@@ -40,19 +41,14 @@ collections:
           - { label: "Ordnung", value: "ordnung" }
           - { label: "Reise", value: "reise" }
           - { label: "Pflege", value: "pflege" }
-      - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
-        name: "icon"
-        widget: "select"
-        options: ["p-arm", "p-lamp", "p-grind", "p-key", "p-drip", "p-chair", "p-photo"]
-      - { label: "Produktfoto (ersetzt das Platzhalter-Icon, sobald vorhanden)", name: "image", widget: "image", required: false, hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder KI-generierte Bilder, die nicht vom Amazon-Foto abgeleitet sind." }
+      - { label: "Titel", name: "title", widget: "string" }
       - { label: "Kurzbeschreibung (Kartenansicht, 1 Satz)", name: "shortDesc", widget: "text", required: false }
       - { label: "Ausführlicher Lead-Text (nur Detailseite)", name: "lead", widget: "text", required: false }
+      - { label: "Klickzahl-Basiswert", name: "baseClicks", widget: "number", value_type: "int", default: 0 }
       - { label: "Preis (nur Zahl, z. B. 89,00)", name: "price", widget: "string" }
       - { label: "Alter Preis (optional, für durchgestrichenen Preis)", name: "oldPrice", widget: "string", required: false }
       - { label: "Preis-Stand (z. B. 06.08.2026)", name: "priceDate", widget: "string" }
-      - { label: "Klickzahl-Basiswert", name: "baseClicks", widget: "number", value_type: "int", default: 0 }
       - { label: "Amazon-Affiliate-Link", name: "amazonLink", widget: "string", required: false, hint: "Leer lassen, bis der echte PartnerNet-Link da ist. Ohne Link zeigt der Button nur eine Hinweismeldung." }
-      - { label: "Badge (z. B. Tipp, Neu) — optional", name: "badge", widget: "string", required: false }
       - { label: "Eigene Produktseite anlegen?", name: "hasDetailPage", widget: "boolean", default: false }
       - { label: "Vorteile (nur bei eigener Produktseite)", name: "pros", widget: "list", required: false }
       - { label: "Nachteile (nur bei eigener Produktseite)", name: "cons", widget: "list", required: false }
@@ -65,6 +61,10 @@ collections:
         display_fields: ["title"]
         multiple: true
         required: false
+      - { label: "Sichtbar auf der Seite", name: "published", widget: "boolean", default: true }
+      - { label: "Reihenfolge (kleiner = weiter vorne)", name: "order", widget: "number", value_type: "int", default: 99 }
+      - { label: "Produkt-ID (intern, nie aendern)", name: "id", widget: "string", pattern: ["^p[0-9]+$", "Format: p gefolgt von einer Zahl, z. B. p7"] }
+      - { label: "URL-Slug (fuer die Adresse der Detailseite)", name: "slug", widget: "string" }
 
   - name: "articles"
     label: "Magazin-Artikel"
