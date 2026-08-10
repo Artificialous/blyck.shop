@@ -1,6 +1,6 @@
 ---
 images:
-  - assets/uploads/arbeitsplatz/magnific_professional-ecommerce-pr_s7wamfil8e.jpg
+  - src: assets/uploads/magnific_professional-ecommerce-pr_s7wamfil8e.jpg
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz

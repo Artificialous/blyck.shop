@@ -31,8 +31,6 @@ collections:
           label: "Bild"
           name: "src"
           widget: "image"
-          media_folder: "assets/uploads/{{fields.categoryKey}}"
-          public_folder: "assets/uploads/{{fields.categoryKey}}"
           hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder KI-generierte Bilder, die nicht vom Amazon-Foto abgeleitet sind."
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
@@ -108,13 +106,7 @@ collections:
         name: "cover"
         widget: "select"
         options: ["p-photo", "p-arm", "p-lamp", "p-grind"]
-      - label: "Titelbild (ersetzt das Platzhalter-Icon, sobald vorhanden)"
-        name: "coverImage"
-        widget: "image"
-        required: false
-        media_folder: "assets/uploads/artikel/{{fields.categoryKey}}"
-        public_folder: "assets/uploads/artikel/{{fields.categoryKey}}"
-        hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder KI-generierte Bilder, die nicht vom Amazon-Foto abgeleitet sind."
+      - { label: "Titelbild (ersetzt das Platzhalter-Icon, sobald vorhanden)", name: "coverImage", widget: "image", required: false, hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder KI-generierte Bilder, die nicht vom Amazon-Foto abgeleitet sind." }
       - { label: "Teaser-Text (Kartenansicht auf der Startseite)", name: "teaser", widget: "text" }
       - { label: "Einleitung (erster Absatz im Artikel)", name: "intro", widget: "text" }
       - label: "Abschnitte"
