@@ -32,6 +32,11 @@ collections:
         media_library:
           config:
             multiple: true
+      - label: "Eigenes Hero-Bild (optional — nur falls im Karussell/Titelkachel ein anderes Bild als auf der Empfehlungen-Karte erscheinen soll)"
+        name: "heroImage"
+        widget: "image"
+        required: false
+        hint: "Leer lassen = Hero zeigt automatisch dasselbe Hauptbild wie die Empfehlungen-Karte. Nur ausfüllen, wenn es abweichen soll."
       - label: "Bildausschnitt im Hero-Bereich (betrifft nur Karussell/Titelkachel, nicht die Empfehlungen-Karten)"
         name: "heroFocus"
         widget: "select"
