@@ -5,6 +5,10 @@ title: "BLYCK — Handverlesene Produktempfehlungen"
 description: "Handverlesene Produktempfehlungen für Arbeitsplatz und Küche. Mit echten Klickzahlen statt gekaufter Sterne."
 permalinkPath: ""
 ---
+{%- set heroP1 = "p1" | findProduct(collections.productsData) %}
+{%- set heroP3 = "p3" | findProduct(collections.productsData) %}
+{%- set heroP6 = "p6" | findProduct(collections.productsData) %}
+{%- set heroP2 = "p2" | findProduct(collections.productsData) %}
 <!-- ==================== HERO ==================== -->
 <section class="hero">
   <div class="container hero__grid">
@@ -14,21 +18,21 @@ permalinkPath: ""
           <p class="hero__eyebrow">Neu im Test</p>
           <h1 class="hero__title">Der Schreibtisch 2026</h1>
           <p class="hero__meta">Ergonomisch &nbsp;|&nbsp; Leise &nbsp;|&nbsp; Langlebig</p>
-          <p class="hero__price"><span>Ab</span> 23,71 €</p>
+          <p class="hero__price"><span>Ab</span> {{ heroP1.price }} €</p>
           <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
         </div>
         <div class="hero__slide" data-slide="1">
           <p class="hero__eyebrow">Bestseller</p>
           <p class="hero__title">Espresso ohne Kompromiss</p>
           <p class="hero__meta">Makro &amp; Mikro &nbsp;|&nbsp; Präzise &nbsp;|&nbsp; Kegelmahlwerk</p>
-          <p class="hero__price"><span>Ab</span> 349,95 €</p>
+          <p class="hero__price"><span>Ab</span> {{ heroP3.price }} €</p>
           <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
         </div>
         <div class="hero__slide" data-slide="2">
           <p class="hero__eyebrow">Meistgeklickt</p>
           <p class="hero__title">Ruhiger sitzen, länger bleiben</p>
           <p class="hero__meta">Lordosenstütze &nbsp;|&nbsp; Atmungsaktiv &nbsp;|&nbsp; 5 Jahre Garantie</p>
-          <p class="hero__price"><span>Ab</span> 389 €</p>
+          <p class="hero__price"><span>Ab</span> {{ heroP6.price }} €</p>
           <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
         </div>
         <div class="hero__dots" role="tablist" aria-label="Hero-Slides">
@@ -37,11 +41,23 @@ permalinkPath: ""
           <button type="button" data-dot="2" role="tab" aria-selected="false" aria-label="Slide 3 anzeigen"></button>
         </div>
       </div>
-      <div class="hero__art"><svg class="ph ph--hero"><use href="#p-arm"/></svg></div>
+      <div class="hero__art">
+        <div class="hero__art-slide is-active" data-slide="0">
+          {%- if heroP1.images and heroP1.images.length %}<img src="{{ heroP1.images[0] }}" alt="{{ heroP1.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
+        </div>
+        <div class="hero__art-slide" data-slide="1">
+          {%- if heroP3.images and heroP3.images.length %}<img src="{{ heroP3.images[0] }}" alt="{{ heroP3.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
+        </div>
+        <div class="hero__art-slide" data-slide="2">
+          {%- if heroP6.images and heroP6.images.length %}<img src="{{ heroP6.images[0] }}" alt="{{ heroP6.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
+        </div>
+      </div>
     </article>
 
     <aside class="hero__promo">
-      <div class="hero__promo-art"><svg class="ph ph--promo"><use href="#p-lamp"/></svg></div>
+      <div class="hero__promo-art">
+        {%- if heroP2.images and heroP2.images.length %}<img src="{{ heroP2.images[0] }}" alt="{{ heroP2.title }}">{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
+      </div>
       <p class="hero__eyebrow hero__eyebrow--dark">Redaktions-Tipp</p>
       <h2 class="hero__promo-title">Licht am Arbeitsplatz</h2>
       <p class="hero__meta hero__meta--dark">Warmweiß &nbsp;|&nbsp; Dimmbar &nbsp;|&nbsp; CRI 95</p>

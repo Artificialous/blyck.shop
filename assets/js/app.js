@@ -159,6 +159,7 @@
      ============================================================ */
   function initHeroSlider() {
     var slides = document.querySelectorAll('.hero__slide');
+    var artSlides = document.querySelectorAll('.hero__art-slide');
     var dots = document.querySelectorAll('.hero__dots [data-dot]');
     if (!slides.length || !dots.length) return;
 
@@ -171,6 +172,11 @@
       slides.forEach(function (slide, i) {
         slide.classList.toggle('is-active', i === index);
         slide.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+      });
+      /* Bild-Folien laufen synchron zum Text mit — eigene Liste, damit
+         die Reihenfolge im DOM (Text vor Bild) die Indizes nicht verschiebt. */
+      artSlides.forEach(function (art, i) {
+        art.classList.toggle('is-active', i === index);
       });
       dots.forEach(function (dot, i) {
         dot.classList.toggle('is-on', i === index);
