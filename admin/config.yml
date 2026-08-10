@@ -23,7 +23,7 @@ collections:
     identifier_field: title
     summary: "{{title}} — {{price}} € · Reihenfolge {{order}}"
     fields:
-      - { label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)", name: "images", widget: "imageGallery", required: false }
+      - { label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)", name: "images", widget: "image", multiple: true, required: false, hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder unabhängig erzeugte KI-Bilder. Ziehen zum Umsortieren." }
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"

@@ -1,6 +1,6 @@
 ---
 images:
-  - assets/uploads/magnific_professional-ecommerce-pr_s7wamfil8e.jpg
+  - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz
