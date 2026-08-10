@@ -1,7 +1,7 @@
 ---
 images:
-  - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
   - assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
+  - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
 heroFocus: null
 icon: p-arm
 badge: ""
