@@ -38,7 +38,7 @@ eleventyComputed:
 
   <div class="container">
     <div class="article__cover">
-      <svg class="ph ph--post"><use href="#{{ article.cover or 'p-photo' }}"/></svg>
+      {%- if article.coverImage %}<img src="{{ article.coverImage }}" alt="{{ article.title }}" loading="lazy">{% else %}<svg class="ph ph--post"><use href="#{{ article.cover or 'p-photo' }}"/></svg>{% endif %}
     </div>
   </div>
 

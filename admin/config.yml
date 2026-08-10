@@ -44,6 +44,7 @@ collections:
         name: "icon"
         widget: "select"
         options: ["p-arm", "p-lamp", "p-grind", "p-key", "p-drip", "p-chair", "p-photo"]
+      - { label: "Produktfoto (ersetzt das Platzhalter-Icon, sobald vorhanden)", name: "image", widget: "image", required: false, hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder KI-generierte Bilder, die nicht vom Amazon-Foto abgeleitet sind." }
       - { label: "Kurzbeschreibung (Kartenansicht, 1 Satz)", name: "shortDesc", widget: "text", required: false }
       - { label: "Ausführlicher Lead-Text (nur Detailseite)", name: "lead", widget: "text", required: false }
       - { label: "Preis (nur Zahl, z. B. 89,00)", name: "price", widget: "string" }
@@ -97,6 +98,7 @@ collections:
         name: "cover"
         widget: "select"
         options: ["p-photo", "p-arm", "p-lamp", "p-grind"]
+      - { label: "Titelbild (ersetzt das Platzhalter-Icon, sobald vorhanden)", name: "coverImage", widget: "image", required: false, hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder KI-generierte Bilder, die nicht vom Amazon-Foto abgeleitet sind." }
       - { label: "Teaser-Text (Kartenansicht auf der Startseite)", name: "teaser", widget: "text" }
       - { label: "Einleitung (erster Absatz im Artikel)", name: "intro", widget: "text" }
       - label: "Abschnitte"

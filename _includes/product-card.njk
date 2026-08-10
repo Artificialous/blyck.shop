@@ -7,10 +7,10 @@
     </button>
     {%- if p.hasDetailPage %}
     <a href="produkt-{{ p.slug }}.html" aria-label="Zur Produktseite: {{ p.title }}">
-      <svg class="ph"><use href="#{{ p.icon }}"/></svg>
+      {%- if p.image %}<img src="{{ p.image }}" alt="{{ p.title }}" loading="lazy">{% else %}<svg class="ph"><use href="#{{ p.icon }}"/></svg>{% endif %}
     </a>
     {%- else %}
-    <svg class="ph"><use href="#{{ p.icon }}"/></svg>
+      {%- if p.image %}<img src="{{ p.image }}" alt="{{ p.title }}" loading="lazy">{% else %}<svg class="ph"><use href="#{{ p.icon }}"/></svg>{% endif %}
     {%- endif %}
   </div>
   <p class="product__cat">{{ p.categoryKey | catLabel }}</p>

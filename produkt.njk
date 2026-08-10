@@ -28,7 +28,7 @@ eleventyComputed:
   <div class="container pd__grid">
 
     <div class="pd__media">
-      <svg class="ph"><use href="#{{ product.icon }}"/></svg>
+      {%- if product.image %}<img src="{{ product.image }}" alt="{{ product.title }}" loading="lazy">{% else %}<svg class="ph"><use href="#{{ product.icon }}"/></svg>{% endif %}
     </div>
 
     <div class="pd__info">

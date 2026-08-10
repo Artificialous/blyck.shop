@@ -2,7 +2,7 @@
 <article class="post">
   <div class="post__media">
     <span class="datebadge"><strong>{{ a.dateDay }}</strong><small>{{ a.dateMonthYear }}</small></span>
-    <svg class="ph ph--post"><use href="#{{ a.cover or 'p-photo' }}"/></svg>
+    {%- if a.coverImage %}<img src="{{ a.coverImage }}" alt="{{ a.title }}" loading="lazy">{% else %}<svg class="ph ph--post"><use href="#{{ a.cover or 'p-photo' }}"/></svg>{% endif %}
   </div>
   <p class="product__cat">{{ a.categoryKey | catLabel }}</p>
   <h3 class="post__title">{{ a.title }}</h3>
