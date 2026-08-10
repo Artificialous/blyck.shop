@@ -330,6 +330,24 @@
   });
 
   /* ============================================================
+     PRODUKT-GALERIE (Detailseite)
+     Klick auf eine Miniatur tauscht nur das src des Hauptbilds,
+     keine Navigation, kein Reload.
+     ============================================================ */
+  function initProductGallery() {
+    var main = document.getElementById('pdMainImage');
+    var thumbs = document.querySelectorAll('.pd__thumb');
+    if (!main || !thumbs.length) return;
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        main.src = thumb.dataset.full;
+        thumbs.forEach(function (t) { t.classList.remove('is-active'); });
+        thumb.classList.add('is-active');
+      });
+    });
+  }
+
+  /* ============================================================
      INIT
      ============================================================ */
   renderWishCount();
@@ -341,4 +359,5 @@
   initStickyNav();
   initHeroSlider();
   initScrollReveal();
+  initProductGallery();
 })();

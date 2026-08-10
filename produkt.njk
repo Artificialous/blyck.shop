@@ -27,8 +27,19 @@ eleventyComputed:
 <section class="section" id="{{ product.id }}" data-id="{{ product.id }}" data-clicks="{{ product.baseClicks }}">
   <div class="container pd__grid">
 
-    <div class="pd__media">
-      {%- if product.image %}<img src="{{ product.image }}" alt="{{ product.title }}" loading="lazy">{% else %}<svg class="ph"><use href="#{{ product.icon }}"/></svg>{% endif %}
+    <div class="pd__gallery">
+      <div class="pd__media">
+        {%- if product.images and product.images.length %}<img id="pdMainImage" src="{{ product.images[0].src }}" alt="{{ product.title }}" loading="lazy">{% else %}<svg class="ph"><use href="#{{ product.icon }}"/></svg>{% endif %}
+      </div>
+      {%- if product.images and product.images.length > 1 %}
+      <div class="pd__thumbs" role="tablist" aria-label="Weitere Produktfotos">
+        {%- for img in product.images %}
+        <button type="button" class="pd__thumb{% if loop.first %} is-active{% endif %}" data-full="{{ img.src }}" aria-label="Bild {{ loop.index }} anzeigen">
+          <img src="{{ img.src }}" alt="" loading="lazy">
+        </button>
+        {%- endfor %}
+      </div>
+      {%- endif %}
     </div>
 
     <div class="pd__info">
