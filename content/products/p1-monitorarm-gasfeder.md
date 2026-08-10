@@ -1,6 +1,7 @@
 ---
 images:
   - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
+heroFocus: right center
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz
