@@ -29,7 +29,7 @@ relatedIds:
   - p6
   - p2
 published: true
-order: 3
+order: 1
 slug: monitorarm-gasfeder
 permalink: false
 tags: products
