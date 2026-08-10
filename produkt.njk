@@ -29,13 +29,13 @@ eleventyComputed:
 
     <div class="pd__gallery">
       <div class="pd__media">
-        {%- if product.images and product.images.length %}<img id="pdMainImage" src="{{ product.images[0].src }}" alt="{{ product.title }}" loading="lazy">{% else %}<svg class="ph"><use href="#{{ product.icon }}"/></svg>{% endif %}
+        {%- if product.images and product.images.length %}<img id="pdMainImage" src="{{ product.images[0] }}" alt="{{ product.title }}" loading="lazy">{% else %}<svg class="ph"><use href="#{{ product.icon }}"/></svg>{% endif %}
       </div>
       {%- if product.images and product.images.length > 1 %}
       <div class="pd__thumbs" role="tablist" aria-label="Weitere Produktfotos">
         {%- for img in product.images %}
-        <button type="button" class="pd__thumb{% if loop.first %} is-active{% endif %}" data-full="{{ img.src }}" aria-label="Bild {{ loop.index }} anzeigen">
-          <img src="{{ img.src }}" alt="" loading="lazy">
+        <button type="button" class="pd__thumb{% if loop.first %} is-active{% endif %}" data-full="{{ img }}" aria-label="Bild {{ loop.index }} anzeigen">
+          <img src="{{ img }}" alt="" loading="lazy">
         </button>
         {%- endfor %}
       </div>

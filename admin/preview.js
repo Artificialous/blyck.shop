@@ -48,7 +48,7 @@ function deNumber(n) {
 var ProductPreview = createClass({
   render: function () {
     var e = this.props.entry.get("data").toObject();
-    var firstImage = e.images && e.images.length ? e.images[0].src : null;
+    var firstImage = e.images && e.images.length ? e.images[0] : null;
     var imageUrl = firstImage ? this.props.getAsset(firstImage).toString() : null;
 
     return h(
