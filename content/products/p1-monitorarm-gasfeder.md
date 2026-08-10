@@ -1,6 +1,6 @@
 ---
 images:
-  - src: assets/uploads/arbeitsplatz/bontec_monitor-halterung_2.png
+  - assets/uploads/arbeitsplatz/magnific_professional-ecommerce-pr_s7wamfil8e.jpg
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz
