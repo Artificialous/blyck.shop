@@ -199,12 +199,11 @@ del{color:var(--tag);font-weight:400;margin-right:6px}
 .hero__grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
 
 .hero__main{
-  position:relative;display:grid;grid-template-columns:1.3fr 1fr;
-  align-items:center;gap:20px;
+  position:relative;
   background:#111417;border-radius:var(--radius);
-  padding:52px 48px;min-height:400px;overflow:hidden;
+  min-height:400px;overflow:hidden;
 }
-.hero__copy{position:relative;z-index:1}
+.hero__copy{position:relative;z-index:2;max-width:520px;padding:52px 48px}
 .hero__eyebrow{font-size:20px;font-weight:300;color:rgba(255,255,255,.85);margin-bottom:6px}
 .hero__title{font-size:36px;font-weight:700;color:#fff;letter-spacing:-.01em}
 .hero__meta{margin-top:18px;font-size:13px;color:rgba(255,255,255,.7)}
@@ -226,29 +225,57 @@ del{color:var(--tag);font-weight:400;margin-right:6px}
 @media (prefers-reduced-motion: reduce){
   .hero__slide{transition:none}
 }
-.hero__art{position:relative;display:grid;place-items:center;min-height:280px}
-.ph--hero{max-width:340px;stroke:rgba(255,255,255,.38);stroke-width:1.4}
+.hero__art{position:absolute;inset:0;z-index:0}
 .hero__art-slide{
-  display:grid;place-items:center;width:100%;height:100%;
-  opacity:0;pointer-events:none;transition:opacity .5s ease;
+  position:absolute;inset:0;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transition:opacity .6s ease;
 }
-.hero__art-slide.is-active{position:relative;z-index:1;opacity:1;pointer-events:auto}
-.hero__art-slide:not(.is-active){position:absolute;inset:0}
-.hero__art-slide img{max-width:340px;max-height:280px;width:100%;object-fit:contain;border-radius:var(--radius)}
+.hero__art-slide.is-active{opacity:1;pointer-events:auto}
+.hero__art-slide img{width:100%;height:100%;object-fit:cover}
+.ph--hero{max-width:340px;stroke:rgba(255,255,255,.38);stroke-width:1.4}
 @media (prefers-reduced-motion: reduce){
   .hero__art-slide{transition:none}
 }
+/* Weicher Verlauf hinter dem Text, damit er über jedem Foto lesbar bleibt */
+.hero__scrim{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,
+    rgba(11,11,12,.94) 0%,
+    rgba(11,11,12,.82) 32%,
+    rgba(11,11,12,.4) 58%,
+    rgba(11,11,12,.05) 78%
+  );
+}
 
 .hero__promo{
+  position:relative;overflow:hidden;
   background:#E9D9C6;border-radius:var(--radius);
   padding:36px 30px;display:flex;flex-direction:column;
 }
 .hero__promo-art{display:grid;place-items:center;flex:1;min-height:150px}
 .ph--promo{max-width:150px;stroke:rgba(0,0,0,.28);stroke-width:1.8}
-.hero__promo-art img{max-width:100%;max-height:150px;object-fit:contain;border-radius:var(--radius)}
 .hero__eyebrow--dark{color:rgba(0,0,0,.65);font-size:19px;margin-top:12px}
 .hero__promo-title{font-size:24px;font-weight:700}
 .hero__meta--dark{color:rgba(0,0,0,.6);margin-top:12px}
+
+/* Nur aktiv, wenn ein echtes Foto gesetzt ist — sonst bleibt die ruhige
+   Icon-Platzhalter-Optik mit dunklem Text auf hellem Beige bestehen. */
+.hero__promo.has-photo{padding:0;justify-content:flex-end}
+.hero__promo.has-photo .hero__promo-art{
+  position:absolute;inset:0;min-height:0;flex:none;
+}
+.hero__promo.has-photo .hero__promo-art img{
+  width:100%;height:100%;object-fit:cover;max-width:none;max-height:none;
+}
+.hero__promo-scrim{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(0deg, rgba(11,11,12,.88) 0%, rgba(11,11,12,.55) 45%, rgba(11,11,12,0) 85%);
+}
+.hero__promo-copy{position:relative;z-index:2}
+.hero__promo.has-photo .hero__promo-copy{padding:26px 26px 22px}
+.hero__promo.has-photo .hero__eyebrow--dark{color:rgba(255,255,255,.85)}
+.hero__promo.has-photo .hero__promo-title{color:#fff}
+.hero__promo.has-photo .hero__meta--dark{color:rgba(255,255,255,.75)}
 
 /* ============================================================
    TRUST-LEISTE
@@ -665,8 +692,8 @@ a.cats__item:hover{color:var(--orange)}
   .search-wrap{grid-column:1/-1;order:3}
   .account{gap:22px}
   .hero__grid{grid-template-columns:1fr}
-  .hero__main{grid-template-columns:1fr;padding:36px 28px;min-height:0}
-  .hero__art{display:none}
+  .hero__main{min-height:340px}
+  .hero__copy{max-width:none;padding:32px 24px}
   .hero__title{font-size:32px}
   .trust__grid{grid-template-columns:repeat(2,1fr)}
   .mainnav__inner{flex-wrap:wrap;padding-block:12px}

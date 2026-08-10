@@ -13,6 +13,18 @@ permalinkPath: ""
 <section class="hero">
   <div class="container hero__grid">
     <article class="hero__main">
+      <div class="hero__art">
+        <div class="hero__art-slide is-active" data-slide="0">
+          {%- if heroP1.images and heroP1.images.length %}<img src="{{ heroP1.images[0] }}" alt="{{ heroP1.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
+        </div>
+        <div class="hero__art-slide" data-slide="1">
+          {%- if heroP3.images and heroP3.images.length %}<img src="{{ heroP3.images[0] }}" alt="{{ heroP3.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
+        </div>
+        <div class="hero__art-slide" data-slide="2">
+          {%- if heroP6.images and heroP6.images.length %}<img src="{{ heroP6.images[0] }}" alt="{{ heroP6.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
+        </div>
+      </div>
+      <div class="hero__scrim"></div>
       <div class="hero__copy">
         <div class="hero__slide is-active" data-slide="0">
           <p class="hero__eyebrow">Neu im Test</p>
@@ -41,26 +53,18 @@ permalinkPath: ""
           <button type="button" data-dot="2" role="tab" aria-selected="false" aria-label="Slide 3 anzeigen"></button>
         </div>
       </div>
-      <div class="hero__art">
-        <div class="hero__art-slide is-active" data-slide="0">
-          {%- if heroP1.images and heroP1.images.length %}<img src="{{ heroP1.images[0] }}" alt="{{ heroP1.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
-        </div>
-        <div class="hero__art-slide" data-slide="1">
-          {%- if heroP3.images and heroP3.images.length %}<img src="{{ heroP3.images[0] }}" alt="{{ heroP3.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
-        </div>
-        <div class="hero__art-slide" data-slide="2">
-          {%- if heroP6.images and heroP6.images.length %}<img src="{{ heroP6.images[0] }}" alt="{{ heroP6.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
-        </div>
-      </div>
     </article>
 
-    <aside class="hero__promo">
+    <aside class="hero__promo{% if heroP2.images and heroP2.images.length %} has-photo{% endif %}">
       <div class="hero__promo-art">
         {%- if heroP2.images and heroP2.images.length %}<img src="{{ heroP2.images[0] }}" alt="{{ heroP2.title }}">{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
       </div>
-      <p class="hero__eyebrow hero__eyebrow--dark">Redaktions-Tipp</p>
-      <h2 class="hero__promo-title">Licht am Arbeitsplatz</h2>
-      <p class="hero__meta hero__meta--dark">Warmweiß &nbsp;|&nbsp; Dimmbar &nbsp;|&nbsp; CRI 95</p>
+      {%- if heroP2.images and heroP2.images.length %}<div class="hero__promo-scrim"></div>{% endif %}
+      <div class="hero__promo-copy">
+        <p class="hero__eyebrow hero__eyebrow--dark">Redaktions-Tipp</p>
+        <h2 class="hero__promo-title">Licht am Arbeitsplatz</h2>
+        <p class="hero__meta hero__meta--dark">Warmweiß &nbsp;|&nbsp; Dimmbar &nbsp;|&nbsp; CRI 95</p>
+      </div>
     </aside>
   </div>
   <p class="container disclosure disclosure--hero">Werbung · Enthält Affiliate-Links</p>
