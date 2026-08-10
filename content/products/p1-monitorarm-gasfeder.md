@@ -1,6 +1,6 @@
 ---
 published: true
-order: 1
+order: 2
 id: p1
 slug: monitorarm-gasfeder
 title: Monitorarm Gasfeder, zwei Gelenke, VESA 75/100
