@@ -15,13 +15,13 @@ permalinkPath: ""
     <article class="hero__main">
       <div class="hero__art">
         <div class="hero__art-slide is-active" data-slide="0">
-          {%- if heroP1.images and heroP1.images.length %}<img src="{{ heroP1.images[0] }}" alt="{{ heroP1.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
+          {%- if heroP1.images and heroP1.images.length %}<img src="{{ heroP1.images[0] }}" alt="{{ heroP1.title }}" style="object-position:{{ heroP1.heroFocus or 'center center' }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
         </div>
         <div class="hero__art-slide" data-slide="1">
-          {%- if heroP3.images and heroP3.images.length %}<img src="{{ heroP3.images[0] }}" alt="{{ heroP3.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
+          {%- if heroP3.images and heroP3.images.length %}<img src="{{ heroP3.images[0] }}" alt="{{ heroP3.title }}" style="object-position:{{ heroP3.heroFocus or 'center center' }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
         </div>
         <div class="hero__art-slide" data-slide="2">
-          {%- if heroP6.images and heroP6.images.length %}<img src="{{ heroP6.images[0] }}" alt="{{ heroP6.title }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
+          {%- if heroP6.images and heroP6.images.length %}<img src="{{ heroP6.images[0] }}" alt="{{ heroP6.title }}" style="object-position:{{ heroP6.heroFocus or 'center center' }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
         </div>
       </div>
       <div class="hero__scrim"></div>
@@ -57,7 +57,7 @@ permalinkPath: ""
 
     <aside class="hero__promo{% if heroP2.images and heroP2.images.length %} has-photo{% endif %}">
       <div class="hero__promo-art">
-        {%- if heroP2.images and heroP2.images.length %}<img src="{{ heroP2.images[0] }}" alt="{{ heroP2.title }}">{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
+        {%- if heroP2.images and heroP2.images.length %}<img src="{{ heroP2.images[0] }}" alt="{{ heroP2.title }}" style="object-position:{{ heroP2.heroFocus or 'center center' }}">{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
       </div>
       {%- if heroP2.images and heroP2.images.length %}<div class="hero__promo-scrim"></div>{% endif %}
       <div class="hero__promo-copy">
