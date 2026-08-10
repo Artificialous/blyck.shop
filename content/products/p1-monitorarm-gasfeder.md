@@ -2,7 +2,9 @@
 published: true
 order: 1
 id: p1
-slug: monitorarm-gasfeder
+slug: BONTEC Monitor Halterung für 13-32 Zoll Monitore 3-9 kg, VESA 75/100mm,
+  Gasdruckfeder Arm, Ergonomischer Bildschirmhalterung, Schwenkbar, Neigbar,
+  Dreht
 title: BONTEC Monitor Halterung für 13-32 Zoll Monitore 3-9 kg, VESA 75/100mm,
   Gasdruckfeder Arm, Ergonomischer Bildschirmhalterung, Schwenkbar, Neigbar,
   Dreht
