@@ -22,7 +22,7 @@ pros:
   - VESA 75/100 passt auf die meisten aktuellen Monitore ohne Adapter
 permalink: false
 priceDate: 04.08.2026
-baseClicks: 1284
+baseClicks: 0
 amazonLink: https://www.amazon.de/dp/B0CKPC6YM3?tag=blyck21-21&linkCode=ll2&linkId=011b8503b6f612e4afbf333aa2160d4a&ref_=as_li_ss_tl
 hasDetailPage: true
 cons:
