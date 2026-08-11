@@ -61,7 +61,16 @@ collections:
         value_type: "int"
         required: false
         default: 150
-        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran. Bei genau 100 bewirken die Verschieben-Felder oben nichts mehr, da dann kein Bildüberschuss mehr da ist."
+        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran. Bei genau 100 bewirken die Verschieben-Felder oben nichts mehr, da dann kein Bildüberschuss mehr da ist. Nur bei 'Ausfüllen' unten wirksam."
+      - label: "Bildmodus im Hero-Bereich"
+        name: "heroFit"
+        widget: "select"
+        required: false
+        default: "cover"
+        options:
+          - { label: "Ausfüllen (füllt den Rahmen komplett, schneidet dafür Ränder ab)", value: "cover" }
+          - { label: "Ganzes Bild zeigen (kein Zuschnitt, kann Rand rechts/links oder oben/unten zeigen)", value: "contain" }
+        hint: "Bei 'Ganzes Bild zeigen' sind Verschieben/Zoom oben wirkungslos — das komplette Foto wird immer unverzerrt und unbeschnitten eingepasst."
 
       # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
       - label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)"
@@ -92,7 +101,16 @@ collections:
         value_type: "int"
         required: false
         default: 150
-        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran. Bei genau 100 bewirken die Verschieben-Felder oben nichts mehr, da dann kein Bildüberschuss mehr da ist."
+        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran. Bei genau 100 bewirken die Verschieben-Felder oben nichts mehr, da dann kein Bildüberschuss mehr da ist. Nur bei 'Ausfüllen' unten wirksam."
+      - label: "Bildmodus auf der Empfehlungen-Karte"
+        name: "cardFit"
+        widget: "select"
+        required: false
+        default: "cover"
+        options:
+          - { label: "Ausfüllen (füllt den Rahmen komplett, schneidet dafür Ränder ab)", value: "cover" }
+          - { label: "Ganzes Bild zeigen (kein Zuschnitt, kann Rand rechts/links oder oben/unten zeigen)", value: "contain" }
+        hint: "Bei 'Ganzes Bild zeigen' sind Verschieben/Zoom oben wirkungslos — das komplette Foto wird immer unverzerrt und unbeschnitten eingepasst."
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"

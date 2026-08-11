@@ -21,19 +21,27 @@ permalinkPath: ""
 {%- set heroZoom3 = heroP3.heroZoom if heroP3.heroZoom is defined else 150 %}
 {%- set heroZoom6 = heroP6.heroZoom if heroP6.heroZoom is defined else 150 %}
 {%- set heroZoom2 = heroP2.heroZoom if heroP2.heroZoom is defined else 150 %}
+{%- set heroFit1 = heroP1.heroFit if heroP1.heroFit is defined else 'cover' %}
+{%- set heroFit3 = heroP3.heroFit if heroP3.heroFit is defined else 'cover' %}
+{%- set heroFit6 = heroP6.heroFit if heroP6.heroFit is defined else 'cover' %}
+{%- set heroFit2 = heroP2.heroFit if heroP2.heroFit is defined else 'cover' %}
+{%- set heroStyle1 = 'object-fit:' ~ heroFit1 ~ ';object-position:' ~ heroPos1 ~ (';width:' ~ heroZoom1 ~ '%;height:' ~ heroZoom1 ~ '%' if heroFit1 == 'cover' else ';width:100%;height:100%') %}
+{%- set heroStyle3 = 'object-fit:' ~ heroFit3 ~ ';object-position:' ~ heroPos3 ~ (';width:' ~ heroZoom3 ~ '%;height:' ~ heroZoom3 ~ '%' if heroFit3 == 'cover' else ';width:100%;height:100%') %}
+{%- set heroStyle6 = 'object-fit:' ~ heroFit6 ~ ';object-position:' ~ heroPos6 ~ (';width:' ~ heroZoom6 ~ '%;height:' ~ heroZoom6 ~ '%' if heroFit6 == 'cover' else ';width:100%;height:100%') %}
+{%- set heroStyle2 = 'object-fit:' ~ heroFit2 ~ ';object-position:' ~ heroPos2 ~ (';width:' ~ heroZoom2 ~ '%;height:' ~ heroZoom2 ~ '%' if heroFit2 == 'cover' else ';width:100%;height:100%') %}
 <!-- ==================== HERO ==================== -->
 <section class="hero">
   <div class="container hero__grid">
     <article class="hero__main">
       <div class="hero__art">
         <div class="hero__art-slide is-active" data-slide="0">
-          {%- if heroImg1 %}<img src="{{ heroImg1 }}" alt="{{ heroP1.title }}" style="object-position:{{ heroPos1 }};width:{{ heroZoom1 }}%;height:{{ heroZoom1 }}%">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
+          {%- if heroImg1 %}<img src="{{ heroImg1 }}" alt="{{ heroP1.title }}" style="{{ heroStyle1 }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
         </div>
         <div class="hero__art-slide" data-slide="1">
-          {%- if heroImg3 %}<img src="{{ heroImg3 }}" alt="{{ heroP3.title }}" style="object-position:{{ heroPos3 }};width:{{ heroZoom3 }}%;height:{{ heroZoom3 }}%">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
+          {%- if heroImg3 %}<img src="{{ heroImg3 }}" alt="{{ heroP3.title }}" style="{{ heroStyle3 }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
         </div>
         <div class="hero__art-slide" data-slide="2">
-          {%- if heroImg6 %}<img src="{{ heroImg6 }}" alt="{{ heroP6.title }}" style="object-position:{{ heroPos6 }};width:{{ heroZoom6 }}%;height:{{ heroZoom6 }}%">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
+          {%- if heroImg6 %}<img src="{{ heroImg6 }}" alt="{{ heroP6.title }}" style="{{ heroStyle6 }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
         </div>
       </div>
       <div class="hero__scrim"></div>
@@ -71,7 +79,7 @@ permalinkPath: ""
 
     <aside class="hero__promo{% if heroImg2 %} has-photo{% endif %}">
       <div class="hero__promo-art">
-        {%- if heroImg2 %}<img src="{{ heroImg2 }}" alt="{{ heroP2.title }}" style="object-position:{{ heroPos2 }};width:{{ heroZoom2 }}%;height:{{ heroZoom2 }}%">{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
+        {%- if heroImg2 %}<img src="{{ heroImg2 }}" alt="{{ heroP2.title }}" style="{{ heroStyle2 }}">{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
       </div>
       {%- if heroImg2 %}<div class="hero__promo-scrim"></div>{% endif %}
       <div class="hero__promo-copy">

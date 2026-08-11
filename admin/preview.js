@@ -53,7 +53,11 @@ var ProductPreview = createClass({
     var cardFocusX = e.cardFocusX !== undefined ? e.cardFocusX : 50;
     var cardFocusY = e.cardFocusY !== undefined ? e.cardFocusY : 50;
     var cardZoom = e.cardZoom !== undefined ? e.cardZoom : 150;
+    var cardFit = e.cardFit !== undefined ? e.cardFit : "cover";
     var cardOffset = (100 - cardZoom) / 2;
+    var cardImgStyle = cardFit === "cover"
+      ? { objectFit: cardFit, objectPosition: cardFocusX + "% " + cardFocusY + "%", width: cardZoom + "%", height: cardZoom + "%", left: cardOffset + "%", top: cardOffset + "%" }
+      : { objectFit: cardFit, objectPosition: cardFocusX + "% " + cardFocusY + "%", width: "100%", height: "100%", left: 0, top: 0 };
 
     return h(
       "div",
@@ -67,7 +71,7 @@ var ProductPreview = createClass({
           { className: "product__media" },
           e.badge ? h("span", { className: "tagbadge" }, e.badge) : null,
           imageUrl
-            ? h("img", { src: imageUrl, alt: e.title || "", style: { objectPosition: cardFocusX + "% " + cardFocusY + "%", width: cardZoom + "%", height: cardZoom + "%", left: cardOffset + "%", top: cardOffset + "%" } })
+            ? h("img", { src: imageUrl, alt: e.title || "", style: cardImgStyle })
             : h(
                 "svg",
                 { className: "ph" },
