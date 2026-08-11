@@ -44,25 +44,93 @@ function deNumber(n) {
   return Number(n).toLocaleString("de-DE");
 }
 
+/* Kleine Zwischenueberschriften, damit im Vorschau-Panel klar ist, welcher
+   Seitenbereich gerade gezeigt wird. */
+var LABEL_STYLE = {
+  margin: "0 0 8px",
+  fontSize: "11px",
+  fontWeight: 600,
+  letterSpacing: ".08em",
+  textTransform: "uppercase",
+  color: "#8a9099"
+};
+var NOTE_STYLE = {
+  margin: "0 0 28px",
+  fontSize: "11px",
+  lineHeight: 1.5,
+  color: "#a4a9b0"
+};
+
 /* ---------- Produkt-Vorschau ---------- */
 var ProductPreview = createClass({
   render: function () {
     var e = this.props.entry.get("data").toObject();
     var firstImage = e.images && e.images.length ? e.images[0] : null;
     var imageUrl = firstImage ? this.props.getAsset(firstImage).toString() : null;
-    var cardFocusX = e.cardFocusX !== undefined ? e.cardFocusX : 50;
-    var cardFocusY = e.cardFocusY !== undefined ? e.cardFocusY : 50;
-    var cardZoom = e.cardZoom !== undefined ? e.cardZoom : 150;
-    var cardFit = e.cardFit !== undefined ? e.cardFit : "cover";
-    var cardOffset = (100 - cardZoom) / 2;
-    var cardImgStyle = cardFit === "cover"
-      ? { objectFit: cardFit, objectPosition: cardFocusX + "% " + cardFocusY + "%", width: cardZoom + "%", height: cardZoom + "%", left: cardOffset + "%", top: cardOffset + "%" }
-      : { objectFit: cardFit, objectPosition: cardFocusX + "% " + cardFocusY + "%", width: "100%", height: "100%", left: 0, top: 0 };
+    var focusX = e.focusX !== undefined ? e.focusX : 50;
+    var focusY = e.focusY !== undefined ? e.focusY : 50;
+    var focusPos = focusX + "% " + focusY + "%";
+    var cardImgStyle = { objectPosition: focusPos };
+    var heroTitle = e.heroTitle || e.title || "(kein Titel)";
+    var heroImageRaw = e.heroImage || (e.images && e.images.length ? e.images[0] : null);
+    var heroImageUrl = heroImageRaw ? this.props.getAsset(heroImageRaw).toString() : null;
 
     return h(
       "div",
       { style: { padding: "32px", background: "#fff", fontFamily: "Poppins, sans-serif" } },
       h("div", { dangerouslySetInnerHTML: { __html: ICON_SPRITE } }),
+
+      /* ---- Hero-Vorschau ----
+         Gleiches Seitenverhaeltnis 3/2 wie .hero__main auf der echten Seite,
+         damit der Zuschnitt hier so aussieht wie live. Nur sinnvoll fuer die
+         vier im Hero eingebundenen Produkte, deshalb der Hinweis darunter. */
+      h("p", { style: LABEL_STYLE }, "Hero-Bereich (Startseite)"),
+      h(
+        "div",
+        { className: "hero", style: { padding: 0, marginBottom: "8px" } },
+        h(
+          "article",
+          {
+            className: "hero__main",
+            /* Seitenverhaeltnis hier hart setzen: das Vorschau-Panel ist
+               schmaler als der 900px-Breakpoint, sonst greift die
+               Mobil-Regel und der Zuschnitt waere ein anderer als live. */
+            style: { aspectRatio: "3 / 2", minHeight: 0 }
+          },
+          h(
+            "div",
+            { className: "hero__art" },
+            h(
+              "div",
+              { className: "hero__art-slide is-active" },
+              heroImageUrl
+                ? h("img", { src: heroImageUrl, alt: heroTitle, style: { objectPosition: focusPos } })
+                : h("svg", { className: "ph ph--hero" }, h("use", { href: "#" + (e.icon || "p-photo") }))
+            )
+          ),
+          h("div", { className: "hero__scrim" }),
+          h(
+            "div",
+            { className: "hero__copy" },
+            h("p", { className: "hero__eyebrow" }, e.heroEyebrow || ""),
+            h("p", { className: "hero__title" }, heroTitle),
+            h("p", { className: "hero__meta" }, e.heroMeta || ""),
+            h(
+              "p",
+              { className: "hero__price" },
+              h("span", {}, "Ab"),
+              " " + (e.price || "0,00") + " €"
+            )
+          )
+        )
+      ),
+      h(
+        "p",
+        { style: NOTE_STYLE },
+        "Nur sichtbar, wenn dieses Produkt im Hero eingebunden ist (p1, p2, p3, p6)."
+      ),
+
+      h("p", { style: LABEL_STYLE }, "Empfehlungen-Karte"),
       h(
         "article",
         { className: "product", style: { maxWidth: "280px" } },

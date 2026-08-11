@@ -198,10 +198,14 @@ del{color:var(--tag);font-weight:400;margin-right:6px}
 .hero{padding:32px 0 0}
 .hero__grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
 
+/* Festes Seitenverhaeltnis, damit der Bildzuschnitt berechenbar ist: sonst
+   haengt die Rahmenhoehe an der Textlaenge des Slides und derselbe
+   Fokuswert schneidet bei jedem Produkt anders. min-height ist nur der
+   Boden, falls ein Slide-Text mal hoeher wird als das Bild. */
 .hero__main{
   position:relative;
   background:#111417;border-radius:var(--radius);
-  min-height:400px;overflow:hidden;
+  aspect-ratio:3/2;min-height:400px;overflow:hidden;
 }
 .hero__copy{position:relative;z-index:2;max-width:520px;padding:52px 48px}
 .hero__eyebrow{font-size:20px;font-weight:300;color:rgba(255,255,255,.85);margin-bottom:6px}
@@ -231,7 +235,7 @@ del{color:var(--tag);font-weight:400;margin-right:6px}
   opacity:0;pointer-events:none;transition:opacity .6s ease;
 }
 .hero__art-slide.is-active{opacity:1;pointer-events:auto}
-.hero__art-slide img{object-fit:cover}
+.hero__art-slide img{width:100%;height:100%;object-fit:cover}
 .ph--hero{max-width:340px;stroke:rgba(255,255,255,.38);stroke-width:1.4}
 @media (prefers-reduced-motion: reduce){
   .hero__art-slide{transition:none}
@@ -265,7 +269,7 @@ del{color:var(--tag);font-weight:400;margin-right:6px}
   position:absolute;inset:0;min-height:0;flex:none;
 }
 .hero__promo.has-photo .hero__promo-art img{
-  object-fit:cover;max-width:none;max-height:none;
+  width:100%;height:100%;object-fit:cover;max-width:none;max-height:none;
 }
 .hero__promo-scrim{
   position:absolute;inset:0;z-index:1;
@@ -403,7 +407,7 @@ a.cats__item:hover{color:var(--orange)}
   background:var(--band);border-radius:var(--radius);
 }
 .product__media .ph{max-width:94%;max-height:94%;transition:transform .25s ease}
-.product__media img{position:absolute;object-fit:cover;border-radius:var(--radius)}
+.product__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius)}
 .product:hover .product__media .ph{transform:scale(1.06)}
 @media (prefers-reduced-motion: reduce){
   .product,.product__media .ph{transition:none}
@@ -692,7 +696,9 @@ a.cats__item:hover{color:var(--orange)}
   .search-wrap{grid-column:1/-1;order:3}
   .account{gap:22px}
   .hero__grid{grid-template-columns:1fr}
-  .hero__main{min-height:340px}
+  /* Auf schmalen Viewports gibt der Text die Hoehe vor, nicht das Bild —
+     sonst wird die Textspalte vom overflow:hidden abgeschnitten. */
+  .hero__main{aspect-ratio:auto;min-height:440px}
   .hero__copy{max-width:none;padding:32px 24px}
   .hero__title{font-size:32px}
   .trust__grid{grid-template-columns:repeat(2,1fr)}

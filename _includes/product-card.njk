@@ -1,9 +1,6 @@
 {#- Volle Produktkarte. Erwartet: p = ein Produkt-Objekt aus collections.products -#}
-{%- set cardPos = (p.cardFocusX if p.cardFocusX is defined else 50) ~ '% ' ~ (p.cardFocusY if p.cardFocusY is defined else 50) ~ '%' %}
-{%- set cardZoom = p.cardZoom if p.cardZoom is defined else 150 %}
-{%- set cardFit = p.cardFit if p.cardFit is defined else 'cover' %}
-{%- set cardOffset = (100 - cardZoom) / 2 %}
-{%- set cardImgStyle = 'object-fit:' ~ cardFit ~ ';object-position:' ~ cardPos ~ (';width:' ~ cardZoom ~ '%;height:' ~ cardZoom ~ '%;left:' ~ cardOffset ~ '%;top:' ~ cardOffset ~ '%' if cardFit == 'cover' else ';width:100%;height:100%;left:0;top:0') %}
+{#- Derselbe Bildmittelpunkt wie im Hero — ein Foto hat einen Mittelpunkt. -#}
+{%- set cardImgStyle = 'object-position:' ~ (p.focusX if p.focusX is defined else 50) ~ '% ' ~ (p.focusY if p.focusY is defined else 50) ~ '%' %}
 <article class="product" data-id="{{ p.id }}" data-clicks="{{ p.baseClicks }}">
   <div class="product__media">
     {%- if p.badge %}<span class="tagbadge">{{ p.badge }}</span>{% endif %}

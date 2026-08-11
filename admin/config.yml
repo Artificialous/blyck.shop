@@ -42,35 +42,6 @@ collections:
         widget: "image"
         required: false
         hint: "Leer lassen = Hero zeigt automatisch dasselbe Hauptbild wie die Empfehlungen-Karte. Nur ausfüllen, wenn es abweichen soll."
-      - label: "Bildausschnitt im Hero-Bereich — horizontal (0 = ganz links, 50 = Mitte, 100 = ganz rechts, auch negative Werte/über 100 möglich)"
-        name: "heroFocusX"
-        widget: "number"
-        value_type: "int"
-        required: false
-        default: 50
-        hint: "Betrifft nur Karussell/Titelkachel, nicht die Empfehlungen-Karte. Frei verschiebbar statt nur 9 fester Punkte. Werte unter 0 oder über 100 schieben über den Bildrand hinaus — kann einen schmalen leeren Rand zeigen."
-      - label: "Bildausschnitt im Hero-Bereich — vertikal (0 = ganz oben, 50 = Mitte, 100 = ganz unten, auch negative Werte/über 100 möglich)"
-        name: "heroFocusY"
-        widget: "number"
-        value_type: "int"
-        required: false
-        default: 50
-      - label: "Zoom im Hero-Bereich in % (100 = Bild passt genau in den Rahmen, unter 100 = verkleinert mit sichtbarem Rand, über 100 = vergrößert/enger zugeschnitten)"
-        name: "heroZoom"
-        widget: "number"
-        value_type: "int"
-        required: false
-        default: 150
-        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran. Bei genau 100 bewirken die Verschieben-Felder oben nichts mehr, da dann kein Bildüberschuss mehr da ist. Nur bei 'Ausfüllen' unten wirksam."
-      - label: "Bildmodus im Hero-Bereich"
-        name: "heroFit"
-        widget: "select"
-        required: false
-        default: "cover"
-        options:
-          - { label: "Ausfüllen (füllt den Rahmen komplett, schneidet dafür Ränder ab)", value: "cover" }
-          - { label: "Ganzes Bild zeigen (kein Zuschnitt, kann Rand rechts/links oder oben/unten zeigen)", value: "contain" }
-        hint: "Bei 'Ganzes Bild zeigen' sind Verschieben/Zoom oben wirkungslos — das komplette Foto wird immer unverzerrt und unbeschnitten eingepasst."
 
       # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
       - label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)"
@@ -82,35 +53,26 @@ collections:
         media_library:
           config:
             multiple: true
-      - label: "Bildausschnitt auf der Empfehlungen-Karte — horizontal (0 = ganz links, 50 = Mitte, 100 = ganz rechts, auch negative Werte/über 100 möglich)"
-        name: "cardFocusX"
+      - label: "Bildmittelpunkt — horizontal (50 = Mitte, kleiner = weiter links, größer = weiter rechts)"
+        name: "focusX"
         widget: "number"
         value_type: "int"
         required: false
         default: 50
-        hint: "Betrifft nur die Karte im Grid, nicht den Hero-Bereich. Frei verschiebbar statt nur 9 fester Punkte. Werte unter 0 oder über 100 schieben über den Bildrand hinaus — kann einen schmalen leeren Rand zeigen."
-      - label: "Bildausschnitt auf der Empfehlungen-Karte — vertikal (0 = ganz oben, 50 = Mitte, 100 = ganz unten, auch negative Werte/über 100 möglich)"
-        name: "cardFocusY"
+        min: 0
+        max: 100
+        step: 5
+        hint: "Nur nötig, wenn das Produkt nicht in der Bildmitte sitzt. Gilt für Hero und Karte gemeinsam — ein Foto hat einen Mittelpunkt. Bei Bildern im Format 4:3 wirkt dieser Wert vor allem auf der quadratischen Karte."
+      - label: "Bildmittelpunkt — vertikal (50 = Mitte, kleiner = weiter oben, größer = weiter unten)"
+        name: "focusY"
         widget: "number"
         value_type: "int"
         required: false
         default: 50
-      - label: "Zoom auf der Empfehlungen-Karte in % (100 = Bild passt genau in den Rahmen, unter 100 = verkleinert mit sichtbarem Rand, über 100 = vergrößert/enger zugeschnitten)"
-        name: "cardZoom"
-        widget: "number"
-        value_type: "int"
-        required: false
-        default: 150
-        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran. Bei genau 100 bewirken die Verschieben-Felder oben nichts mehr, da dann kein Bildüberschuss mehr da ist. Nur bei 'Ausfüllen' unten wirksam."
-      - label: "Bildmodus auf der Empfehlungen-Karte"
-        name: "cardFit"
-        widget: "select"
-        required: false
-        default: "cover"
-        options:
-          - { label: "Ausfüllen (füllt den Rahmen komplett, schneidet dafür Ränder ab)", value: "cover" }
-          - { label: "Ganzes Bild zeigen (kein Zuschnitt, kann Rand rechts/links oder oben/unten zeigen)", value: "contain" }
-        hint: "Bei 'Ganzes Bild zeigen' sind Verschieben/Zoom oben wirkungslos — das komplette Foto wird immer unverzerrt und unbeschnitten eingepasst."
+        min: 0
+        max: 100
+        step: 5
+        hint: "Wirkt vor allem im Hero-Bereich, wo oben und unten etwas beschnitten wird."
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"
