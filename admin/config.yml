@@ -23,15 +23,20 @@ collections:
     identifier_field: title
     summary: "{{title}} — {{price}} € · Reihenfolge {{order}}"
     fields:
-      - label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)"
-        name: "images"
-        widget: "image"
-        multiple: true
+      # ---------- 1. HERO-BEREICH (nur bei den 4 im Hero eingebundenen Produkten sichtbar) ----------
+      - label: "Hero-Kicker (kurzes Wort/Label über dem Titel, z. B. 'Neu im Test' — nur sichtbar, wenn dieses Produkt im Hero-Karussell oder in der Promo-Kachel eingebunden ist)"
+        name: "heroEyebrow"
+        widget: "string"
         required: false
-        hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder unabhängig erzeugte KI-Bilder. Ziehen zum Umsortieren."
-        media_library:
-          config:
-            multiple: true
+      - label: "Hero-Titel (überschreibt im Hero-Bereich den normalen Produkttitel, z. B. 'Der Schreibtisch 2026' statt 'Monitorarm Gasfeder...')"
+        name: "heroTitle"
+        widget: "string"
+        required: false
+        hint: "Leer lassen = Hero zeigt den normalen Produkttitel."
+      - label: "Hero-Meta-Zeile (kurze Stichpunkte mit | getrennt, z. B. 'Ergonomisch | Leise | Langlebig')"
+        name: "heroMeta"
+        widget: "string"
+        required: false
       - label: "Eigenes Hero-Bild (optional — nur falls im Karussell/Titelkachel ein anderes Bild als auf der Empfehlungen-Karte erscheinen soll)"
         name: "heroImage"
         widget: "image"
@@ -52,19 +57,17 @@ collections:
           - { label: "Oben rechts", value: "right top" }
           - { label: "Unten links", value: "left bottom" }
           - { label: "Unten rechts", value: "right bottom" }
-      - label: "Hero-Kicker (kurzes Wort/Label über dem Titel, z. B. 'Neu im Test' — nur sichtbar, wenn dieses Produkt im Hero-Karussell oder in der Promo-Kachel eingebunden ist)"
-        name: "heroEyebrow"
-        widget: "string"
+
+      # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
+      - label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)"
+        name: "images"
+        widget: "image"
+        multiple: true
         required: false
-      - label: "Hero-Titel (überschreibt im Hero-Bereich den normalen Produkttitel, z. B. 'Der Schreibtisch 2026' statt 'Monitorarm Gasfeder...')"
-        name: "heroTitle"
-        widget: "string"
-        required: false
-        hint: "Leer lassen = Hero zeigt den normalen Produkttitel."
-      - label: "Hero-Meta-Zeile (kurze Stichpunkte mit | getrennt, z. B. 'Ergonomisch | Leise | Langlebig')"
-        name: "heroMeta"
-        widget: "string"
-        required: false
+        hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder unabhängig erzeugte KI-Bilder. Ziehen zum Umsortieren."
+        media_library:
+          config:
+            multiple: true
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"
@@ -84,13 +87,15 @@ collections:
           - { label: "Pflege", value: "pflege" }
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Kurzbeschreibung (Kartenansicht, 1 Satz)", name: "shortDesc", widget: "text", required: false }
-      - { label: "Ausführlicher Lead-Text (nur Detailseite)", name: "lead", widget: "text", required: false }
       - { label: "Klickzahl-Basiswert", name: "baseClicks", widget: "number", value_type: "int", default: 0 }
       - { label: "Preis (nur Zahl, z. B. 89,00)", name: "price", widget: "string" }
       - { label: "Alter Preis (optional, für durchgestrichenen Preis)", name: "oldPrice", widget: "string", required: false }
       - { label: "Preis-Stand (z. B. 06.08.2026)", name: "priceDate", widget: "string" }
       - { label: "Amazon-Affiliate-Link", name: "amazonLink", widget: "string", required: false, hint: "Leer lassen, bis der echte PartnerNet-Link da ist. Ohne Link zeigt der Button nur eine Hinweismeldung." }
+
+      # ---------- 3. DETAILSEITE (nur falls "Eigene Produktseite anlegen?" aktiv) ----------
       - { label: "Eigene Produktseite anlegen?", name: "hasDetailPage", widget: "boolean", default: false }
+      - { label: "Ausführlicher Lead-Text (nur Detailseite)", name: "lead", widget: "text", required: false }
       - { label: "Vorteile (nur bei eigener Produktseite)", name: "pros", widget: "list", required: false }
       - { label: "Nachteile (nur bei eigener Produktseite)", name: "cons", widget: "list", required: false }
       - label: "Verwandte Produkte (nur bei eigener Produktseite, sonst automatisch)"
@@ -102,6 +107,8 @@ collections:
         display_fields: ["title"]
         multiple: true
         required: false
+
+      # ---------- 4. VERWALTUNG / INTERN ----------
       - { label: "Sichtbar auf der Seite", name: "published", widget: "boolean", default: true }
       - { label: "Reihenfolge (kleiner = weiter vorne)", name: "order", widget: "number", value_type: "int", default: 99 }
       - { label: "Produkt-ID (intern, nie aendern)", name: "id", widget: "string", pattern: ["^p[0-9]+$", "Format: p gefolgt von einer Zahl, z. B. p7"] }
