@@ -1,6 +1,7 @@
 ---
 images:
   - assets/uploads/baratza-sette-270-kaffeemühle.png
+heroFocus: center center
 icon: p-grind
 badge: ""
 categoryKey: kaffee
