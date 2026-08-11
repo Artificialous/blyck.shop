@@ -211,9 +211,9 @@ del{color:var(--tag);font-weight:400;margin-right:6px}
 .hero__price span{font-size:14px;font-weight:400;color:rgba(255,255,255,.8);margin-right:8px}
 .hero__copy .btn{margin-top:26px}
 
-.hero__slide{opacity:0;pointer-events:none;transition:opacity .5s ease}
-.hero__slide.is-active{position:relative;z-index:1;opacity:1;pointer-events:auto}
-.hero__slide:not(.is-active){position:absolute;inset:0}
+.hero__slides{display:grid}
+.hero__slide{grid-area:1/1;opacity:0;pointer-events:none;transition:opacity .5s ease}
+.hero__slide.is-active{z-index:1;opacity:1;pointer-events:auto}
 
 .hero__dots{display:flex;gap:8px;margin-top:26px;position:relative;z-index:2}
 .hero__dots button{

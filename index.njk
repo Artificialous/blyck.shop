@@ -30,26 +30,28 @@ permalinkPath: ""
       </div>
       <div class="hero__scrim"></div>
       <div class="hero__copy">
-        <div class="hero__slide is-active" data-slide="0">
-          <p class="hero__eyebrow">Neu im Test</p>
-          <h1 class="hero__title">Der Schreibtisch 2026</h1>
-          <p class="hero__meta">Ergonomisch &nbsp;|&nbsp; Leise &nbsp;|&nbsp; Langlebig</p>
-          <p class="hero__price"><span>Ab</span> {{ heroP1.price }} €</p>
-          <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
-        </div>
-        <div class="hero__slide" data-slide="1">
-          <p class="hero__eyebrow">Bestseller</p>
-          <p class="hero__title">Espresso ohne Kompromiss</p>
-          <p class="hero__meta">Makro &amp; Mikro &nbsp;|&nbsp; Präzise &nbsp;|&nbsp; Kegelmahlwerk</p>
-          <p class="hero__price"><span>Ab</span> {{ heroP3.price }} €</p>
-          <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
-        </div>
-        <div class="hero__slide" data-slide="2">
-          <p class="hero__eyebrow">Meistgeklickt</p>
-          <p class="hero__title">Ruhiger sitzen, länger bleiben</p>
-          <p class="hero__meta">Lordosenstütze &nbsp;|&nbsp; Atmungsaktiv &nbsp;|&nbsp; 5 Jahre Garantie</p>
-          <p class="hero__price"><span>Ab</span> {{ heroP6.price }} €</p>
-          <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
+        <div class="hero__slides">
+          <div class="hero__slide is-active" data-slide="0">
+            <p class="hero__eyebrow">Neu im Test</p>
+            <h1 class="hero__title">Der Schreibtisch 2026</h1>
+            <p class="hero__meta">Ergonomisch &nbsp;|&nbsp; Leise &nbsp;|&nbsp; Langlebig</p>
+            <p class="hero__price"><span>Ab</span> {{ heroP1.price }} €</p>
+            <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
+          </div>
+          <div class="hero__slide" data-slide="1">
+            <p class="hero__eyebrow">Bestseller</p>
+            <p class="hero__title">Espresso ohne Kompromiss</p>
+            <p class="hero__meta">Makro &amp; Mikro &nbsp;|&nbsp; Präzise &nbsp;|&nbsp; Kegelmahlwerk</p>
+            <p class="hero__price"><span>Ab</span> {{ heroP3.price }} €</p>
+            <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
+          </div>
+          <div class="hero__slide" data-slide="2">
+            <p class="hero__eyebrow">Meistgeklickt</p>
+            <p class="hero__title">Ruhiger sitzen, länger bleiben</p>
+            <p class="hero__meta">Lordosenstütze &nbsp;|&nbsp; Atmungsaktiv &nbsp;|&nbsp; 5 Jahre Garantie</p>
+            <p class="hero__price"><span>Ab</span> {{ heroP6.price }} €</p>
+            <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
+          </div>
         </div>
         <div class="hero__dots" role="tablist" aria-label="Hero-Slides">
           <button type="button" class="is-on" data-dot="0" role="tab" aria-selected="true" aria-label="Slide 1 anzeigen"></button>
