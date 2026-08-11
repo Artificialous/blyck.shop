@@ -48,7 +48,7 @@ collections:
         value_type: "int"
         required: false
         default: 50
-        min: -50
+        min: -100
         max: 150
         hint: "Betrifft nur Karussell/Titelkachel, nicht die Empfehlungen-Karte. Frei verschiebbar statt nur 9 fester Punkte. Werte unter 0 oder über 100 schieben über den Bildrand hinaus — kann einen schmalen leeren Rand zeigen."
       - label: "Bildausschnitt im Hero-Bereich — vertikal (0 = ganz oben, 50 = Mitte, 100 = ganz unten, auch negative Werte/über 100 möglich)"
@@ -57,7 +57,7 @@ collections:
         value_type: "int"
         required: false
         default: 50
-        min: -50
+        min: -100
         max: 150
 
       # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
@@ -76,7 +76,7 @@ collections:
         value_type: "int"
         required: false
         default: 50
-        min: -50
+        min: -100
         max: 150
         hint: "Betrifft nur die Karte im Grid, nicht den Hero-Bereich. Frei verschiebbar statt nur 9 fester Punkte. Werte unter 0 oder über 100 schieben über den Bildrand hinaus — kann einen schmalen leeren Rand zeigen."
       - label: "Bildausschnitt auf der Empfehlungen-Karte — vertikal (0 = ganz oben, 50 = Mitte, 100 = ganz unten, auch negative Werte/über 100 möglich)"
@@ -85,7 +85,7 @@ collections:
         value_type: "int"
         required: false
         default: 50
-        min: -50
+        min: -100
         max: 150
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
