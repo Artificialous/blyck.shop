@@ -5,7 +5,7 @@ heroMeta: Bis 9 kg | Zwei Gelenke | VESA 75/100
 heroImage: assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
 heroFocusX: 50
 heroFocusY: 50
-heroZoom: 150
+heroZoom: 50
 heroFit: contain
 images:
   - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
