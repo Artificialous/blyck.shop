@@ -55,6 +55,13 @@ collections:
         value_type: "int"
         required: false
         default: 50
+      - label: "Zoom im Hero-Bereich in % (100 = Bild passt genau in den Rahmen, unter 100 = verkleinert mit sichtbarem Rand, über 100 = vergrößert/enger zugeschnitten)"
+        name: "heroZoom"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 150
+        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran."
 
       # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
       - label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)"
@@ -79,6 +86,13 @@ collections:
         value_type: "int"
         required: false
         default: 50
+      - label: "Zoom auf der Empfehlungen-Karte in % (100 = Bild passt genau in den Rahmen, unter 100 = verkleinert mit sichtbarem Rand, über 100 = vergrößert/enger zugeschnitten)"
+        name: "cardZoom"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 150
+        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran."
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"
