@@ -5,6 +5,9 @@ id: p2
 slug: schreibtischlampe-cri95
 title: "Schreibtischlampe dimmbar, CRI 95, warmweiß"
 categoryKey: licht
+heroEyebrow: Redaktions-Tipp
+heroTitle: Licht am Arbeitsplatz
+heroMeta: Warmweiß | Dimmbar | CRI 95
 icon: p-lamp
 shortDesc: "Blendfrei bei acht Stunden Bildschirmarbeit. Farbwiedergabe hoch genug für Layoutkontrolle."
 lead: "Blendfrei bei acht Stunden Bildschirmarbeit. Farbwiedergabe hoch genug für Layoutkontrolle."

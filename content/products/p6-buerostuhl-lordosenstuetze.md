@@ -5,6 +5,9 @@ id: p6
 slug: buerostuhl-lordosenstuetze
 title: "Bürostuhl mit Lordosenstütze"
 categoryKey: arbeitsplatz
+heroEyebrow: Meistgeklickt
+heroTitle: Ruhiger sitzen, länger bleiben
+heroMeta: Lordosenstütze | Atmungsaktiv | 5 Jahre Garantie
 icon: p-chair
 shortDesc: "Stützt im unteren Rücken, ohne im Nacken zu drücken. Nach acht Stunden Sitzen der spürbare Unterschied."
 lead: "Stützt im unteren Rücken, ohne im Nacken zu drücken. Nach acht Stunden Sitzen der spürbare Unterschied."

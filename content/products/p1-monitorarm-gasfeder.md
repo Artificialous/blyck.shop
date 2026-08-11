@@ -4,6 +4,9 @@ images:
   - assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
 heroImage: assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
 heroFocus: center center
+heroEyebrow: Neu im Test
+heroTitle: Der Schreibtisch 2026
+heroMeta: Ergonomisch | Leise | Langlebig
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz

@@ -32,23 +32,23 @@ permalinkPath: ""
       <div class="hero__copy">
         <div class="hero__slides">
           <div class="hero__slide is-active" data-slide="0">
-            <p class="hero__eyebrow">Neu im Test</p>
-            <h1 class="hero__title">Der Schreibtisch 2026</h1>
-            <p class="hero__meta">Ergonomisch &nbsp;|&nbsp; Leise &nbsp;|&nbsp; Langlebig</p>
+            <p class="hero__eyebrow">{{ heroP1.heroEyebrow }}</p>
+            <h1 class="hero__title">{{ heroP1.heroTitle or heroP1.title }}</h1>
+            <p class="hero__meta">{{ heroP1.heroMeta }}</p>
             <p class="hero__price"><span>Ab</span> {{ heroP1.price }} €</p>
             <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
           </div>
           <div class="hero__slide" data-slide="1">
-            <p class="hero__eyebrow">Bestseller</p>
-            <p class="hero__title">Espresso ohne Kompromiss</p>
-            <p class="hero__meta">Makro &amp; Mikro &nbsp;|&nbsp; Präzise &nbsp;|&nbsp; Kegelmahlwerk</p>
+            <p class="hero__eyebrow">{{ heroP3.heroEyebrow }}</p>
+            <p class="hero__title">{{ heroP3.heroTitle or heroP3.title }}</p>
+            <p class="hero__meta">{{ heroP3.heroMeta }}</p>
             <p class="hero__price"><span>Ab</span> {{ heroP3.price }} €</p>
             <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
           </div>
           <div class="hero__slide" data-slide="2">
-            <p class="hero__eyebrow">Meistgeklickt</p>
-            <p class="hero__title">Ruhiger sitzen, länger bleiben</p>
-            <p class="hero__meta">Lordosenstütze &nbsp;|&nbsp; Atmungsaktiv &nbsp;|&nbsp; 5 Jahre Garantie</p>
+            <p class="hero__eyebrow">{{ heroP6.heroEyebrow }}</p>
+            <p class="hero__title">{{ heroP6.heroTitle or heroP6.title }}</p>
+            <p class="hero__meta">{{ heroP6.heroMeta }}</p>
             <p class="hero__price"><span>Ab</span> {{ heroP6.price }} €</p>
             <a class="btn btn--primary" href="#empfehlungen">Empfehlungen ansehen</a>
           </div>
@@ -67,9 +67,9 @@ permalinkPath: ""
       </div>
       {%- if heroImg2 %}<div class="hero__promo-scrim"></div>{% endif %}
       <div class="hero__promo-copy">
-        <p class="hero__eyebrow hero__eyebrow--dark">Redaktions-Tipp</p>
-        <h2 class="hero__promo-title">Licht am Arbeitsplatz</h2>
-        <p class="hero__meta hero__meta--dark">Warmweiß &nbsp;|&nbsp; Dimmbar &nbsp;|&nbsp; CRI 95</p>
+        <p class="hero__eyebrow hero__eyebrow--dark">{{ heroP2.heroEyebrow }}</p>
+        <h2 class="hero__promo-title">{{ heroP2.heroTitle or heroP2.title }}</h2>
+        <p class="hero__meta hero__meta--dark">{{ heroP2.heroMeta }}</p>
       </div>
     </aside>
   </div>

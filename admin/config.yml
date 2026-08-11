@@ -52,6 +52,19 @@ collections:
           - { label: "Oben rechts", value: "right top" }
           - { label: "Unten links", value: "left bottom" }
           - { label: "Unten rechts", value: "right bottom" }
+      - label: "Hero-Kicker (kurzes Wort/Label über dem Titel, z. B. 'Neu im Test' — nur sichtbar, wenn dieses Produkt im Hero-Karussell oder in der Promo-Kachel eingebunden ist)"
+        name: "heroEyebrow"
+        widget: "string"
+        required: false
+      - label: "Hero-Titel (überschreibt im Hero-Bereich den normalen Produkttitel, z. B. 'Der Schreibtisch 2026' statt 'Monitorarm Gasfeder...')"
+        name: "heroTitle"
+        widget: "string"
+        required: false
+        hint: "Leer lassen = Hero zeigt den normalen Produkttitel."
+      - label: "Hero-Meta-Zeile (kurze Stichpunkte mit | getrennt, z. B. 'Ergonomisch | Leise | Langlebig')"
+        name: "heroMeta"
+        widget: "string"
+        required: false
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"
