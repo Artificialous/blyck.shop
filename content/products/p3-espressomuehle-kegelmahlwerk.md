@@ -1,28 +1,28 @@
 ---
-images:
-  - assets/uploads/baratza-sette-270-kaffeemühle.png
-heroFocus: center center
 heroEyebrow: Bestseller
 heroTitle: Espresso ohne Kompromiss
 heroMeta: Makro & Mikro | Präzise | Kegelmahlwerk
+heroFocus: right top
+images:
+  - assets/uploads/baratza-sette-270-kaffeemühle.png
 icon: p-grind
 badge: ""
 categoryKey: kaffee
 title: Espressomühle Kegelmahlwerk, Makro- und Mikroeinstellung
 shortDesc: 30 Makrostufen plus ein stufenloser Mikro-Einstellring — grobe
   Umstellung und Feinjustierung in einem Gerät.
-lead: "Bei den meisten Mühlen ist der Mahlgrad entweder grob gerastert oder
-  komplett stufenlos — hier gibt es beides zugleich: 30 Makrostufen für den
-  Sprung zwischen Zubereitungsarten, dazu ein stufenloser Mikro-Einstellring für
-  die Feinabstimmung innerhalb einer Stufe. Zusammen mit der zeitgesteuerten
-  Dosierung bedeutet das reproduzierbare Ergebnisse, nicht nur beim ersten
-  Versuch."
 baseClicks: 0
 price: 349,95
 oldPrice: ""
 priceDate: 10.08.2026
 amazonLink: https://www.amazon.de/dp/B0CTTTF9ZV?tag=blyck21-21&linkCode=ll2&linkId=999d4a58c88ea3d96c966f7c91de6bee&ref_=as_li_ss_tl
 hasDetailPage: true
+lead: "Bei den meisten Mühlen ist der Mahlgrad entweder grob gerastert oder
+  komplett stufenlos — hier gibt es beides zugleich: 30 Makrostufen für den
+  Sprung zwischen Zubereitungsarten, dazu ein stufenloser Mikro-Einstellring für
+  die Feinabstimmung innerhalb einer Stufe. Zusammen mit der zeitgesteuerten
+  Dosierung bedeutet das reproduzierbare Ergebnisse, nicht nur beim ersten
+  Versuch."
 pros:
   - 40-mm-Kegelmahlwerk aus Stahl, speziell für Espresso ausgelegt
   - Zeitgesteuerte Dosierung liefert wiederholbare Ergebnisse statt Schätzen
