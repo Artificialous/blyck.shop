@@ -5,8 +5,8 @@ images:
 heroImage: assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
 heroFocus: center center
 heroEyebrow: Neu im Test
-heroTitle: Der Schreibtisch 2026
-heroMeta: Ergonomisch | Leise | Langlebig
+heroTitle: Monitorarm, der die Position hält
+heroMeta: Bis 9 kg | Zwei Gelenke | VESA 75/100
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz
