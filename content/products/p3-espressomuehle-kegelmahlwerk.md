@@ -2,7 +2,8 @@
 heroEyebrow: Bestseller
 heroTitle: Espresso ohne Kompromiss
 heroMeta: Makro & Mikro | Präzise | Kegelmahlwerk
-heroFocus: center bottom
+heroFocusX: 50
+heroFocusY: 100
 images:
   - assets/uploads/baratza-sette-270-kaffeemühle.png
 icon: p-grind

@@ -50,6 +50,8 @@ var ProductPreview = createClass({
     var e = this.props.entry.get("data").toObject();
     var firstImage = e.images && e.images.length ? e.images[0] : null;
     var imageUrl = firstImage ? this.props.getAsset(firstImage).toString() : null;
+    var cardFocusX = e.cardFocusX !== undefined ? e.cardFocusX : 50;
+    var cardFocusY = e.cardFocusY !== undefined ? e.cardFocusY : 50;
 
     return h(
       "div",
@@ -63,7 +65,7 @@ var ProductPreview = createClass({
           { className: "product__media" },
           e.badge ? h("span", { className: "tagbadge" }, e.badge) : null,
           imageUrl
-            ? h("img", { src: imageUrl, alt: e.title || "" })
+            ? h("img", { src: imageUrl, alt: e.title || "", style: { objectPosition: cardFocusX + "% " + cardFocusY + "%" } })
             : h(
                 "svg",
                 { className: "ph" },

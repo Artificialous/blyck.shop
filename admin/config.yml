@@ -42,21 +42,23 @@ collections:
         widget: "image"
         required: false
         hint: "Leer lassen = Hero zeigt automatisch dasselbe Hauptbild wie die Empfehlungen-Karte. Nur ausfüllen, wenn es abweichen soll."
-      - label: "Bildausschnitt im Hero-Bereich (betrifft nur Karussell/Titelkachel, nicht die Empfehlungen-Karten)"
-        name: "heroFocus"
-        widget: "select"
+      - label: "Bildausschnitt im Hero-Bereich — horizontal (0 = ganz links, 50 = Mitte, 100 = ganz rechts)"
+        name: "heroFocusX"
+        widget: "number"
+        value_type: "int"
         required: false
-        default: "center center"
-        options:
-          - { label: "Mitte (Standard)", value: "center center" }
-          - { label: "Oben", value: "center top" }
-          - { label: "Unten", value: "center bottom" }
-          - { label: "Links", value: "left center" }
-          - { label: "Rechts", value: "right center" }
-          - { label: "Oben links", value: "left top" }
-          - { label: "Oben rechts", value: "right top" }
-          - { label: "Unten links", value: "left bottom" }
-          - { label: "Unten rechts", value: "right bottom" }
+        default: 50
+        min: 0
+        max: 100
+        hint: "Betrifft nur Karussell/Titelkachel, nicht die Empfehlungen-Karte. Frei verschiebbar statt nur 9 fester Punkte."
+      - label: "Bildausschnitt im Hero-Bereich — vertikal (0 = ganz oben, 50 = Mitte, 100 = ganz unten)"
+        name: "heroFocusY"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 50
+        min: 0
+        max: 100
 
       # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
       - label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)"
@@ -68,21 +70,23 @@ collections:
         media_library:
           config:
             multiple: true
-      - label: "Bildausschnitt auf der Empfehlungen-Karte (betrifft nur die Karte im Grid, nicht den Hero-Bereich)"
-        name: "cardFocus"
-        widget: "select"
+      - label: "Bildausschnitt auf der Empfehlungen-Karte — horizontal (0 = ganz links, 50 = Mitte, 100 = ganz rechts)"
+        name: "cardFocusX"
+        widget: "number"
+        value_type: "int"
         required: false
-        default: "center center"
-        options:
-          - { label: "Mitte (Standard)", value: "center center" }
-          - { label: "Oben", value: "center top" }
-          - { label: "Unten", value: "center bottom" }
-          - { label: "Links", value: "left center" }
-          - { label: "Rechts", value: "right center" }
-          - { label: "Oben links", value: "left top" }
-          - { label: "Oben rechts", value: "right top" }
-          - { label: "Unten links", value: "left bottom" }
-          - { label: "Unten rechts", value: "right bottom" }
+        default: 50
+        min: 0
+        max: 100
+        hint: "Betrifft nur die Karte im Grid, nicht den Hero-Bereich. Frei verschiebbar statt nur 9 fester Punkte."
+      - label: "Bildausschnitt auf der Empfehlungen-Karte — vertikal (0 = ganz oben, 50 = Mitte, 100 = ganz unten)"
+        name: "cardFocusY"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 50
+        min: 0
+        max: 100
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"
