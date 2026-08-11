@@ -4,7 +4,7 @@ heroTitle: Monitorarm, der die Position hält
 heroMeta: Bis 9 kg | Zwei Gelenke | VESA 75/100
 heroImage: assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
 heroFocusX: 50
-heroFocusY: 0
+heroFocusY: -97
 heroZoom: 0
 heroFit: contain
 images:
