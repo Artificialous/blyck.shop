@@ -68,6 +68,21 @@ collections:
         media_library:
           config:
             multiple: true
+      - label: "Bildausschnitt auf der Empfehlungen-Karte (betrifft nur die Karte im Grid, nicht den Hero-Bereich)"
+        name: "cardFocus"
+        widget: "select"
+        required: false
+        default: "center center"
+        options:
+          - { label: "Mitte (Standard)", value: "center center" }
+          - { label: "Oben", value: "center top" }
+          - { label: "Unten", value: "center bottom" }
+          - { label: "Links", value: "left center" }
+          - { label: "Rechts", value: "right center" }
+          - { label: "Oben links", value: "left top" }
+          - { label: "Oben rechts", value: "right top" }
+          - { label: "Unten links", value: "left bottom" }
+          - { label: "Unten rechts", value: "right bottom" }
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"
