@@ -3,7 +3,7 @@ heroEyebrow: Neu im Test
 heroTitle: Monitorarm, der die Position hält
 heroMeta: Bis 9 kg | Zwei Gelenke | VESA 75/100
 heroImage: assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
-heroFocusX: 100
+heroFocusX: 30
 heroFocusY: 73
 images:
   - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
