@@ -61,7 +61,7 @@ collections:
         value_type: "int"
         required: false
         default: 150
-        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran."
+        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran. Bei genau 100 bewirken die Verschieben-Felder oben nichts mehr, da dann kein Bildüberschuss mehr da ist."
 
       # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
       - label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)"
@@ -92,7 +92,7 @@ collections:
         value_type: "int"
         required: false
         default: 150
-        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran."
+        hint: "Standard 150. Kleinere Werte zeigen mehr vom Bild (ggf. mit Rand), größere Werte zoomen näher ran. Bei genau 100 bewirken die Verschieben-Felder oben nichts mehr, da dann kein Bildüberschuss mehr da ist."
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"
