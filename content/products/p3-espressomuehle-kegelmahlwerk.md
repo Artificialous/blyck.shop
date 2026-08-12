@@ -8,8 +8,9 @@ heroMoveX: 0
 heroMoveY: 4
 heroAiBadge: true
 images:
-  - src: assets/uploads/baratza-sette-270-kaffeemühle.png
+  - src: assets/uploads/esspressomuehle_kegelmahlwerk_img1.jpg
     aiBadge: true
+    zoom: 0
 cardMoveX: 5
 cardMoveY: -5
 cardAiBadge: true
