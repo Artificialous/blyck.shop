@@ -13,6 +13,7 @@ images:
     zoom: 0
     moveX: -10
     moveY: 5
+cardZoom: 95
 cardMoveX: 0
 cardMoveY: 0
 cardAiBadge: true
@@ -43,13 +44,13 @@ pros:
 cons:
   - 5 kg Eigengewicht, braucht einen festen Platz auf der Arbeitsfläche
   - 349,95 € liegt deutlich über dem Einstiegssegment
-published: true
+order: 3
 slug: espressomuehle-kegelmahlwerk
 permalink: false
 relatedIds:
   - p5
   - p9
-order: 3
+published: true
 tags: products
 id: p3
 ---
