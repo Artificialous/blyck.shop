@@ -610,8 +610,10 @@ a.cats__item:hover{color:var(--orange)}
   display:grid;grid-template-columns:1fr 1fr;gap:48px;
   padding-block:28px 8px;
 }
+/* 4:3 statt quadratisch: die Produktfotos liegen im Format 4:3, im
+   quadratischen Rahmen wurde ein Viertel der Breite abgeschnitten. */
 .pd__media{
-  position:relative;aspect-ratio:1/1;background:var(--band);
+  position:relative;aspect-ratio:4/3;background:var(--band);
   border-radius:var(--radius);overflow:hidden;display:grid;place-items:center;padding:36px;
 }
 .pd__media .ph{max-width:80%;max-height:80%;stroke:#C9C9C9}
