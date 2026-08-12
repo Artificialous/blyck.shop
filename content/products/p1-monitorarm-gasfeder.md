@@ -10,7 +10,7 @@ images:
   - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
   - assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
 cardZoom: 120
-cardMoveX: 10
+cardMoveX: 0
 cardMoveY: 10
 icon: p-arm
 badge: ""
