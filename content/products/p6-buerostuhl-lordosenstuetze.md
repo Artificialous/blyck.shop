@@ -10,11 +10,11 @@ images:
   - zoom: 100
     moveX: 0
     moveY: 0
-    src: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img1.jpg
+    src: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img4.jpg
   - zoom: 100
     moveX: 0
     moveY: 0
-    src: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img4.jpg
+    src: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img1.jpg
 icon: p-chair
 badge: ""
 categoryKey: arbeitsplatz
