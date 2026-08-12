@@ -3,6 +3,14 @@ heroEyebrow: Meistgeklickt
 heroTitle: Ruhiger sitzen, länger bleiben
 heroMeta: Selbstanpassende Lordosenstütze | 3D-Armlehnen | Bis 150 kg
 heroImage: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img1.jpg
+heroZoom: 105
+heroMoveX: 0
+heroMoveY: -5
+images:
+  - zoom: 100
+    moveX: 0
+    moveY: 0
+    src: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img1.jpg
 icon: p-chair
 badge: ""
 categoryKey: arbeitsplatz
@@ -40,10 +48,10 @@ cons:
 relatedIds:
   - p1
   - p4
-published: true
+order: 6
 slug: buerostuhl-lordosenstuetze
 permalink: false
-order: 6
+published: true
 tags: products
 id: p6
 ---
