@@ -4,15 +4,15 @@ heroTitle: Espresso ohne Kompromiss
 heroMeta: Makro & Mikro | Präzise | Kegelmahlwerk
 heroImage: assets/uploads/esspressomuehle_kegelmahlwerk_img1.jpg
 heroZoom: 110
-heroMoveX: 0
+heroMoveX: 5
 heroMoveY: 3
 heroAiBadge: true
 images:
   - src: assets/uploads/esspressomuehle_kegelmahlwerk_img1.jpg
     aiBadge: true
     zoom: 100
-    moveX: 100
-    moveY: 0
+    moveX: 15
+    moveY: 5
 cardZoom: 100
 cardMoveX: 0
 cardMoveY: 0
