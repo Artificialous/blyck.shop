@@ -5,16 +5,16 @@ heroMeta: Makro & Mikro | Präzise | Kegelmahlwerk
 heroImage: assets/uploads/esspressomuehle_kegelmahlwerk_img1.jpg
 heroZoom: 110
 heroMoveX: 0
-heroMoveY: 4
+heroMoveY: 3
 heroAiBadge: true
 images:
   - src: assets/uploads/esspressomuehle_kegelmahlwerk_img1.jpg
     aiBadge: true
     zoom: 0
     moveX: -10
-    moveY: 10
-cardMoveX: 5
-cardMoveY: -5
+    moveY: 5
+cardMoveX: 0
+cardMoveY: 0
 cardAiBadge: true
 icon: p-grind
 badge: ""
