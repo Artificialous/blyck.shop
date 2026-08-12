@@ -3,15 +3,15 @@ heroEyebrow: Neu im Test
 heroTitle: Monitorarm, der die Position hält
 heroMeta: Bis 9 kg | Zwei Gelenke | VESA 75/100
 heroImage: assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
+heroZoom: 120
+heroMoveX: -5
+heroMoveY: -5
 images:
   - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
   - assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
-heroZoom: 120
 cardZoom: 120
-heroMoveX: -5
-cardMoveX: -5
-heroMoveY: -5
-cardMoveY: -5
+cardMoveX: 0
+cardMoveY: 10
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz
@@ -35,14 +35,14 @@ pros:
 cons:
   - Montage an der Tischkante braucht etwas Kraft beim ersten Aufbau
   - Kabelführung ist funktional, aber nicht besonders elegant gelöst
-published: true
-order: 1
-slug: monitorarm-gasfeder
-permalink: false
 relatedIds:
   - p4
   - p6
   - p2
+slug: monitorarm-gasfeder
+permalink: false
+published: true
+order: 1
 tags: products
 id: p1
 ---
