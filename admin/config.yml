@@ -53,26 +53,30 @@ collections:
         media_library:
           config:
             multiple: true
-      - label: "Bildmittelpunkt — horizontal (50 = Mitte, kleiner = weiter links, größer = weiter rechts)"
-        name: "focusX"
+      - label: "Bildgröße in % (100 = füllt den Rahmen genau — so wie es jetzt aussieht)"
+        name: "zoom"
         widget: "number"
         value_type: "int"
         required: false
-        default: 50
-        min: 0
-        max: 100
+        default: 100
         step: 5
-        hint: "Nur nötig, wenn das Produkt nicht in der Bildmitte sitzt. Gilt für Hero und Karte gemeinsam — ein Foto hat einen Mittelpunkt. Bei Bildern im Format 4:3 wirkt dieser Wert vor allem auf der quadratischen Karte."
-      - label: "Bildmittelpunkt — vertikal (50 = Mitte, kleiner = weiter oben, größer = weiter unten)"
-        name: "focusY"
+        hint: "Über 100 = größer und näher dran. Unter 100 = kleiner, dann wird der Rahmenhintergrund am Rand sichtbar. Wirkt immer, unabhängig von den beiden Verschieben-Feldern."
+      - label: "Verschieben horizontal in % (0 = mittig, negativ = nach links, positiv = nach rechts)"
+        name: "moveX"
         widget: "number"
         value_type: "int"
         required: false
-        default: 50
-        min: 0
-        max: 100
+        default: 0
         step: 5
-        hint: "Wirkt vor allem im Hero-Bereich, wo oben und unten etwas beschnitten wird."
+        hint: "10 verschiebt um ein Zehntel der Rahmenbreite. Wirkt immer — auch bei Bildgröße 100. Weit verschieben kann am gegenüberliegenden Rand den Hintergrund sichtbar machen; dann Bildgröße erhöhen."
+      - label: "Verschieben vertikal in % (0 = mittig, negativ = nach oben, positiv = nach unten)"
+        name: "moveY"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 0
+        step: 5
+        hint: "Gilt für Hero-Bereich und Empfehlungen-Karte gemeinsam. Sag Bescheid, falls du beide getrennt steuern willst."
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"

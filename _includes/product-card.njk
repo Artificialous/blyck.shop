@@ -1,6 +1,7 @@
 {#- Volle Produktkarte. Erwartet: p = ein Produkt-Objekt aus collections.products -#}
-{#- Derselbe Bildmittelpunkt wie im Hero — ein Foto hat einen Mittelpunkt. -#}
-{%- set cardImgStyle = 'object-position:' ~ (p.focusX if p.focusX is defined else 50) ~ '% ' ~ (p.focusY if p.focusY is defined else 50) ~ '%' %}
+{#- Gleiche Bildlage wie im Hero, per transform — wirkt immer, auch wenn das
+    Bild kaum ueber den Rahmen hinausragt. -#}
+{%- set cardImgStyle = 'transform:translate(' ~ (p.moveX if p.moveX is defined else 0) ~ '%, ' ~ (p.moveY if p.moveY is defined else 0) ~ '%) scale(' ~ ((p.zoom if p.zoom is defined else 100) / 100) ~ ')' %}
 <article class="product" data-id="{{ p.id }}" data-clicks="{{ p.baseClicks }}">
   <div class="product__media">
     {%- if p.badge %}<span class="tagbadge">{{ p.badge }}</span>{% endif %}

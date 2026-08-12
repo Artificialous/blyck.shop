@@ -67,10 +67,11 @@ var ProductPreview = createClass({
     var e = this.props.entry.get("data").toObject();
     var firstImage = e.images && e.images.length ? e.images[0] : null;
     var imageUrl = firstImage ? this.props.getAsset(firstImage).toString() : null;
-    var focusX = e.focusX !== undefined ? e.focusX : 50;
-    var focusY = e.focusY !== undefined ? e.focusY : 50;
-    var focusPos = focusX + "% " + focusY + "%";
-    var cardImgStyle = { objectPosition: focusPos };
+    var moveX = e.moveX !== undefined ? e.moveX : 0;
+    var moveY = e.moveY !== undefined ? e.moveY : 0;
+    var zoom = e.zoom !== undefined ? e.zoom : 100;
+    var imgTransform = "translate(" + moveX + "%, " + moveY + "%) scale(" + zoom / 100 + ")";
+    var cardImgStyle = { transform: imgTransform };
     var heroTitle = e.heroTitle || e.title || "(kein Titel)";
     var heroImageRaw = e.heroImage || (e.images && e.images.length ? e.images[0] : null);
     var heroImageUrl = heroImageRaw ? this.props.getAsset(heroImageRaw).toString() : null;
@@ -104,7 +105,7 @@ var ProductPreview = createClass({
               "div",
               { className: "hero__art-slide is-active" },
               heroImageUrl
-                ? h("img", { src: heroImageUrl, alt: heroTitle, style: { objectPosition: focusPos } })
+                ? h("img", { src: heroImageUrl, alt: heroTitle, style: { transform: imgTransform } })
                 : h("svg", { className: "ph ph--hero" }, h("use", { href: "#" + (e.icon || "p-photo") }))
             )
           ),

@@ -13,26 +13,26 @@ permalinkPath: ""
 {%- set heroImg3 = heroP3.heroImage or (heroP3.images and heroP3.images[0]) %}
 {%- set heroImg6 = heroP6.heroImage or (heroP6.images and heroP6.images[0]) %}
 {%- set heroImg2 = heroP2.heroImage or (heroP2.images and heroP2.images[0]) %}
-{#- Ein Bildmittelpunkt pro Produkt, von Hero und Karte gemeinsam genutzt.
-    Der Rahmen hat ein festes Seitenverhaeltnis (CSS), deshalb ist der
-    Zuschnitt berechenbar und ein einzelnes Wertepaar genuegt. -#}
-{%- set heroPos1 = (heroP1.focusX if heroP1.focusX is defined else 50) ~ '% ' ~ (heroP1.focusY if heroP1.focusY is defined else 50) ~ '%' %}
-{%- set heroPos3 = (heroP3.focusX if heroP3.focusX is defined else 50) ~ '% ' ~ (heroP3.focusY if heroP3.focusY is defined else 50) ~ '%' %}
-{%- set heroPos6 = (heroP6.focusX if heroP6.focusX is defined else 50) ~ '% ' ~ (heroP6.focusY if heroP6.focusY is defined else 50) ~ '%' %}
-{%- set heroPos2 = (heroP2.focusX if heroP2.focusX is defined else 50) ~ '% ' ~ (heroP2.focusY if heroP2.focusY is defined else 50) ~ '%' %}
+{#- Bildlage per CSS-transform statt object-position: transform wirkt immer,
+    unabhaengig davon wieviel Bild ueber den Rahmen hinausragt. Bei
+    object-position konnte man nur innerhalb des Ueberschusses schieben —
+    bei fast gleichem Seitenverhaeltnis also praktisch gar nicht. -#}
+{%- macro imgTransform(p) -%}
+transform:translate({{ p.moveX if p.moveX is defined else 0 }}%, {{ p.moveY if p.moveY is defined else 0 }}%) scale({{ (p.zoom if p.zoom is defined else 100) / 100 }})
+{%- endmacro %}
 <!-- ==================== HERO ==================== -->
 <section class="hero">
   <div class="container hero__grid">
     <article class="hero__main">
       <div class="hero__art">
         <div class="hero__art-slide is-active" data-slide="0">
-          {%- if heroImg1 %}<img src="{{ heroImg1 }}" alt="{{ heroP1.title }}" style="object-position:{{ heroPos1 }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
+          {%- if heroImg1 %}<img src="{{ heroImg1 }}" alt="{{ heroP1.title }}" style="{{ imgTransform(heroP1) }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
         </div>
         <div class="hero__art-slide" data-slide="1">
-          {%- if heroImg3 %}<img src="{{ heroImg3 }}" alt="{{ heroP3.title }}" style="object-position:{{ heroPos3 }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
+          {%- if heroImg3 %}<img src="{{ heroImg3 }}" alt="{{ heroP3.title }}" style="{{ imgTransform(heroP3) }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
         </div>
         <div class="hero__art-slide" data-slide="2">
-          {%- if heroImg6 %}<img src="{{ heroImg6 }}" alt="{{ heroP6.title }}" style="object-position:{{ heroPos6 }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
+          {%- if heroImg6 %}<img src="{{ heroImg6 }}" alt="{{ heroP6.title }}" style="{{ imgTransform(heroP6) }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
         </div>
       </div>
       <div class="hero__scrim"></div>
@@ -70,7 +70,7 @@ permalinkPath: ""
 
     <aside class="hero__promo{% if heroImg2 %} has-photo{% endif %}">
       <div class="hero__promo-art">
-        {%- if heroImg2 %}<img src="{{ heroImg2 }}" alt="{{ heroP2.title }}" style="object-position:{{ heroPos2 }}">{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
+        {%- if heroImg2 %}<img src="{{ heroImg2 }}" alt="{{ heroP2.title }}" style="{{ imgTransform(heroP2) }}">{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
       </div>
       {%- if heroImg2 %}<div class="hero__promo-scrim"></div>{% endif %}
       <div class="hero__promo-copy">
