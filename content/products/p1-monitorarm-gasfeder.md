@@ -6,6 +6,9 @@ heroImage: assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
 images:
   - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
   - assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
+zoom: 120
+moveX: -5
+moveY: -5
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz
@@ -29,14 +32,14 @@ pros:
 cons:
   - Montage an der Tischkante braucht etwas Kraft beim ersten Aufbau
   - Kabelführung ist funktional, aber nicht besonders elegant gelöst
+published: true
+order: 1
+slug: monitorarm-gasfeder
+permalink: false
 relatedIds:
   - p4
   - p6
   - p2
-order: 1
-slug: monitorarm-gasfeder
-permalink: false
-published: true
 tags: products
 id: p1
 ---
