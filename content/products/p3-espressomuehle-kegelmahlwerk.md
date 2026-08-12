@@ -10,7 +10,7 @@ heroAiBadge: true
 images:
   - src: assets/uploads/esspressomuehle_kegelmahlwerk_img1.jpg
     aiBadge: true
-    zoom: 0
+    zoom: 100
     moveX: -10
     moveY: 5
 cardZoom: 100
