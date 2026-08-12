@@ -4,7 +4,7 @@ heroTitle: Espresso ohne Kompromiss
 heroMeta: Makro & Mikro | Präzise | Kegelmahlwerk
 images:
   - assets/uploads/baratza-sette-270-kaffeemühle.png
-focusX: 50
+focusX: 10
 focusY: 0
 icon: p-grind
 badge: ""
