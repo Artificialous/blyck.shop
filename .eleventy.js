@@ -4,9 +4,12 @@ module.exports = function (eleventyConfig) {
   // Statische Assets 1:1 mit ausliefern
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("admin");
-  eleventyConfig.addPassthroughCopy("blyck-vorschau.html");
 
   // Interne Planungsdokumente NICHT mit ausliefern
+  // blyck-vorschau.html ist ein statisches Design-Mockup mit veralteten
+  // Produktangaben. Bleibt als Referenz im Repo, darf aber nicht publiziert
+  // werden — sonst stehen falsche Specs oeffentlich neben den echten Seiten.
+  eleventyConfig.ignores.add("blyck-vorschau.html");
   eleventyConfig.ignores.add("BLYCK_Design_System.md");
   eleventyConfig.ignores.add("BLYCK_Startseite_Desktop.png");
   eleventyConfig.ignores.add("README.md");
