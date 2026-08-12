@@ -12,10 +12,12 @@ images:
     moveX: 0
     moveY: 0
     src: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img1.jpg
+    aiBadge: false
   - zoom: 100
     moveX: 0
     moveY: 0
     src: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img4.jpg
+    aiBadge: true
 cardAiBadge: true
 icon: p-chair
 badge: ""
