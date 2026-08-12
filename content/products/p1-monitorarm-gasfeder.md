@@ -8,7 +8,7 @@ heroMoveX: -5
 heroMoveY: -5
 images:
   - assets/uploads/monitorarm_productimg_1.png
-  - assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
+  - assets/uploads/monitorarm_productimg_2.png
 cardZoom: 120
 cardMoveX: 0
 cardMoveY: 10
