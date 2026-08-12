@@ -13,7 +13,7 @@ images:
     zoom: 0
     moveX: -10
     moveY: 5
-cardZoom: 95
+cardZoom: 100
 cardMoveX: 0
 cardMoveY: 0
 cardAiBadge: true
