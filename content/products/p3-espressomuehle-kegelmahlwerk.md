@@ -5,7 +5,7 @@ heroMeta: Makro & Mikro | Präzise | Kegelmahlwerk
 images:
   - assets/uploads/baratza-sette-270-kaffeemühle.png
 moveX: 0
-moveY: 225
+moveY: 25
 icon: p-grind
 badge: ""
 categoryKey: kaffee
