@@ -6,9 +6,12 @@ heroImage: assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
 images:
   - assets/uploads/magnific_a-black-monitor-arm-with-_lj7tlttgv9.png
   - assets/uploads/monitorarm-gasfeder-zwei-gelenke_inuse.png
-zoom: 120
-moveX: -5
-moveY: -5
+heroZoom: 120
+cardZoom: 120
+heroMoveX: -5
+cardMoveX: -5
+heroMoveY: -5
+cardMoveY: -5
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz

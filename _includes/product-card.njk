@@ -1,7 +1,8 @@
 {#- Volle Produktkarte. Erwartet: p = ein Produkt-Objekt aus collections.products -#}
-{#- Gleiche Bildlage wie im Hero, per transform — wirkt immer, auch wenn das
-    Bild kaum ueber den Rahmen hinausragt. -#}
-{%- set cardImgStyle = 'transform:translate(' ~ (p.moveX if p.moveX is defined else 0) ~ '%, ' ~ (p.moveY if p.moveY is defined else 0) ~ '%) scale(' ~ ((p.zoom if p.zoom is defined else 100) / 100) ~ ')' %}
+{#- Eigene Bildlage fuer die Karte, unabhaengig vom Hero: der Rahmen ist hier
+    quadratisch statt breit, dieselben Werte wirken also anders. transform
+    statt object-position, damit jeder Wert immer wirkt. -#}
+{%- set cardImgStyle = 'transform:translate(' ~ (p.cardMoveX if p.cardMoveX is defined else 0) ~ '%, ' ~ (p.cardMoveY if p.cardMoveY is defined else 0) ~ '%) scale(' ~ ((p.cardZoom if p.cardZoom is defined else 100) / 100) ~ ')' %}
 <article class="product" data-id="{{ p.id }}" data-clicks="{{ p.baseClicks }}">
   <div class="product__media">
     {%- if p.badge %}<span class="tagbadge">{{ p.badge }}</span>{% endif %}

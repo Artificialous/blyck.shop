@@ -18,7 +18,7 @@ permalinkPath: ""
     object-position konnte man nur innerhalb des Ueberschusses schieben —
     bei fast gleichem Seitenverhaeltnis also praktisch gar nicht. -#}
 {%- macro imgTransform(p) -%}
-transform:translate({{ p.moveX if p.moveX is defined else 0 }}%, {{ p.moveY if p.moveY is defined else 0 }}%) scale({{ (p.zoom if p.zoom is defined else 100) / 100 }})
+transform:translate({{ p.heroMoveX if p.heroMoveX is defined else 0 }}%, {{ p.heroMoveY if p.heroMoveY is defined else 0 }}%) scale({{ (p.heroZoom if p.heroZoom is defined else 100) / 100 }})
 {%- endmacro %}
 <!-- ==================== HERO ==================== -->
 <section class="hero">

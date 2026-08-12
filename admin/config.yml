@@ -42,6 +42,30 @@ collections:
         widget: "image"
         required: false
         hint: "Leer lassen = Hero zeigt automatisch dasselbe Hauptbild wie die Empfehlungen-Karte. Nur ausfüllen, wenn es abweichen soll."
+      - label: "Bildgröße im Hero in % (100 = füllt den Rahmen genau)"
+        name: "heroZoom"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 100
+        step: 5
+        hint: "Über 100 = größer und näher dran. Unter 100 = kleiner, dann wird der dunkle Rahmenhintergrund am Rand sichtbar. Wirkt immer, unabhängig von den beiden Verschieben-Feldern."
+      - label: "Hero — verschieben horizontal in % (0 = mittig, negativ = nach links, positiv = nach rechts)"
+        name: "heroMoveX"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 0
+        step: 5
+        hint: "10 verschiebt um ein Zehntel der Rahmenbreite. Wirkt immer — auch bei Bildgröße 100."
+      - label: "Hero — verschieben vertikal in % (0 = mittig, negativ = nach oben, positiv = nach unten)"
+        name: "heroMoveY"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 0
+        step: 5
+        hint: "Betrifft nur Karussell und Titelkachel. Die Empfehlungen-Karte hat ihre eigenen drei Felder weiter unten."
 
       # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
       - label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)"
@@ -53,30 +77,30 @@ collections:
         media_library:
           config:
             multiple: true
-      - label: "Bildgröße in % (100 = füllt den Rahmen genau — so wie es jetzt aussieht)"
-        name: "zoom"
+      - label: "Bildgröße auf der Karte in % (100 = füllt den quadratischen Rahmen genau)"
+        name: "cardZoom"
         widget: "number"
         value_type: "int"
         required: false
         default: 100
         step: 5
-        hint: "Über 100 = größer und näher dran. Unter 100 = kleiner, dann wird der Rahmenhintergrund am Rand sichtbar. Wirkt immer, unabhängig von den beiden Verschieben-Feldern."
-      - label: "Verschieben horizontal in % (0 = mittig, negativ = nach links, positiv = nach rechts)"
-        name: "moveX"
+        hint: "Über 100 = größer und näher dran. Unter 100 = kleiner, dann wird der helle Kartenhintergrund am Rand sichtbar. Wirkt immer, unabhängig von den beiden Verschieben-Feldern."
+      - label: "Karte — verschieben horizontal in % (0 = mittig, negativ = nach links, positiv = nach rechts)"
+        name: "cardMoveX"
         widget: "number"
         value_type: "int"
         required: false
         default: 0
         step: 5
-        hint: "10 verschiebt um ein Zehntel der Rahmenbreite. Wirkt immer — auch bei Bildgröße 100. Weit verschieben kann am gegenüberliegenden Rand den Hintergrund sichtbar machen; dann Bildgröße erhöhen."
-      - label: "Verschieben vertikal in % (0 = mittig, negativ = nach oben, positiv = nach unten)"
-        name: "moveY"
+        hint: "10 verschiebt um ein Zehntel der Kartenbreite. Wirkt immer — auch bei Bildgröße 100."
+      - label: "Karte — verschieben vertikal in % (0 = mittig, negativ = nach oben, positiv = nach unten)"
+        name: "cardMoveY"
         widget: "number"
         value_type: "int"
         required: false
         default: 0
         step: 5
-        hint: "Gilt für Hero-Bereich und Empfehlungen-Karte gemeinsam. Sag Bescheid, falls du beide getrennt steuern willst."
+        hint: "Betrifft nur die Karte im Empfehlungen-Grid, unabhängig von den Hero-Feldern oben. Die Karte ist quadratisch, der Hero breit — dieselben Werte wirken dort also unterschiedlich."
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"

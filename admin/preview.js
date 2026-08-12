@@ -67,11 +67,16 @@ var ProductPreview = createClass({
     var e = this.props.entry.get("data").toObject();
     var firstImage = e.images && e.images.length ? e.images[0] : null;
     var imageUrl = firstImage ? this.props.getAsset(firstImage).toString() : null;
-    var moveX = e.moveX !== undefined ? e.moveX : 0;
-    var moveY = e.moveY !== undefined ? e.moveY : 0;
-    var zoom = e.zoom !== undefined ? e.zoom : 100;
-    var imgTransform = "translate(" + moveX + "%, " + moveY + "%) scale(" + zoom / 100 + ")";
-    var cardImgStyle = { transform: imgTransform };
+    /* Hero und Karte haben getrennte Werte — der Rahmen ist hier breit,
+       dort quadratisch, dieselben Zahlen wirken also unterschiedlich. */
+    function transformOf(zoomKey, moveXKey, moveYKey) {
+      var z = e[zoomKey] !== undefined ? e[zoomKey] : 100;
+      var x = e[moveXKey] !== undefined ? e[moveXKey] : 0;
+      var y = e[moveYKey] !== undefined ? e[moveYKey] : 0;
+      return "translate(" + x + "%, " + y + "%) scale(" + z / 100 + ")";
+    }
+    var heroTransform = transformOf("heroZoom", "heroMoveX", "heroMoveY");
+    var cardImgStyle = { transform: transformOf("cardZoom", "cardMoveX", "cardMoveY") };
     var heroTitle = e.heroTitle || e.title || "(kein Titel)";
     var heroImageRaw = e.heroImage || (e.images && e.images.length ? e.images[0] : null);
     var heroImageUrl = heroImageRaw ? this.props.getAsset(heroImageRaw).toString() : null;
@@ -105,7 +110,7 @@ var ProductPreview = createClass({
               "div",
               { className: "hero__art-slide is-active" },
               heroImageUrl
-                ? h("img", { src: heroImageUrl, alt: heroTitle, style: { transform: imgTransform } })
+                ? h("img", { src: heroImageUrl, alt: heroTitle, style: { transform: heroTransform } })
                 : h("svg", { className: "ph ph--hero" }, h("use", { href: "#" + (e.icon || "p-photo") }))
             )
           ),
