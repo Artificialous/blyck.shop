@@ -2,12 +2,15 @@
 heroEyebrow: Bestseller
 heroTitle: Espresso ohne Kompromiss
 heroMeta: Makro & Mikro | Präzise | Kegelmahlwerk
+heroImage: assets/uploads/baratza-sette-270-kaffeemühle.png
+heroMoveX: 5
+heroMoveY: -5
+heroAiBadge: true
 images:
   - src: assets/uploads/baratza-sette-270-kaffeemühle.png
-heroMoveX: 5
 cardMoveX: 5
-heroMoveY: -5
 cardMoveY: -5
+cardAiBadge: true
 icon: p-grind
 badge: ""
 categoryKey: kaffee
@@ -35,13 +38,13 @@ pros:
 cons:
   - 5 kg Eigengewicht, braucht einen festen Platz auf der Arbeitsfläche
   - 349,95 € liegt deutlich über dem Einstiegssegment
+published: true
+slug: espressomuehle-kegelmahlwerk
+permalink: false
 relatedIds:
   - p5
   - p9
 order: 3
-slug: espressomuehle-kegelmahlwerk
-permalink: false
-published: true
 tags: products
 id: p3
 ---
