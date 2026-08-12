@@ -65,7 +65,10 @@ var NOTE_STYLE = {
 var ProductPreview = createClass({
   render: function () {
     var e = this.props.entry.get("data").toObject();
-    var firstImage = e.images && e.images.length ? e.images[0] : null;
+    /* images ist jetzt eine Liste von {src, zoom, moveX, moveY} statt reiner
+       Pfade, wegen der Detailseiten-Regler pro Bild — deshalb .src. */
+    var imageList = (e.images || []).filter(function (img) { return img && img.src; });
+    var firstImage = imageList.length ? imageList[0].src : null;
     var imageUrl = firstImage ? this.props.getAsset(firstImage).toString() : null;
     /* Hero und Karte haben getrennte Werte — der Rahmen ist hier breit,
        dort quadratisch, dieselben Zahlen wirken also unterschiedlich. */
@@ -78,7 +81,7 @@ var ProductPreview = createClass({
     var heroTransform = transformOf("heroZoom", "heroMoveX", "heroMoveY");
     var cardImgStyle = { transform: transformOf("cardZoom", "cardMoveX", "cardMoveY") };
     var heroTitle = e.heroTitle || e.title || "(kein Titel)";
-    var heroImageRaw = e.heroImage || (e.images && e.images.length ? e.images[0] : null);
+    var heroImageRaw = e.heroImage || firstImage;
     var heroImageUrl = heroImageRaw ? this.props.getAsset(heroImageRaw).toString() : null;
 
     return h(
@@ -177,7 +180,53 @@ var ProductPreview = createClass({
           { className: "btn btn--primary btn--block", href: "#" },
           "Zum Angebot"
         )
-      )
+      ),
+
+      /* ---- Detailseiten-Galerie-Vorschau ----
+         Jedes Bild hat eigene Zoom/Verschieben-Werte fuer die Detailseite.
+         Ohne diese Vorschau waeren genau diese Regler wieder blind, wie
+         der Hero es vorher war — deshalb jedes Bild als eigene kleine
+         .pd__media-Box mit seinem echten Zuschnitt, nicht nur das erste. */
+      imageList.length
+        ? h(
+            "div",
+            { style: { marginTop: "28px" } },
+            h("p", { style: LABEL_STYLE }, "Produktfotos (Detailseite)"),
+            h(
+              "div",
+              { style: { display: "flex", gap: "10px", flexWrap: "wrap" } },
+              imageList.map(function (img, i) {
+                var url = this.props.getAsset(img.src).toString();
+                var z = img.zoom !== undefined ? img.zoom : 100;
+                var x = img.moveX !== undefined ? img.moveX : 0;
+                var y = img.moveY !== undefined ? img.moveY : 0;
+                return h(
+                  "div",
+                  { key: i, style: { width: "110px" } },
+                  h(
+                    "div",
+                    { className: "pd__media", style: { width: "110px" } },
+                    h("img", {
+                      src: url,
+                      alt: "",
+                      style: { transform: "translate(" + x + "%, " + y + "%) scale(" + z / 100 + ")" }
+                    })
+                  ),
+                  h(
+                    "p",
+                    { style: { margin: "4px 0 0", fontSize: "10px", color: "#a4a9b0", textAlign: "center" } },
+                    "Bild " + (i + 1) + (i === 0 ? " (Haupt)" : "")
+                  )
+                );
+              }, this)
+            ),
+            h(
+              "p",
+              { style: NOTE_STYLE },
+              "Nur sichtbar, wenn „Eigene Produktseite anlegen?“ weiter unten aktiv ist. Bild 1 ist zugleich das Hauptbild auf Karte und Hero-Fallback."
+            )
+          )
+        : null
     );
   }
 });

@@ -9,10 +9,12 @@ permalinkPath: ""
 {%- set heroP3 = "p3" | findProduct(collections.productsData) %}
 {%- set heroP6 = "p6" | findProduct(collections.productsData) %}
 {%- set heroP2 = "p2" | findProduct(collections.productsData) %}
-{%- set heroImg1 = heroP1.heroImage or (heroP1.images and heroP1.images[0]) %}
-{%- set heroImg3 = heroP3.heroImage or (heroP3.images and heroP3.images[0]) %}
-{%- set heroImg6 = heroP6.heroImage or (heroP6.images and heroP6.images[0]) %}
-{%- set heroImg2 = heroP2.heroImage or (heroP2.images and heroP2.images[0]) %}
+{#- images ist jetzt eine Liste von Objekten ({src, zoom, moveX, moveY}) statt
+    reiner Pfade, wegen der Detailseiten-Regler pro Bild — deshalb .src. -#}
+{%- set heroImg1 = heroP1.heroImage or (heroP1.images and heroP1.images[0].src) %}
+{%- set heroImg3 = heroP3.heroImage or (heroP3.images and heroP3.images[0].src) %}
+{%- set heroImg6 = heroP6.heroImage or (heroP6.images and heroP6.images[0].src) %}
+{%- set heroImg2 = heroP2.heroImage or (heroP2.images and heroP2.images[0].src) %}
 {#- Bildlage per CSS-transform statt object-position: transform wirkt immer,
     unabhaengig davon wieviel Bild ueber den Rahmen hinausragt. Bei
     object-position konnte man nur innerhalb des Ueberschusses schieben —

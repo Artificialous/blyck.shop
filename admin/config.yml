@@ -68,15 +68,39 @@ collections:
         hint: "Betrifft nur Karussell und Titelkachel. Die Empfehlungen-Karte hat ihre eigenen drei Felder weiter unten."
 
       # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
-      - label: "Produktfotos (erstes Bild = Hauptbild auf Karte und Detailseite, weitere nur auf der Detailseite als Galerie)"
+      - label: "Produktfotos (erstes Bild = Hauptbild auf Karte, Hero-Fallback und Detailseite; weitere nur auf der Detailseite als Galerie)"
         name: "images"
-        widget: "image"
-        multiple: true
+        widget: "list"
         required: false
-        hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder unabhängig erzeugte KI-Bilder. Ziehen zum Umsortieren."
-        media_library:
-          config:
-            multiple: true
+        summary: "{{fields.src}}"
+        hint: "Ziehen zum Umsortieren, „+“ für ein weiteres Bild. Jedes Bild hat unten eigene Regler für die Detailseite."
+        fields:
+          - label: "Bild"
+            name: "src"
+            widget: "image"
+            hint: "Kein Amazon-Bild hochladen — nur eigene Fotos oder unabhängig erzeugte KI-Bilder."
+          - label: "Bildgröße auf der Detailseite in % (100 = füllt den Rahmen genau)"
+            name: "zoom"
+            widget: "number"
+            value_type: "int"
+            required: false
+            default: 100
+            step: 5
+            hint: "Gilt nur für dieses Bild auf der Detailseite (großes Bild + eigene Miniatur) — unabhängig von den Hero- und Karten-Feldern oben, die haben eigene Werte."
+          - label: "Verschieben horizontal in % (0 = mittig)"
+            name: "moveX"
+            widget: "number"
+            value_type: "int"
+            required: false
+            default: 0
+            step: 5
+          - label: "Verschieben vertikal in % (0 = mittig)"
+            name: "moveY"
+            widget: "number"
+            value_type: "int"
+            required: false
+            default: 0
+            step: 5
       - label: "Bildgröße auf der Karte in % (100 = füllt den quadratischen Rahmen genau)"
         name: "cardZoom"
         widget: "number"

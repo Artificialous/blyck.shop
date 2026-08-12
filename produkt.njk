@@ -27,15 +27,25 @@ eleventyComputed:
 <section class="section" id="{{ product.id }}" data-id="{{ product.id }}" data-clicks="{{ product.baseClicks }}">
   <div class="container pd__grid">
 
+    {#- Jedes Bild bringt seine eigene Groesse/Position fuer die Detailseite
+        mit (Feld "images" ist eine Liste von {src, zoom, moveX, moveY}).
+        Beim Klick auf eine Miniatur uebernimmt das JS deren data-Attribute
+        auf das Hauptbild, damit der Zuschnitt mitwechselt statt haengen
+        zu bleiben. -#}
+    {%- set mainImg = product.images[0] %}
+    {%- set mainImgStyle = 'transform:translate(' ~ (mainImg.moveX if mainImg.moveX is defined else 0) ~ '%, ' ~ (mainImg.moveY if mainImg.moveY is defined else 0) ~ '%) scale(' ~ ((mainImg.zoom if mainImg.zoom is defined else 100) / 100) ~ ')' %}
     <div class="pd__gallery">
       <div class="pd__media">
-        {%- if product.images and product.images.length %}<img id="pdMainImage" src="{{ product.images[0] }}" alt="{{ product.title }}" loading="lazy">{% else %}<svg class="ph"><use href="#{{ product.icon }}"/></svg>{% endif %}
+        {%- if product.images and product.images.length %}<img id="pdMainImage" src="{{ mainImg.src }}" alt="{{ product.title }}" loading="lazy" style="{{ mainImgStyle }}">{% else %}<svg class="ph"><use href="#{{ product.icon }}"/></svg>{% endif %}
       </div>
       {%- if product.images and product.images.length > 1 %}
       <div class="pd__thumbs" role="tablist" aria-label="Weitere Produktfotos">
         {%- for img in product.images %}
-        <button type="button" class="pd__thumb{% if loop.first %} is-active{% endif %}" data-full="{{ img }}" aria-label="Bild {{ loop.index }} anzeigen">
-          <img src="{{ img }}" alt="" loading="lazy">
+        {%- set imgZoom = img.zoom if img.zoom is defined else 100 %}
+        {%- set imgMoveX = img.moveX if img.moveX is defined else 0 %}
+        {%- set imgMoveY = img.moveY if img.moveY is defined else 0 %}
+        <button type="button" class="pd__thumb{% if loop.first %} is-active{% endif %}" data-full="{{ img.src }}" data-zoom="{{ imgZoom }}" data-move-x="{{ imgMoveX }}" data-move-y="{{ imgMoveY }}" aria-label="Bild {{ loop.index }} anzeigen">
+          <img src="{{ img.src }}" alt="" loading="lazy" style="transform:translate({{ imgMoveX }}%, {{ imgMoveY }}%) scale({{ imgZoom / 100 }})">
         </button>
         {%- endfor %}
       </div>

@@ -337,8 +337,11 @@
 
   /* ============================================================
      PRODUKT-GALERIE (Detailseite)
-     Klick auf eine Miniatur tauscht nur das src des Hauptbilds,
-     keine Navigation, kein Reload.
+     Klick auf eine Miniatur tauscht src UND Zuschnitt des Hauptbilds —
+     jedes Bild hat im CMS eigene Werte fuer Groesse/Position, die als
+     data-Attribute an der Miniatur haengen. Ohne den Transform-Wechsel
+     wuerde der Zuschnitt des ersten Bilds an jedem folgenden Bild
+     haengen bleiben.
      ============================================================ */
   function initProductGallery() {
     var main = document.getElementById('pdMainImage');
@@ -347,6 +350,9 @@
     thumbs.forEach(function (thumb) {
       thumb.addEventListener('click', function () {
         main.src = thumb.dataset.full;
+        main.style.transform =
+          'translate(' + thumb.dataset.moveX + '%, ' + thumb.dataset.moveY + '%) ' +
+          'scale(' + (thumb.dataset.zoom / 100) + ')';
         thumbs.forEach(function (t) { t.classList.remove('is-active'); });
         thumb.classList.add('is-active');
       });
