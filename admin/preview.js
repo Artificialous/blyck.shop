@@ -33,6 +33,7 @@ var ICON_SPRITE =
   '<symbol id="p-chair" viewBox="0 0 120 120"><path d="M36 20h48v34H36z"/><path d="M32 54h56M44 54v34M76 54v34M44 74h32"/></symbol>' +
   '<symbol id="p-photo" viewBox="0 0 120 120"><rect x="18" y="26" width="84" height="62" rx="3"/><circle cx="42" cy="48" r="8"/><path d="M18 78l24-22 20 18 14-12 26 22"/></symbol>' +
   '<symbol id="i-click" viewBox="0 0 24 24"><path d="M9 4.5v9.8l2.6-2.3 2.1 4.6 2.3-1-2.1-4.6h3.4z"/><path d="M4.5 9h-2M6.2 5.2L4.8 3.8M9 2.5v-2"/></symbol>' +
+  '<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5l-7.3-7A4.6 4.6 0 1112 6.6a4.6 4.6 0 117.3 6.9z"/></symbol>' +
   "</svg>";
 
 function catLabel(key) {
@@ -42,6 +43,23 @@ function catLabel(key) {
 function deNumber(n) {
   if (n === undefined || n === null || n === "") return "0";
   return Number(n).toLocaleString("de-DE");
+}
+
+/* getAsset() kann werfen oder eine kaputte URL liefern, wenn ein Bild im
+   Feld noch referenziert ist, die Datei im Media-Library aber gerade
+   geloescht/ersetzt wurde — genau der Moment zwischen Loeschen und
+   erneutem Hochladen, der bei den Produktfotos hier schon mehrfach
+   vorkam. Ohne dieses Abfangen reisst das die komplette Vorschau ab,
+   nicht nur das eine Bild. */
+function resolveAsset(getAsset, path) {
+  if (!path) return null;
+  try {
+    var asset = getAsset(path);
+    var url = asset && asset.toString();
+    return url || null;
+  } catch (err) {
+    return null;
+  }
 }
 
 /* Kleine Zwischenueberschriften, damit im Vorschau-Panel klar ist, welcher
@@ -69,7 +87,7 @@ var ProductPreview = createClass({
        Pfade, wegen der Detailseiten-Regler pro Bild — deshalb .src. */
     var imageList = (e.images || []).filter(function (img) { return img && img.src; });
     var firstImage = imageList.length ? imageList[0].src : null;
-    var imageUrl = firstImage ? this.props.getAsset(firstImage).toString() : null;
+    var imageUrl = resolveAsset(this.props.getAsset, firstImage);
     /* Hero und Karte haben getrennte Werte — der Rahmen ist hier breit,
        dort quadratisch, dieselben Zahlen wirken also unterschiedlich. */
     function transformOf(zoomKey, moveXKey, moveYKey) {
@@ -78,11 +96,19 @@ var ProductPreview = createClass({
       var y = e[moveYKey] !== undefined ? e[moveYKey] : 0;
       return "translate(" + x + "%, " + y + "%) scale(" + z / 100 + ")";
     }
+    /* Gleiche Rechnung wie transformOf, aber pro Bildobjekt aus der Liste
+       (eigene zoom/moveX/moveY je Foto) statt aus den Top-Level-Feldern. */
+    function imgTransformStyle(img) {
+      var z = img.zoom !== undefined ? img.zoom : 100;
+      var x = img.moveX !== undefined ? img.moveX : 0;
+      var y = img.moveY !== undefined ? img.moveY : 0;
+      return { transform: "translate(" + x + "%, " + y + "%) scale(" + z / 100 + ")" };
+    }
     var heroTransform = transformOf("heroZoom", "heroMoveX", "heroMoveY");
     var cardImgStyle = { transform: transformOf("cardZoom", "cardMoveX", "cardMoveY") };
     var heroTitle = e.heroTitle || e.title || "(kein Titel)";
     var heroImageRaw = e.heroImage || firstImage;
-    var heroImageUrl = heroImageRaw ? this.props.getAsset(heroImageRaw).toString() : null;
+    var heroImageUrl = resolveAsset(this.props.getAsset, heroImageRaw);
 
     return h(
       "div",
@@ -202,7 +228,7 @@ var ProductPreview = createClass({
               "div",
               { style: { display: "flex", gap: "10px", flexWrap: "wrap" } },
               imageList.map(function (img, i) {
-                var url = this.props.getAsset(img.src).toString();
+                var url = resolveAsset(this.props.getAsset, img.src);
                 var z = img.zoom !== undefined ? img.zoom : 100;
                 var x = img.moveX !== undefined ? img.moveX : 0;
                 var y = img.moveY !== undefined ? img.moveY : 0;
@@ -212,12 +238,14 @@ var ProductPreview = createClass({
                   h(
                     "div",
                     { className: "pd__media", style: { width: "110px" } },
-                    h("img", {
-                      src: url,
-                      alt: "",
-                      style: { transform: "translate(" + x + "%, " + y + "%) scale(" + z / 100 + ")" }
-                    }),
-                    img.aiBadge
+                    url
+                      ? h("img", {
+                          src: url,
+                          alt: "",
+                          style: { transform: "translate(" + x + "%, " + y + "%) scale(" + z / 100 + ")" }
+                        })
+                      : h("svg", { className: "ph" }, h("use", { href: "#" + (e.icon || "p-photo") })),
+                    url && img.aiBadge
                       ? h("img", { className: "ai-badge", src: "/assets/icons/ai-badge.svg", alt: "KI-bearbeitetes Bild" })
                       : null
                   ),
@@ -235,6 +263,87 @@ var ProductPreview = createClass({
               "Nur sichtbar, wenn „Eigene Produktseite anlegen?“ weiter unten aktiv ist. Bild 1 ist zugleich das Hauptbild auf Karte und Hero-Fallback."
             )
           )
+        : null,
+
+      /* ---- Detailseiten-Vorschau (vollstaendiger Kopfbereich) ----
+         Zeigt pd__grid so, wie er auf produkt.njk tatsaechlich steht:
+         grosses Hauptbild + Miniaturen links, Titel/Lead/Preis/CTA
+         rechts. Vorteile/Nachteile und "Das koennte dir auch gefallen"
+         bleiben aussen vor — das sind eigene Sektionen, keine "Vorschau
+         auf ein Bild", und wuerden das Panel nur unnoetig verlaengern. */
+      e.hasDetailPage
+        ? h(
+            "div",
+            { style: { marginTop: "28px" } },
+            h("p", { style: LABEL_STYLE }, "Detailseite"),
+            h(
+              "div",
+              { className: "pd__grid" },
+              h(
+                "div",
+                { className: "pd__gallery" },
+                h(
+                  "div",
+                  { className: "pd__media" },
+                  imageUrl
+                    ? h("img", { src: imageUrl, alt: e.title || "", style: imgTransformStyle(imageList[0]) })
+                    : h("svg", { className: "ph" }, h("use", { href: "#" + (e.icon || "p-photo") })),
+                  imageUrl && imageList.length && imageList[0].aiBadge
+                    ? h("img", { className: "ai-badge", src: "/assets/icons/ai-badge.svg", alt: "KI-bearbeitetes Bild" })
+                    : null
+                ),
+                imageList.length > 1
+                  ? h(
+                      "div",
+                      { className: "pd__thumbs" },
+                      imageList.map(function (img, i) {
+                        var turl = resolveAsset(this.props.getAsset, img.src);
+                        return h(
+                          "button",
+                          { key: i, type: "button", className: "pd__thumb" + (i === 0 ? " is-active" : "") },
+                          turl ? h("img", { src: turl, alt: "", style: imgTransformStyle(img) }) : null
+                        );
+                      }, this)
+                    )
+                  : null
+              ),
+              h(
+                "div",
+                { className: "pd__info" },
+                h("p", { className: "pd__cat" }, catLabel(e.categoryKey)),
+                h("h1", { className: "pd__title" }, e.title || "(kein Titel)"),
+                e.lead ? h("p", { className: "pd__lead" }, e.lead) : null,
+                h(
+                  "p",
+                  { className: "pd__pop pop" },
+                  h("svg", { className: "ic ic--14" }, h("use", { href: "#i-click" })),
+                  " " + deNumber(e.baseClicks) + " Klicks diesen Monat"
+                ),
+                h(
+                  "p",
+                  { className: "pd__price" },
+                  e.oldPrice ? h("del", {}, "€ " + e.oldPrice) : null,
+                  " € " + (e.price || "0,00")
+                ),
+                h("p", { className: "pd__price-note" }, "Preis kann abweichen · Stand " + (e.priceDate || "—")),
+                h(
+                  "div",
+                  { className: "pd__actions" },
+                  h("a", { className: "btn btn--primary", href: "#" }, "Zum Angebot bei Amazon"),
+                  h(
+                    "button",
+                    { className: "wish pd__wish", type: "button" },
+                    h("svg", { className: "ic ic--18" }, h("use", { href: "#i-heart" }))
+                  )
+                )
+              )
+            ),
+            h(
+              "p",
+              { style: NOTE_STYLE },
+              "Nur sichtbar, wenn „Eigene Produktseite anlegen?“ weiter unten aktiv ist. Vorteile/Nachteile und „Das könnte dir auch gefallen“ erscheinen nur auf der echten Seite, nicht hier."
+            )
+          )
         : null
     );
   }
@@ -244,7 +353,7 @@ var ProductPreview = createClass({
 var ArticlePreview = createClass({
   render: function () {
     var e = this.props.entry.get("data").toObject();
-    var coverUrl = e.coverImage ? this.props.getAsset(e.coverImage).toString() : null;
+    var coverUrl = resolveAsset(this.props.getAsset, e.coverImage);
     var sections = e.sections || [];
 
     return h(
