@@ -11,6 +11,8 @@ images:
   - src: assets/uploads/esspressomuehle_kegelmahlwerk_img1.jpg
     aiBadge: true
     zoom: 0
+    moveX: -10
+    moveY: 10
 cardMoveX: 5
 cardMoveY: -5
 cardAiBadge: true
