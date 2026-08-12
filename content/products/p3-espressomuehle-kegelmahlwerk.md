@@ -8,6 +8,7 @@ heroMoveY: -5
 heroAiBadge: true
 images:
   - src: assets/uploads/baratza-sette-270-kaffeemühle.png
+    aiBadge: true
 cardMoveX: 5
 cardMoveY: -5
 cardAiBadge: true
