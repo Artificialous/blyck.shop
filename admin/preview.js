@@ -114,7 +114,10 @@ var ProductPreview = createClass({
               { className: "hero__art-slide is-active" },
               heroImageUrl
                 ? h("img", { src: heroImageUrl, alt: heroTitle, style: { transform: heroTransform } })
-                : h("svg", { className: "ph ph--hero" }, h("use", { href: "#" + (e.icon || "p-photo") }))
+                : h("svg", { className: "ph ph--hero" }, h("use", { href: "#" + (e.icon || "p-photo") })),
+              heroImageUrl && e.heroAiBadge
+                ? h("img", { className: "ai-badge", src: "/assets/icons/ai-badge.svg", alt: "KI-bearbeitetes Bild" })
+                : null
             )
           ),
           h("div", { className: "hero__scrim" }),
@@ -153,7 +156,10 @@ var ProductPreview = createClass({
                 "svg",
                 { className: "ph" },
                 h("use", { href: "#" + (e.icon || "p-photo") })
-              )
+              ),
+          imageUrl && e.cardAiBadge
+            ? h("img", { className: "ai-badge", src: "/assets/icons/ai-badge.svg", alt: "KI-bearbeitetes Bild" })
+            : null
         ),
         h("p", { className: "product__cat" }, catLabel(e.categoryKey)),
         h("h3", { className: "product__title" }, e.title || "(kein Titel)"),
@@ -210,7 +216,10 @@ var ProductPreview = createClass({
                       src: url,
                       alt: "",
                       style: { transform: "translate(" + x + "%, " + y + "%) scale(" + z / 100 + ")" }
-                    })
+                    }),
+                    img.aiBadge
+                      ? h("img", { className: "ai-badge", src: "/assets/icons/ai-badge.svg", alt: "KI-bearbeitetes Bild" })
+                      : null
                   ),
                   h(
                     "p",

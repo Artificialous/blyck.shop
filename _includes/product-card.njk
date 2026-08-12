@@ -16,6 +16,7 @@
     {%- else %}
       {%- if p.images and p.images.length %}<img src="{{ p.images[0].src }}" alt="{{ p.title }}" loading="lazy" style="{{ cardImgStyle }}">{% else %}<svg class="ph"><use href="#{{ p.icon }}"/></svg>{% endif %}
     {%- endif %}
+    {%- if p.cardAiBadge %}<img class="ai-badge" src="/assets/icons/ai-badge.svg" alt="KI-bearbeitetes Bild">{% endif %}
   </div>
   <p class="product__cat">{{ p.categoryKey | catLabel }}</p>
   <h3 class="product__title">{% if p.hasDetailPage %}<a class="product__link" href="produkt-{{ p.slug }}.html">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>

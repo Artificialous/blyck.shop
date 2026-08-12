@@ -66,6 +66,11 @@ collections:
         default: 0
         step: 5
         hint: "Betrifft nur Karussell und Titelkachel. Die Empfehlungen-Karte hat ihre eigenen drei Felder weiter unten."
+      - label: "Hero — KI-Kennzeichnung anzeigen"
+        name: "heroAiBadge"
+        widget: "boolean"
+        default: false
+        hint: "Blendet unten rechts im Hero-Bild das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist. Gilt auch fuer die Promo-Kachel, falls dieses Produkt dort steht."
 
       # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
       - label: "Produktfotos (erstes Bild = Hauptbild auf Karte, Hero-Fallback und Detailseite; weitere nur auf der Detailseite als Galerie)"
@@ -101,6 +106,12 @@ collections:
             required: false
             default: 0
             step: 5
+          - label: "KI-Kennzeichnung anzeigen"
+            name: "aiBadge"
+            widget: "boolean"
+            required: false
+            default: false
+            hint: "Blendet unten rechts das AI-MODIFIED-Badge ein, wenn dieses Bild auf der Detailseite als Hauptbild aktiv ist. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist."
       - label: "Bildgröße auf der Karte in % (100 = füllt den quadratischen Rahmen genau)"
         name: "cardZoom"
         widget: "number"
@@ -125,6 +136,11 @@ collections:
         default: 0
         step: 5
         hint: "Betrifft nur die Karte im Empfehlungen-Grid, unabhängig von den Hero-Feldern oben. Die Karte ist quadratisch, der Hero breit — dieselben Werte wirken dort also unterschiedlich."
+      - label: "Karte — KI-Kennzeichnung anzeigen"
+        name: "cardAiBadge"
+        widget: "boolean"
+        default: false
+        hint: "Blendet unten rechts auf der Empfehlungen-Karte das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist."
       - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
         name: "icon"
         widget: "select"

@@ -345,6 +345,7 @@
      ============================================================ */
   function initProductGallery() {
     var main = document.getElementById('pdMainImage');
+    var mainBadge = document.getElementById('pdMainAiBadge');
     var thumbs = document.querySelectorAll('.pd__thumb');
     if (!main || !thumbs.length) return;
     thumbs.forEach(function (thumb) {
@@ -353,6 +354,9 @@
         main.style.transform =
           'translate(' + thumb.dataset.moveX + '%, ' + thumb.dataset.moveY + '%) ' +
           'scale(' + (thumb.dataset.zoom / 100) + ')';
+        if (mainBadge) {
+          mainBadge.style.display = thumb.dataset.aiBadge === 'true' ? '' : 'none';
+        }
         thumbs.forEach(function (t) { t.classList.remove('is-active'); });
         thumb.classList.add('is-active');
       });

@@ -22,19 +22,23 @@ permalinkPath: ""
 {%- macro imgTransform(p) -%}
 transform:translate({{ p.heroMoveX if p.heroMoveX is defined else 0 }}%, {{ p.heroMoveY if p.heroMoveY is defined else 0 }}%) scale({{ (p.heroZoom if p.heroZoom is defined else 100) / 100 }})
 {%- endmacro %}
+{#- KI-Kennzeichnung Art. 50 EU AI Act, manuell im CMS pro Bild an/aus. -#}
+{%- macro aiBadge(show) -%}
+{%- if show %}<img class="ai-badge" src="/assets/icons/ai-badge.svg" alt="KI-bearbeitetes Bild">{% endif -%}
+{%- endmacro %}
 <!-- ==================== HERO ==================== -->
 <section class="hero">
   <div class="container hero__grid">
     <article class="hero__main">
       <div class="hero__art">
         <div class="hero__art-slide is-active" data-slide="0">
-          {%- if heroImg1 %}<img src="{{ heroImg1 }}" alt="{{ heroP1.title }}" style="{{ imgTransform(heroP1) }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
+          {%- if heroImg1 %}<img src="{{ heroImg1 }}" alt="{{ heroP1.title }}" style="{{ imgTransform(heroP1) }}">{{ aiBadge(heroP1.heroAiBadge) }}{% else %}<svg class="ph ph--hero"><use href="#{{ heroP1.icon }}"/></svg>{% endif %}
         </div>
         <div class="hero__art-slide" data-slide="1">
-          {%- if heroImg3 %}<img src="{{ heroImg3 }}" alt="{{ heroP3.title }}" style="{{ imgTransform(heroP3) }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
+          {%- if heroImg3 %}<img src="{{ heroImg3 }}" alt="{{ heroP3.title }}" style="{{ imgTransform(heroP3) }}">{{ aiBadge(heroP3.heroAiBadge) }}{% else %}<svg class="ph ph--hero"><use href="#{{ heroP3.icon }}"/></svg>{% endif %}
         </div>
         <div class="hero__art-slide" data-slide="2">
-          {%- if heroImg6 %}<img src="{{ heroImg6 }}" alt="{{ heroP6.title }}" style="{{ imgTransform(heroP6) }}">{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
+          {%- if heroImg6 %}<img src="{{ heroImg6 }}" alt="{{ heroP6.title }}" style="{{ imgTransform(heroP6) }}">{{ aiBadge(heroP6.heroAiBadge) }}{% else %}<svg class="ph ph--hero"><use href="#{{ heroP6.icon }}"/></svg>{% endif %}
         </div>
       </div>
       <div class="hero__scrim"></div>
@@ -72,7 +76,7 @@ transform:translate({{ p.heroMoveX if p.heroMoveX is defined else 0 }}%, {{ p.he
 
     <aside class="hero__promo{% if heroImg2 %} has-photo{% endif %}">
       <div class="hero__promo-art">
-        {%- if heroImg2 %}<img src="{{ heroImg2 }}" alt="{{ heroP2.title }}" style="{{ imgTransform(heroP2) }}">{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
+        {%- if heroImg2 %}<img src="{{ heroImg2 }}" alt="{{ heroP2.title }}" style="{{ imgTransform(heroP2) }}">{{ aiBadge(heroP2.heroAiBadge) }}{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
       </div>
       {%- if heroImg2 %}<div class="hero__promo-scrim"></div>{% endif %}
       <div class="hero__promo-copy">

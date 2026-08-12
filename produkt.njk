@@ -37,6 +37,7 @@ eleventyComputed:
     <div class="pd__gallery">
       <div class="pd__media">
         {%- if product.images and product.images.length %}<img id="pdMainImage" src="{{ mainImg.src }}" alt="{{ product.title }}" loading="lazy" style="{{ mainImgStyle }}">{% else %}<svg class="ph"><use href="#{{ product.icon }}"/></svg>{% endif %}
+        <img id="pdMainAiBadge" class="ai-badge" src="/assets/icons/ai-badge.svg" alt="KI-bearbeitetes Bild"{% if not mainImg.aiBadge %} style="display:none"{% endif %}>
       </div>
       {%- if product.images and product.images.length > 1 %}
       <div class="pd__thumbs" role="tablist" aria-label="Weitere Produktfotos">
@@ -44,7 +45,7 @@ eleventyComputed:
         {%- set imgZoom = img.zoom if img.zoom is defined else 100 %}
         {%- set imgMoveX = img.moveX if img.moveX is defined else 0 %}
         {%- set imgMoveY = img.moveY if img.moveY is defined else 0 %}
-        <button type="button" class="pd__thumb{% if loop.first %} is-active{% endif %}" data-full="{{ img.src }}" data-zoom="{{ imgZoom }}" data-move-x="{{ imgMoveX }}" data-move-y="{{ imgMoveY }}" aria-label="Bild {{ loop.index }} anzeigen">
+        <button type="button" class="pd__thumb{% if loop.first %} is-active{% endif %}" data-full="{{ img.src }}" data-zoom="{{ imgZoom }}" data-move-x="{{ imgMoveX }}" data-move-y="{{ imgMoveY }}" data-ai-badge="{{ 'true' if img.aiBadge else 'false' }}" aria-label="Bild {{ loop.index }} anzeigen">
           <img src="{{ img.src }}" alt="" loading="lazy" style="transform:translate({{ imgMoveX }}%, {{ imgMoveY }}%) scale({{ imgZoom / 100 }})">
         </button>
         {%- endfor %}
