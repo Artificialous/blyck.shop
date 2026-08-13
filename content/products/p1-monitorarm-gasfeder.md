@@ -23,7 +23,7 @@ cardAiBadge: true
 icon: p-arm
 badge: ""
 categoryKey: arbeitsplatz
-title: Monitorarm Gasfeder, zwei Gelenke, VESA 75/100
+title: BONTEC Monitorarm Gasfeder, zwei Gelenke, VESA 75/100
 shortDesc: Trägt bis 9 kg, hält die Position auch nach Monaten. Der Punkt, an
   dem billigere Arme scheitern.
 baseClicks: 0

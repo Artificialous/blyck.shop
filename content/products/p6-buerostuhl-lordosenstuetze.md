@@ -22,7 +22,7 @@ cardAiBadge: true
 icon: p-chair
 badge: ""
 categoryKey: arbeitsplatz
-title: Bürostuhl mit selbstanpassender Lordosenstütze, 3D-Armlehnen
+title: SIHOO Doro C300 Bürostuhl mit selbstanpassender Lordosenstütze, 3D-Armlehnen
 shortDesc: Stützt im unteren Rücken, ohne im Nacken zu drücken. Nach acht
   Stunden Sitzen der spürbare Unterschied.
 baseClicks: 2987

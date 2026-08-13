@@ -3,7 +3,7 @@ tags: products
 permalink: false
 id: p2
 slug: schreibtischlampe-dimmbar-ra90
-title: "Schreibtischlampe dimmbar, stufenlos 1–100 %, Ra 90"
+title: "Xiaomi Mi Desk Lamp 1S Schreibtischlampe, dimmbar, stufenlos 1–100 %, Ra 90"
 categoryKey: licht
 heroEyebrow: Preis-Leistungs-Tipp
 heroTitle: Licht am Arbeitsplatz
