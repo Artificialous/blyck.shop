@@ -4,7 +4,7 @@ categoryKey: arbeitsplatz
 shortDesc: Stützt im unteren Rücken, ohne im Nacken zu drücken. Nach acht
   Stunden Sitzen der spürbare Unterschied.
 icon: p-chair
-badge: ""
+badge: Meistgeklickt
 baseClicks: 2987
 price: 369,99
 oldPrice: ""

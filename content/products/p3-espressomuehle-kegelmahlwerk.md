@@ -26,7 +26,7 @@ cardMoveX: 0
 cardMoveY: 0
 cardAiBadge: false
 icon: p-grind
-badge: ""
+badge: Bestseller
 categoryKey: kaffee
 title: Baratza Sette 270 Espressomühle Kegelmahlwerk, Makro- und Mikroeinstellung
 shortDesc: 30 Makrostufen plus ein stufenloser Mikro-Einstellring — grobe

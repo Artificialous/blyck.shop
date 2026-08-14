@@ -4,7 +4,7 @@ categoryKey: arbeitsplatz
 shortDesc: 98-Tasten-Layout mit vollem Nummernblock, Gasket-Mount-Konstruktion
   und vorgeschmierten Cream-Switches für einen satten, gedämpften Anschlag.
 icon: p-key
-badge: ""
+badge: Angebot
 baseClicks: 704
 price: 67,95
 oldPrice: 79,99

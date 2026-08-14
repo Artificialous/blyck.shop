@@ -4,7 +4,7 @@ categoryKey: kaffee
 shortDesc: Keramik-Tropfer der Größe 02 mit hitzebeständiger Glaskaraffe, Deckel
   und Messlöffel — für 1 bis 4 Tassen, inklusive 100 Papierfiltern.
 icon: p-drip
-badge: ""
+badge: Top-Wahl
 baseClicks: 1907
 price: 34,00
 oldPrice: ""

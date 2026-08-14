@@ -15,7 +15,7 @@ images:
 cardZoom: 150
 cardAiBadge: false
 icon: p-lamp
-badge: ""
+badge: Günstiger Einstieg
 categoryKey: licht
 title: AURORIONCG Bildschirm-Hinterlicht, app-gesteuert, USB-C, 3 Seiten für 24 Zoll
 shortDesc: RGBIC-LED-Streifen an drei Seiten der Monitorrückseite, gleicht die
