@@ -3,7 +3,7 @@ heroEyebrow: Preis-Leistungs-Tipp
 heroTitle: Licht am Arbeitsplatz
 heroMeta: 2600–5000 K | Stufenlos dimmbar | Ra 90
 heroImage: assets/uploads/xiaomi-mi-smart-led_img2.jpg
-heroZoom: 0
+heroZoom: 120
 heroMoveX: 0
 heroMoveY: 0
 heroAiBadge: false
