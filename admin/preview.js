@@ -127,7 +127,16 @@ var ProductPreview = createClass({
   getInitialState: getInitialAssetState,
   resolveAsset: resolveAsset,
   render: function () {
-    var e = this.props.entry.get("data").toObject();
+    /* .toJS() statt .toObject(): .toObject() konvertiert nur die oberste
+       Ebene von Immutable.js zu normalem JS — verschachtelte Felder wie
+       "images" (eine Liste von Objekten) blieben dabei Immutable-Objekte,
+       auf denen z.B. img.src immer undefined ist (Immutable-Maps geben
+       Werte nur ueber .get("src") frei, nicht per Punktzugriff). Das war
+       der eigentliche Grund, warum Karte und Detailseite nie zuverlaessig
+       ein Bild zeigten, ganz unabhaengig vom getAsset-Promise-Thema.
+       .toJS() konvertiert rekursiv, dann funktioniert der normale
+       Punktzugriff ueberall. */
+    var e = this.props.entry.get("data").toJS();
     /* images ist jetzt eine Liste von {src, zoom, moveX, moveY} statt reiner
        Pfade, wegen der Detailseiten-Regler pro Bild — deshalb .src. */
     var imageList = (e.images || []).filter(function (img) { return img && img.src; });
@@ -451,7 +460,16 @@ var ArticlePreview = createClass({
   getInitialState: getInitialAssetState,
   resolveAsset: resolveAsset,
   render: function () {
-    var e = this.props.entry.get("data").toObject();
+    /* .toJS() statt .toObject(): .toObject() konvertiert nur die oberste
+       Ebene von Immutable.js zu normalem JS — verschachtelte Felder wie
+       "images" (eine Liste von Objekten) blieben dabei Immutable-Objekte,
+       auf denen z.B. img.src immer undefined ist (Immutable-Maps geben
+       Werte nur ueber .get("src") frei, nicht per Punktzugriff). Das war
+       der eigentliche Grund, warum Karte und Detailseite nie zuverlaessig
+       ein Bild zeigten, ganz unabhaengig vom getAsset-Promise-Thema.
+       .toJS() konvertiert rekursiv, dann funktioniert der normale
+       Punktzugriff ueberall. */
+    var e = this.props.entry.get("data").toJS();
     var coverUrl = this.resolveAsset(e.coverImage);
     var sections = e.sections || [];
 
