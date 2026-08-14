@@ -2,10 +2,10 @@
 heroEyebrow: Bestseller
 heroTitle: Espresso ohne Kompromiss
 heroMeta: Makro & Mikro | Präzise | Kegelmahlwerk
-heroImage: assets/uploads/esspressomuehle_kegelmahlwerk_img1.jpg
-heroZoom: 110
-heroMoveX: 5
-heroMoveY: 3
+heroImage: assets/uploads/esspressomuehle_kegelmahlwerk_img2.jpg
+heroZoom: 105
+heroMoveX: 0
+heroMoveY: 2
 heroAiBadge: false
 promoAiBadge: true
 images:
