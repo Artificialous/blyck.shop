@@ -1,4 +1,15 @@
 ---
+title: RK ROYAL KLUDGE R98 Pro Mechanische Tastatur, Gasket Mount mit Nummernblock
+categoryKey: arbeitsplatz
+shortDesc: 98-Tasten-Layout mit vollem Nummernblock, Gasket-Mount-Konstruktion
+  und vorgeschmierten Cream-Switches für einen satten, gedämpften Anschlag.
+icon: p-key
+badge: ""
+baseClicks: 704
+price: 67,95
+oldPrice: 79,99
+priceDate: 14.08.2026
+amazonLink: https://www.amazon.de/dp/B0DWMX5TXV?tag=blyck21-21&linkCode=ll2&linkId=5f6f60ca18c96351185027aaa67938eb&ref_=as_li_ss_tl
 heroImage: ""
 heroAiBadge: true
 promoAiBadge: true
@@ -9,18 +20,7 @@ images:
     aiBadge: false
     src: assets/uploads/rk-royal-kludge-r98_pro_tastatur_img1.jpg
 cardZoom: 160
-cardAiBadge: true
-icon: p-key
-badge: ""
-categoryKey: arbeitsplatz
-title: RK ROYAL KLUDGE R98 Pro Mechanische Tastatur, Gasket Mount mit Nummernblock
-shortDesc: 98-Tasten-Layout mit vollem Nummernblock, Gasket-Mount-Konstruktion
-  und vorgeschmierten Cream-Switches für einen satten, gedämpften Anschlag.
-baseClicks: 704
-price: 67,95
-oldPrice: 79,99
-priceDate: 14.08.2026
-amazonLink: https://www.amazon.de/dp/B0DWMX5TXV?tag=blyck21-21&linkCode=ll2&linkId=5f6f60ca18c96351185027aaa67938eb&ref_=as_li_ss_tl
+cardAiBadge: false
 hasDetailPage: true
 lead: Gasket-Mount-Konstruktion mit fünflagiger Schalldämmung zwischen Platine
   und Gehäuse dämpft Vibrationen und macht den Anschlag weicher — für
