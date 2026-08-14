@@ -23,7 +23,7 @@ promoMoveX: -35
 promoMoveY: -5
 promoAiBadge: false
 images:
-  - zoom: 100
+  - zoom: 125
     moveX: 0
     moveY: 0
     aiBadge: false
@@ -33,9 +33,9 @@ images:
     moveY: 0
     aiBadge: true
     src: assets/uploads/xiaomi-mi-smart-led_img2.jpg
-cardZoom: 170
+cardZoom: 150
 cardMoveX: 0
-cardMoveY: 0
+cardMoveY: 5
 cardAiBadge: false
 hasDetailPage: true
 lead: "Zwei Dinge trennen eine brauchbare Schreibtischlampe von einer billigen:
