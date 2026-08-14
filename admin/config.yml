@@ -23,7 +23,35 @@ collections:
     identifier_field: title
     summary: "{{title}} — {{price}} € · Reihenfolge {{order}}"
     fields:
-      # ---------- 1. HERO-BEREICH (nur bei den 4 im Hero eingebundenen Produkten sichtbar) ----------
+      # ---------- 1. PRODUKT-GRUNDDATEN ----------
+      - { label: "Titel", name: "title", widget: "string" }
+      - label: "Kategorie"
+        name: "categoryKey"
+        widget: "select"
+        options:
+          - { label: "Arbeitsplatz", value: "arbeitsplatz" }
+          - { label: "Kaffee & Küche", value: "kaffee" }
+          - { label: "Licht", value: "licht" }
+          - { label: "Audio", value: "audio" }
+          - { label: "Werkzeug", value: "werkzeug" }
+          - { label: "Ordnung", value: "ordnung" }
+          - { label: "Reise", value: "reise" }
+          - { label: "Pflege", value: "pflege" }
+      - { label: "Kurzbeschreibung (Kartenansicht, 1 Satz)", name: "shortDesc", widget: "text", required: false }
+      - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
+        name: "icon"
+        widget: "select"
+        options: ["p-arm", "p-lamp", "p-grind", "p-key", "p-drip", "p-chair", "p-photo"]
+      - { label: "Badge (z. B. Tipp, Neu) — optional", name: "badge", widget: "string", required: false }
+
+      # ---------- 2. PREIS & LINK ----------
+      - { label: "Klickzahl-Basiswert", name: "baseClicks", widget: "number", value_type: "int", default: 0 }
+      - { label: "Preis (nur Zahl, z. B. 89,00)", name: "price", widget: "string" }
+      - { label: "Alter Preis (optional, für durchgestrichenen Preis)", name: "oldPrice", widget: "string", required: false }
+      - { label: "Preis-Stand (z. B. 06.08.2026)", name: "priceDate", widget: "string" }
+      - { label: "Amazon-Affiliate-Link", name: "amazonLink", widget: "string", required: false, hint: "Leer lassen, bis der echte PartnerNet-Link da ist. Ohne Link zeigt der Button nur eine Hinweismeldung." }
+
+      # ---------- 3. HERO-KARUSSELL (nur bei den im Hero eingebundenen Produkten sichtbar, aktuell p1, p3, p6) ----------
       - label: "Hero-Kicker (kurzes Wort/Label über dem Titel, z. B. 'Neu im Test' — nur sichtbar, wenn dieses Produkt im Hero-Karussell oder in der Promo-Kachel eingebunden ist)"
         name: "heroEyebrow"
         widget: "string"
@@ -49,7 +77,7 @@ collections:
         required: false
         default: 100
         step: 5
-        hint: "Über 100 = größer und näher dran. Unter 100 = kleiner, dann wird der dunkle Rahmenhintergrund am Rand sichtbar. Wirkt immer, unabhängig von den beiden Verschieben-Feldern. Ist dieses Produkt die Titelkachel (aktuell die Schreibtischlampe) statt im Karussell, hat dieses Feld keine Wirkung — dafür die „Titelkachel“-Felder weiter unten benutzen."
+        hint: "Über 100 = größer und näher dran. Unter 100 = kleiner, dann wird der dunkle Rahmenhintergrund am Rand sichtbar. Wirkt immer, unabhängig von den beiden Verschieben-Feldern. Ist dieses Produkt die Titelkachel (aktuell die Schreibtischlampe) statt im Karussell, hat dieses Feld keine Wirkung — dafür die „Titelkachel“-Felder im Abschnitt darunter benutzen."
       - label: "Karussell — verschieben horizontal in % (0 = mittig, negativ = nach links, positiv = nach rechts) — wirkt NUR im Karussell"
         name: "heroMoveX"
         widget: "number"
@@ -57,7 +85,7 @@ collections:
         required: false
         default: 0
         step: 5
-        hint: "10 verschiebt um ein Zehntel der Rahmenbreite. Wirkt immer — auch bei Bildgröße 100. Ohne Wirkung, wenn dieses Produkt die Titelkachel ist statt im Karussell — dafür die „Titelkachel“-Felder weiter unten."
+        hint: "10 verschiebt um ein Zehntel der Rahmenbreite. Wirkt immer — auch bei Bildgröße 100. Ohne Wirkung, wenn dieses Produkt die Titelkachel ist statt im Karussell — dafür die „Titelkachel“-Felder im Abschnitt darunter."
       - label: "Karussell — verschieben vertikal in % (0 = mittig, negativ = nach oben, positiv = nach unten) — wirkt NUR im Karussell"
         name: "heroMoveY"
         widget: "number"
@@ -65,14 +93,14 @@ collections:
         required: false
         default: 0
         step: 5
-        hint: "Betrifft nur das Karussell. Titelkachel und Empfehlungen-Karte haben ihre eigenen Felder weiter unten."
+        hint: "Betrifft nur das Karussell. Titelkachel und Empfehlungen-Karte haben ihre eigenen Felder in den Abschnitten darunter."
       - label: "Karussell — KI-Kennzeichnung anzeigen — wirkt NUR im Karussell"
         name: "heroAiBadge"
         widget: "boolean"
         default: false
-        hint: "Blendet unten rechts im Karussell-Bild das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist. Betrifft nur das Karussell — die Titelkachel hat ihr eigenes Feld direkt darunter."
+        hint: "Blendet unten rechts im Karussell-Bild das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist. Betrifft nur das Karussell — die Titelkachel hat ihr eigenes Feld im Abschnitt darunter."
 
-      # ---------- 1b. PROMO-KACHEL (schmale Kachel neben dem Karussell, aktuell die Schreibtischlampe) ----------
+      # ---------- 4. TITELKACHEL (schmale Kachel neben dem Karussell, aktuell nur bei p2 sichtbar) ----------
       - label: "Titelkachel — Bildgröße in % (100 = zeigt das ganze Bild, unbeschnitten)"
         name: "promoZoom"
         widget: "number"
@@ -80,7 +108,7 @@ collections:
         required: false
         default: 100
         step: 5
-        hint: "Nur für die schmale Titelkachel neben dem Karussell. Bei 100 ist das ganze Bild sichtbar (nicht zugeschnitten wie im Karussell oder auf der Karte) — darüber wird gezoomt und damit gezielt beschnitten. Eigener Wert, unabhängig von der Bildgröße oben im Karussell — die Kachel ist schmal und hoch, das Karussell breit, derselbe Wert würde dort unterschiedlich wirken. Nutzt dasselbe Bild wie oben (Eigenes Hero-Bild bzw. Hauptfoto), nur einen anderen Ausschnitt."
+        hint: "Nur für die schmale Titelkachel neben dem Karussell. Bei 100 ist das ganze Bild sichtbar (nicht zugeschnitten wie im Karussell oder auf der Karte) — darüber wird gezoomt und damit gezielt beschnitten. Eigener Wert, unabhängig von der Bildgröße oben im Karussell — die Kachel ist schmal und hoch, das Karussell breit, derselbe Wert würde dort unterschiedlich wirken. Nutzt dasselbe Bild wie im Abschnitt oben (Eigenes Hero-Bild) bzw. sonst das Hauptfoto weiter unten, nur einen anderen Ausschnitt."
       - label: "Titelkachel — verschieben horizontal in %"
         name: "promoMoveX"
         widget: "number"
@@ -99,9 +127,9 @@ collections:
         name: "promoAiBadge"
         widget: "boolean"
         default: false
-        hint: "Blendet unten rechts in der Titelkachel das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist. Betrifft nur die Titelkachel, nicht das Karussell-Bild oben."
+        hint: "Blendet unten rechts in der Titelkachel das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist. Betrifft nur die Titelkachel, nicht das Karussell-Bild im Abschnitt oben."
 
-      # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
+      # ---------- 5. PRODUKTFOTOS (Quelle für Karte, Hero-Fallback und Detailseiten-Galerie) ----------
       - label: "Produktfotos (erstes Bild = Hauptbild auf Karte, Hero-Fallback und Detailseite; weitere nur auf der Detailseite als Galerie)"
         name: "images"
         widget: "list"
@@ -120,7 +148,7 @@ collections:
             required: false
             default: 100
             step: 5
-            hint: "Gilt nur für dieses Bild auf der Detailseite (großes Bild + eigene Miniatur) — unabhängig von den Hero- und Karten-Feldern oben, die haben eigene Werte."
+            hint: "Gilt nur für dieses Bild auf der Detailseite (großes Bild + eigene Miniatur) — unabhängig von den Hero- und Karten-Feldern, die haben eigene Werte."
           - label: "Verschieben horizontal in % (0 = mittig)"
             name: "moveX"
             widget: "number"
@@ -141,14 +169,16 @@ collections:
             required: false
             default: false
             hint: "Blendet unten rechts das AI-MODIFIED-Badge ein, wenn dieses Bild auf der Detailseite als Hauptbild aktiv ist. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist."
-      - label: "Bildgröße auf der Karte in % (100 = füllt den quadratischen Rahmen genau)"
+
+      # ---------- 6. EMPFEHLUNGEN-KARTE — ZUSCHNITT (Produktkarte im Grid) ----------
+      - label: "Bildgröße auf der Karte in % (100 = zeigt das ganze Bild, unbeschnitten)"
         name: "cardZoom"
         widget: "number"
         value_type: "int"
         required: false
         default: 100
         step: 5
-        hint: "Über 100 = größer und näher dran. Unter 100 = kleiner, dann wird der helle Kartenhintergrund am Rand sichtbar. Wirkt immer, unabhängig von den beiden Verschieben-Feldern."
+        hint: "Über 100 = größer und näher dran, dann wird zugeschnitten. Unter 100 = kleiner, dann wird der helle Kartenhintergrund am Rand sichtbar. Wirkt immer, unabhängig von den beiden Verschieben-Feldern."
       - label: "Karte — verschieben horizontal in % (0 = mittig, negativ = nach links, positiv = nach rechts)"
         name: "cardMoveX"
         widget: "number"
@@ -170,32 +200,8 @@ collections:
         widget: "boolean"
         default: false
         hint: "Blendet unten rechts auf der Empfehlungen-Karte das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist."
-      - label: "Platzhalter-Icon (bis echtes Produktfoto da ist)"
-        name: "icon"
-        widget: "select"
-        options: ["p-arm", "p-lamp", "p-grind", "p-key", "p-drip", "p-chair", "p-photo"]
-      - { label: "Badge (z. B. Tipp, Neu) — optional", name: "badge", widget: "string", required: false }
-      - label: "Kategorie"
-        name: "categoryKey"
-        widget: "select"
-        options:
-          - { label: "Arbeitsplatz", value: "arbeitsplatz" }
-          - { label: "Kaffee & Küche", value: "kaffee" }
-          - { label: "Licht", value: "licht" }
-          - { label: "Audio", value: "audio" }
-          - { label: "Werkzeug", value: "werkzeug" }
-          - { label: "Ordnung", value: "ordnung" }
-          - { label: "Reise", value: "reise" }
-          - { label: "Pflege", value: "pflege" }
-      - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Kurzbeschreibung (Kartenansicht, 1 Satz)", name: "shortDesc", widget: "text", required: false }
-      - { label: "Klickzahl-Basiswert", name: "baseClicks", widget: "number", value_type: "int", default: 0 }
-      - { label: "Preis (nur Zahl, z. B. 89,00)", name: "price", widget: "string" }
-      - { label: "Alter Preis (optional, für durchgestrichenen Preis)", name: "oldPrice", widget: "string", required: false }
-      - { label: "Preis-Stand (z. B. 06.08.2026)", name: "priceDate", widget: "string" }
-      - { label: "Amazon-Affiliate-Link", name: "amazonLink", widget: "string", required: false, hint: "Leer lassen, bis der echte PartnerNet-Link da ist. Ohne Link zeigt der Button nur eine Hinweismeldung." }
 
-      # ---------- 3. DETAILSEITE (nur falls "Eigene Produktseite anlegen?" aktiv) ----------
+      # ---------- 7. DETAILSEITE (nur falls "Eigene Produktseite anlegen?" aktiv) ----------
       - { label: "Eigene Produktseite anlegen?", name: "hasDetailPage", widget: "boolean", default: false }
       - { label: "Ausführlicher Lead-Text (nur Detailseite)", name: "lead", widget: "text", required: false }
       - { label: "Vorteile (nur bei eigener Produktseite)", name: "pros", widget: "list", required: false }
@@ -210,7 +216,7 @@ collections:
         multiple: true
         required: false
 
-      # ---------- 4. VERWALTUNG / INTERN ----------
+      # ---------- 8. VERWALTUNG / INTERN ----------
       - { label: "Sichtbar auf der Seite", name: "published", widget: "boolean", default: true }
       - { label: "Reihenfolge (kleiner = weiter vorne)", name: "order", widget: "number", value_type: "int", default: 99 }
       - { label: "Produkt-ID (intern, nie aendern)", name: "id", widget: "string", pattern: ["^p[0-9]+$", "Format: p gefolgt von einer Zahl, z. B. p7"] }
