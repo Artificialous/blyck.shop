@@ -7,6 +7,8 @@ heroZoom: 105
 heroMoveX: 0
 heroMoveY: 2
 heroAiBadge: false
+promoZoom: 0
+promoMoveX: 0
 promoAiBadge: true
 images:
   - zoom: 100
@@ -19,7 +21,7 @@ images:
     moveY: 0
     aiBadge: true
     src: assets/uploads/esspressomuehle_kegelmahlwerk_img2.jpg
-cardZoom: 100
+cardZoom: 170
 cardMoveX: 0
 cardMoveY: 0
 cardAiBadge: false
@@ -50,13 +52,13 @@ pros:
 cons:
   - 5 kg Eigengewicht, braucht einen festen Platz auf der Arbeitsfläche
   - 349,95 € liegt deutlich über dem Einstiegssegment
-order: 3
 slug: espressomuehle-kegelmahlwerk
 permalink: false
 relatedIds:
   - p5
   - p9
 published: true
+order: 3
 tags: products
 id: p3
 ---
