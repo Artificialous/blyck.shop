@@ -7,6 +7,7 @@ heroZoom: 120
 heroMoveX: -5
 heroMoveY: -5
 heroAiBadge: true
+promoAiBadge: true
 images:
   - src: assets/uploads/monitorarm_productimg_1.jpg
     aiBadge: true
@@ -16,9 +17,9 @@ images:
     moveY: 0
     aiBadge: true
     src: assets/uploads/monitorarm_productimg_2.jpg
-cardZoom: 120
-cardMoveX: 0
-cardMoveY: 10
+cardZoom: 150
+cardMoveX: -5
+cardMoveY: 0
 cardAiBadge: true
 icon: p-arm
 badge: ""
