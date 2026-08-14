@@ -7,12 +7,18 @@ heroZoom: 110
 heroMoveX: 5
 heroMoveY: 3
 heroAiBadge: true
+promoAiBadge: true
 images:
   - zoom: 100
     moveX: 0
     moveY: 0
     aiBadge: true
     src: assets/uploads/esspressomuehle_kegelmahlwerk_img1.jpg
+  - zoom: 100
+    moveX: 0
+    moveY: 0
+    aiBadge: true
+    src: assets/uploads/esspressomuehle_kegelmahlwerk_img2.jpg
 cardZoom: 100
 cardMoveX: 0
 cardMoveY: 0
