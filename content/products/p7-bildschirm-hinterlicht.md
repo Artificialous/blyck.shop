@@ -12,7 +12,7 @@ images:
     moveY: 0
     aiBadge: false
     src: assets/uploads/rgbic-monitor_backlight_img2.jpg
-cardAiBadge: true
+cardAiBadge: false
 icon: p-lamp
 badge: ""
 categoryKey: licht
