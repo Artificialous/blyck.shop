@@ -1,4 +1,15 @@
 ---
+title: SIHOO Doro C300 Bürostuhl mit selbstanpassender Lordosenstütze, 3D-Armlehnen
+categoryKey: arbeitsplatz
+shortDesc: Stützt im unteren Rücken, ohne im Nacken zu drücken. Nach acht
+  Stunden Sitzen der spürbare Unterschied.
+icon: p-chair
+badge: ""
+baseClicks: 2987
+price: 369,99
+oldPrice: ""
+priceDate: 12.08.2026
+amazonLink: https://www.amazon.de/dp/B0C3TNC785?tag=blyck21-21&linkCode=ll2&linkId=5d5f972a002ec5314988d48e535dd2bd&ref_=as_li_ss_tl
 heroEyebrow: Meistgeklickt
 heroTitle: Ruhiger sitzen, länger bleiben
 heroMeta: Selbstanpassende Lordosenstütze | 3D-Armlehnen | Bis 150 kg
@@ -7,29 +18,27 @@ heroZoom: 110
 heroMoveX: 5
 heroMoveY: -5
 heroAiBadge: true
+promoAiBadge: true
 images:
   - zoom: 100
     moveX: 0
     moveY: 0
     src: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img1.jpg
     aiBadge: false
+  - zoom: 90
+    moveX: 0
+    moveY: 0
+    aiBadge: false
+    src: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img2.jpg
   - zoom: 100
     moveX: 0
     moveY: 0
     src: assets/uploads/sihoo-doro-c300-ergonomischer-bürostuhl_img4.jpg
     aiBadge: true
-cardAiBadge: true
-icon: p-chair
-badge: ""
-categoryKey: arbeitsplatz
-title: SIHOO Doro C300 Bürostuhl mit selbstanpassender Lordosenstütze, 3D-Armlehnen
-shortDesc: Stützt im unteren Rücken, ohne im Nacken zu drücken. Nach acht
-  Stunden Sitzen der spürbare Unterschied.
-baseClicks: 2987
-price: 369,99
-oldPrice: ""
-priceDate: 12.08.2026
-amazonLink: https://www.amazon.de/dp/B0C3TNC785?tag=blyck21-21&linkCode=ll2&linkId=5d5f972a002ec5314988d48e535dd2bd&ref_=as_li_ss_tl
+cardZoom: 120
+cardMoveX: 0
+cardMoveY: 0
+cardAiBadge: false
 hasDetailPage: true
 lead: Die Lendenwirbelstütze bewegt sich beim Sitzen mit dem Rücken mit, statt
   starr in einer Position zu bleiben — das federt Positionswechsel über den Tag
@@ -53,13 +62,13 @@ cons:
   - Montage durch den Nutzer erforderlich, laut Hersteller nicht vormontiert
   - Bei Körpergröße über 180 cm könnte die Verstellung von
     Rückenlehne/Kopfstütze knapp werden
-published: true
+order: 6
 slug: buerostuhl-lordosenstuetze
 permalink: false
 relatedIds:
   - p1
   - p4
-order: 6
+published: true
 tags: products
 id: p6
 ---
