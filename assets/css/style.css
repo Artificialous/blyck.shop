@@ -410,7 +410,9 @@ a.cats__item:hover{color:var(--orange)}
   background:var(--band);border-radius:var(--radius);
 }
 .product__media .ph{max-width:94%;max-height:94%;transition:transform .25s ease}
-.product__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius)}
+/* contain statt cover: erst das ganze Bild zeigen, der Zoom/Verschieben-Regler
+   auf der Karte schneidet dann gezielt zu — wie bei der Titelkachel. */
+.product__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius)}
 .product:hover .product__media .ph{transform:scale(1.06)}
 @media (prefers-reduced-motion: reduce){
   .product,.product__media .ph{transition:none}
