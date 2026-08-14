@@ -73,14 +73,14 @@ collections:
         hint: "Blendet unten rechts im Karussell-Bild das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist. Betrifft nur das Karussell — die Titelkachel hat ihr eigenes Feld direkt darunter."
 
       # ---------- 1b. PROMO-KACHEL (schmale Kachel neben dem Karussell, aktuell die Schreibtischlampe) ----------
-      - label: "Titelkachel — Bildgröße in % (100 = füllt den Rahmen genau)"
+      - label: "Titelkachel — Bildgröße in % (100 = zeigt das ganze Bild, unbeschnitten)"
         name: "promoZoom"
         widget: "number"
         value_type: "int"
         required: false
         default: 100
         step: 5
-        hint: "Nur für die schmale Titelkachel neben dem Karussell. Eigener Wert, unabhängig von der Bildgröße oben im Karussell — die Kachel ist schmal und hoch, das Karussell breit, derselbe Wert würde dort unterschiedlich wirken. Nutzt dasselbe Bild wie oben (Eigenes Hero-Bild bzw. Hauptfoto), nur einen anderen Ausschnitt."
+        hint: "Nur für die schmale Titelkachel neben dem Karussell. Bei 100 ist das ganze Bild sichtbar (nicht zugeschnitten wie im Karussell oder auf der Karte) — darüber wird gezoomt und damit gezielt beschnitten. Eigener Wert, unabhängig von der Bildgröße oben im Karussell — die Kachel ist schmal und hoch, das Karussell breit, derselbe Wert würde dort unterschiedlich wirken. Nutzt dasselbe Bild wie oben (Eigenes Hero-Bild bzw. Hauptfoto), nur einen anderen Ausschnitt."
       - label: "Titelkachel — verschieben horizontal in %"
         name: "promoMoveX"
         widget: "number"

@@ -268,8 +268,11 @@ del{color:var(--tag);font-weight:400;margin-right:6px}
 .hero__promo.has-photo .hero__promo-art{
   position:absolute;inset:0;min-height:0;flex:none;
 }
+/* contain statt cover: die Titelkachel ist schmal-hoch, ein cover-Zuschnitt
+   schnitt das Bild immer an — hier soll erst das ganze Bild sichtbar sein,
+   der Zoom/Verschieben-Regler zoomt und schneidet dann gezielt selbst. */
 .hero__promo.has-photo .hero__promo-art img{
-  width:100%;height:100%;object-fit:cover;max-width:none;max-height:none;
+  width:100%;height:100%;object-fit:contain;max-width:none;max-height:none;
 }
 .hero__promo-scrim{
   position:absolute;inset:0;z-index:1;
