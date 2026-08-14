@@ -42,23 +42,23 @@ collections:
         widget: "image"
         required: false
         hint: "Leer lassen = Hero zeigt automatisch dasselbe Hauptbild wie die Empfehlungen-Karte. Nur ausfüllen, wenn es abweichen soll."
-      - label: "Bildgröße im Hero in % (100 = füllt den Rahmen genau)"
+      - label: "Karussell — Bildgröße in % (100 = füllt den Rahmen genau) — wirkt NUR im Startseiten-Karussell (aktuell p1, p3, p6), nicht in der Titelkachel"
         name: "heroZoom"
         widget: "number"
         value_type: "int"
         required: false
         default: 100
         step: 5
-        hint: "Über 100 = größer und näher dran. Unter 100 = kleiner, dann wird der dunkle Rahmenhintergrund am Rand sichtbar. Wirkt immer, unabhängig von den beiden Verschieben-Feldern."
-      - label: "Hero — verschieben horizontal in % (0 = mittig, negativ = nach links, positiv = nach rechts)"
+        hint: "Über 100 = größer und näher dran. Unter 100 = kleiner, dann wird der dunkle Rahmenhintergrund am Rand sichtbar. Wirkt immer, unabhängig von den beiden Verschieben-Feldern. Ist dieses Produkt die Titelkachel (aktuell die Schreibtischlampe) statt im Karussell, hat dieses Feld keine Wirkung — dafür die „Titelkachel“-Felder weiter unten benutzen."
+      - label: "Karussell — verschieben horizontal in % (0 = mittig, negativ = nach links, positiv = nach rechts) — wirkt NUR im Karussell"
         name: "heroMoveX"
         widget: "number"
         value_type: "int"
         required: false
         default: 0
         step: 5
-        hint: "10 verschiebt um ein Zehntel der Rahmenbreite. Wirkt immer — auch bei Bildgröße 100."
-      - label: "Hero — verschieben vertikal in % (0 = mittig, negativ = nach oben, positiv = nach unten)"
+        hint: "10 verschiebt um ein Zehntel der Rahmenbreite. Wirkt immer — auch bei Bildgröße 100. Ohne Wirkung, wenn dieses Produkt die Titelkachel ist statt im Karussell — dafür die „Titelkachel“-Felder weiter unten."
+      - label: "Karussell — verschieben vertikal in % (0 = mittig, negativ = nach oben, positiv = nach unten) — wirkt NUR im Karussell"
         name: "heroMoveY"
         widget: "number"
         value_type: "int"
@@ -66,7 +66,7 @@ collections:
         default: 0
         step: 5
         hint: "Betrifft nur das Karussell. Titelkachel und Empfehlungen-Karte haben ihre eigenen Felder weiter unten."
-      - label: "Hero — KI-Kennzeichnung anzeigen"
+      - label: "Karussell — KI-Kennzeichnung anzeigen — wirkt NUR im Karussell"
         name: "heroAiBadge"
         widget: "boolean"
         default: false
