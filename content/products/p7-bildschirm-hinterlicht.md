@@ -1,5 +1,5 @@
 ---
-heroAiBadge: true
+heroAiBadge: false
 promoAiBadge: true
 images:
   - zoom: 100
