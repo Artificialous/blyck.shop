@@ -1,6 +1,6 @@
 ---
 heroAiBadge: false
-promoAiBadge: true
+promoAiBadge: false
 images:
   - zoom: 100
     moveX: 0
