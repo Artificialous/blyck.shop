@@ -6,7 +6,7 @@ heroImage: assets/uploads/xiaomi-mi-smart-led_img2.jpg
 heroZoom: 0
 heroMoveX: 0
 heroMoveY: 0
-heroAiBadge: true
+heroAiBadge: false
 promoZoom: 100
 promoMoveX: 5
 promoMoveY: 0
