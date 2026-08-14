@@ -22,7 +22,7 @@ images:
     moveY: 0
     aiBadge: true
     src: assets/uploads/xiaomi-mi-smart-led_img2.jpg
-cardAiBadge: true
+cardAiBadge: false
 icon: p-lamp
 badge: Preis-Tipp
 categoryKey: licht
