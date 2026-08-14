@@ -24,7 +24,8 @@ images:
     moveY: 0
     aiBadge: false
     src: assets/uploads/hario_v60_weiß_img2.jpg
-cardAiBadge: true
+cardZoom: 165
+cardAiBadge: false
 hasDetailPage: true
 lead: Der Keramik-Tropfer der Größe 02 sitzt direkt auf der mitgelieferten
   Glaskaraffe aus hitzebeständigem Borosilikatglas — kein Umfüllen zwischen
