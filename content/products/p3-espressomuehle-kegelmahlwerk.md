@@ -6,7 +6,7 @@ heroImage: assets/uploads/esspressomuehle_kegelmahlwerk_img1.jpg
 heroZoom: 110
 heroMoveX: 5
 heroMoveY: 3
-heroAiBadge: true
+heroAiBadge: false
 promoAiBadge: true
 images:
   - zoom: 100
@@ -22,7 +22,7 @@ images:
 cardZoom: 100
 cardMoveX: 0
 cardMoveY: 0
-cardAiBadge: true
+cardAiBadge: false
 icon: p-grind
 badge: ""
 categoryKey: kaffee
