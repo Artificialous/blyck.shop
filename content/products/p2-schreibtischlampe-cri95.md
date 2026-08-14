@@ -10,7 +10,7 @@ heroAiBadge: false
 promoZoom: 235
 promoMoveX: -35
 promoMoveY: -5
-promoAiBadge: true
+promoAiBadge: false
 images:
   - zoom: 100
     moveX: 0
