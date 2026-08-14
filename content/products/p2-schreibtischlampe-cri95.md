@@ -22,6 +22,9 @@ images:
     moveY: 0
     aiBadge: true
     src: assets/uploads/xiaomi-mi-smart-led_img2.jpg
+cardZoom: 165
+cardMoveX: 0
+cardMoveY: 0
 cardAiBadge: false
 icon: p-lamp
 badge: Preis-Tipp
@@ -60,13 +63,13 @@ cons:
     für eine Raumbeleuchtung
   - Voller Funktionsumfang inklusive Sprachsteuerung nur mit Hersteller-App und
     WLAN-Konto
-order: 2
 slug: schreibtischlampe-dimmbar-ra90
 permalink: false
 relatedIds:
   - p7
   - p8
 published: true
+order: 2
 tags: products
 id: p2
 ---
