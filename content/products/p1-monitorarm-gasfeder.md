@@ -11,7 +11,9 @@ promoAiBadge: true
 images:
   - src: assets/uploads/monitorarm_productimg_1.jpg
     aiBadge: true
-    zoom: 5
+    zoom: 130
+    moveX: 0
+    moveY: -5
   - zoom: 100
     moveX: 0
     moveY: 0
