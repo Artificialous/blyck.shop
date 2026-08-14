@@ -22,6 +22,11 @@ permalinkPath: ""
 {%- macro imgTransform(p) -%}
 transform:translate({{ p.heroMoveX if p.heroMoveX is defined else 0 }}%, {{ p.heroMoveY if p.heroMoveY is defined else 0 }}%) scale({{ (p.heroZoom if p.heroZoom is defined else 100) / 100 }})
 {%- endmacro %}
+{#- Eigene Werte fuer die Titelkachel: schmal-hoher Rahmen statt breitem
+    Karussell, dieselben Hero-Werte wuerden dort anders zuschneiden. -#}
+{%- macro promoImgTransform(p) -%}
+transform:translate({{ p.promoMoveX if p.promoMoveX is defined else 0 }}%, {{ p.promoMoveY if p.promoMoveY is defined else 0 }}%) scale({{ (p.promoZoom if p.promoZoom is defined else 100) / 100 }})
+{%- endmacro %}
 {#- KI-Kennzeichnung Art. 50 EU AI Act, manuell im CMS pro Bild an/aus. -#}
 {%- macro aiBadge(show) -%}
 {%- if show %}<img class="ai-badge" src="/assets/icons/ai-badge.svg" alt="KI-bearbeitetes Bild">{% endif -%}
@@ -76,7 +81,7 @@ transform:translate({{ p.heroMoveX if p.heroMoveX is defined else 0 }}%, {{ p.he
 
     <aside class="hero__promo{% if heroImg2 %} has-photo{% endif %}">
       <div class="hero__promo-art">
-        {%- if heroImg2 %}<img src="{{ heroImg2 }}" alt="{{ heroP2.title }}" style="{{ imgTransform(heroP2) }}">{{ aiBadge(heroP2.heroAiBadge) }}{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
+        {%- if heroImg2 %}<img src="{{ heroImg2 }}" alt="{{ heroP2.title }}" style="{{ promoImgTransform(heroP2) }}">{{ aiBadge(heroP2.promoAiBadge) }}{% else %}<svg class="ph ph--promo"><use href="#{{ heroP2.icon }}"/></svg>{% endif %}
       </div>
       {%- if heroImg2 %}<div class="hero__promo-scrim"></div>{% endif %}
       <div class="hero__promo-copy">

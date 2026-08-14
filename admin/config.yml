@@ -65,12 +65,41 @@ collections:
         required: false
         default: 0
         step: 5
-        hint: "Betrifft nur Karussell und Titelkachel. Die Empfehlungen-Karte hat ihre eigenen drei Felder weiter unten."
+        hint: "Betrifft nur das Karussell. Titelkachel und Empfehlungen-Karte haben ihre eigenen Felder weiter unten."
       - label: "Hero — KI-Kennzeichnung anzeigen"
         name: "heroAiBadge"
         widget: "boolean"
         default: false
-        hint: "Blendet unten rechts im Hero-Bild das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist. Gilt auch fuer die Promo-Kachel, falls dieses Produkt dort steht."
+        hint: "Blendet unten rechts im Karussell-Bild das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist. Betrifft nur das Karussell — die Titelkachel hat ihr eigenes Feld direkt darunter."
+
+      # ---------- 1b. PROMO-KACHEL (schmale Kachel neben dem Karussell, aktuell die Schreibtischlampe) ----------
+      - label: "Titelkachel — Bildgröße in % (100 = füllt den Rahmen genau)"
+        name: "promoZoom"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 100
+        step: 5
+        hint: "Nur für die schmale Titelkachel neben dem Karussell. Eigener Wert, unabhängig von der Bildgröße oben im Karussell — die Kachel ist schmal und hoch, das Karussell breit, derselbe Wert würde dort unterschiedlich wirken. Nutzt dasselbe Bild wie oben (Eigenes Hero-Bild bzw. Hauptfoto), nur einen anderen Ausschnitt."
+      - label: "Titelkachel — verschieben horizontal in %"
+        name: "promoMoveX"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 0
+        step: 5
+      - label: "Titelkachel — verschieben vertikal in %"
+        name: "promoMoveY"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 0
+        step: 5
+      - label: "Titelkachel — KI-Kennzeichnung anzeigen"
+        name: "promoAiBadge"
+        widget: "boolean"
+        default: false
+        hint: "Blendet unten rechts in der Titelkachel das AI-MODIFIED-Badge ein. Pflicht laut EU AI Act (Art. 50), wenn dieses Bild KI-generiert oder KI-bearbeitet ist. Betrifft nur die Titelkachel, nicht das Karussell-Bild oben."
 
       # ---------- 2. EMPFEHLUNGEN-KARTE (Produktkarte im Grid) ----------
       - label: "Produktfotos (erstes Bild = Hauptbild auf Karte, Hero-Fallback und Detailseite; weitere nur auf der Detailseite als Galerie)"
