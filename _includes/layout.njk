@@ -8,6 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ pageTitle }}</title>
 <meta name="description" content="{{ pageDescription }}">
+{%- if noIndex %}
+<meta name="robots" content="noindex, follow">
+{%- endif %}
 
 <meta property="og:type" content="{{ ogType or 'website' }}">
 <meta property="og:site_name" content="{{ site.name }}">
@@ -94,7 +97,7 @@
     </div>
 
     <div class="account">
-      <a class="account__item" href="index.html#merkliste" id="wishlistLink">
+      <a class="account__item" href="wunschliste.html" id="wishlistLink">
         <span class="account__badge-wrap">
           <svg class="ic ic--26"><use href="#i-heart"/></svg>
           <span class="badge-count" data-wishlist-count>0</span>
@@ -126,7 +129,7 @@
 {{ content | safe }}
 
 <!-- ==================== FOOTER ==================== -->
-<footer class="footer" id="merkliste">
+<footer class="footer">
   <div class="container footer__grid">
 
     <div class="footer__col">
@@ -151,7 +154,7 @@
         <li><a href="impressum.html"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Impressum</a></li>
         <li><a href="datenschutz.html"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Datenschutzerklärung</a></li>
         <li><a href="index.html#"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Kontakt</a></li>
-        <li><a href="index.html#merkliste"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Merkliste</a></li>
+        <li><a href="wunschliste.html"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>Merkliste</a></li>
       </ul>
     </div>
 

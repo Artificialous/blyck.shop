@@ -399,6 +399,12 @@ a.cats__item:hover{color:var(--orange)}
   padding:18px;border-radius:var(--radius);
   transition:box-shadow .18s ease;
 }
+/* .product{display:flex} ist eine Autoren-Regel und schlaegt die
+   Browser-Standardregel [hidden]{display:none} unabhaengig von der
+   Spezifitaet (Autoren-CSS gewinnt immer gegen User-Agent-CSS) — ohne
+   diese Zeile bleiben per JS "hidden" gesetzte Karten (Tabs-Filter,
+   Wunschliste) sichtbar. */
+.product[hidden]{display:none}
 .product:hover{
   box-shadow:0 0 0 1px rgba(0,0,0,.1),0 26px 42px -12px rgba(0,0,0,.35);
 }
@@ -523,6 +529,14 @@ a.cats__item:hover{color:var(--orange)}
 .datebadge small{display:block;font-size:11px;color:var(--body)}
 .post__title{font-size:16px;font-weight:600;line-height:1.4;margin-bottom:10px}
 .post .btn{margin-top:auto;align-self:flex-start}
+
+/* ============================================================
+   WUNSCHLISTE — Leer-Zustand
+   ============================================================ */
+.wishlist-empty{
+  text-align:center;padding:48px 24px;color:var(--body);
+}
+.wishlist-empty p{font-size:14px;margin-bottom:20px}
 
 /* ============================================================
    HINWEISE / DISCLOSURE

@@ -1,0 +1,42 @@
+---
+layout: layout.njk
+title: "Deine Merkliste — BLYCK"
+description: "Deine gespeicherten Produktempfehlungen auf BLYCK."
+permalinkPath: "wunschliste.html"
+permalink: "wunschliste.html"
+noIndex: true
+---
+{#- Rein clientseitig: die Merkliste steckt nur im localStorage des
+    Besuchers, es gibt serverseitig kein "wer hat was gemerkt". Deshalb
+    werden hier alle Produktkarten ganz normal mitgerendert (dieselbe
+    product-card.njk wie im Empfehlungen-Grid, keine zweite
+    Karten-Vorlage zu pflegen) und per JS (renderWishlistPage in
+    app.js) auf die gemerkten reduziert. Grid und Leer-Hinweis starten
+    beide "hidden", damit vor dem ersten Render kein falscher Zustand
+    aufblitzt — JS entscheidet synchron beim Laden, welcher der beiden
+    sichtbar wird. -#}
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Start</a>
+    <svg class="ic"><use href="#i-chev-r2"/></svg>
+    <strong>Merkliste</strong>
+  </nav>
+</div>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section__title section__title--center">Deine Merkliste</h2>
+
+    <div class="wishlist-empty" id="wunschlisteEmpty" hidden>
+      <p>Noch nichts gemerkt. Klick auf das Herz-Symbol bei einem Produkt, um es hier zu sammeln.</p>
+      <a class="btn btn--primary" href="index.html#empfehlungen">Empfehlungen ansehen</a>
+    </div>
+
+    <div class="grid grid--5" id="wunschlisteGrid" hidden>
+      {%- for p in collections.productsData %}
+      {% include "product-card.njk" %}
+      {%- endfor %}
+    </div>
+    <p class="disclosure disclosure--center" id="wunschlisteDisclosure" hidden>Werbung · Enthält Affiliate-Links</p>
+  </div>
+</section>

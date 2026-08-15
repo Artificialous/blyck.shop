@@ -69,6 +69,32 @@
     write(WISH_KEY, wishlist);
     renderWishCount();
     renderWishButtons();
+    renderWishlistPage();
+  }
+
+  /* ============================================================
+     WUNSCHLISTE-SEITE
+     Rendert dieselben Karten wie das Empfehlungen-Grid (siehe
+     product-card.njk), reduziert per data-id auf die gemerkten.
+     Grid/Leer-Hinweis starten "hidden" im Markup, hier wird
+     synchron beim Laden entschieden, welcher sichtbar wird —
+     kein Flash of wrong content.
+     ============================================================ */
+  function renderWishlistPage() {
+    var grid = document.getElementById('wunschlisteGrid');
+    if (!grid) return;
+    var emptyState = document.getElementById('wunschlisteEmpty');
+    var disclosure = document.getElementById('wunschlisteDisclosure');
+    var cards = grid.querySelectorAll('.product[data-id]');
+    var visible = 0;
+    cards.forEach(function (card) {
+      var show = wishlist.indexOf(card.dataset.id) !== -1;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    grid.hidden = visible === 0;
+    if (emptyState) emptyState.hidden = visible > 0;
+    if (disclosure) disclosure.hidden = visible === 0;
   }
 
   /* ============================================================
@@ -368,6 +394,7 @@
      ============================================================ */
   renderWishCount();
   renderWishButtons();
+  renderWishlistPage();
   renderAllClicks();
   initTabs();
   initWishlistEmail();
