@@ -20,7 +20,7 @@ priceDate: "17.08.2026"
 baseClicks: 486
 amazonLink: https://www.amazon.de/ROMMELSBACHER-Milchaufsch%C3%A4umer-MS-625-elektrisch/dp/B0DDXVZ44C
 badge: ""
-hasDetailPage: false
+hasDetailPage: true
 images: []
 pros:
   - Glaskanne statt Kunststoff — kein Beigeschmack, Schaum von außen sichtbar

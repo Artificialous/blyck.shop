@@ -22,7 +22,7 @@ priceDate: "17.08.2026"
 baseClicks: 1621
 amazonLink: https://www.amazon.de/Bodum-Kaffeebereiter-Doppelwandig-Edelstahl-Sp%C3%BClmaschinengeeignet/dp/B001AIDGR0
 badge: ""
-hasDetailPage: false
+hasDetailPage: true
 images: []
 pros:
   - Doppelwandiger Edelstahl statt Glas — bruchsicher, hält den Kaffee laut

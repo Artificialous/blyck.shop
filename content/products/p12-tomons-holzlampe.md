@@ -20,7 +20,7 @@ priceDate: "17.08.2026"
 baseClicks: 359
 amazonLink: https://www.amazon.de/Nachttischlampe-Dimmbar-Tischlampe-Schreibtischlampe-Schlafzimmer/dp/B07RXXKJCC
 badge: ""
-hasDetailPage: false
+hasDetailPage: true
 images: []
 pros:
   - Holzfuß statt Kunststoff/Metall — wohnlicher Look, passt auch außerhalb
