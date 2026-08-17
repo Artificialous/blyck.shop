@@ -4,7 +4,6 @@ pagination:
   size: 1
   alias: product
 layout: layout.njk
-navActive: arbeitsplatz
 permalink: "produkt-{{ product.slug }}.html"
 eleventyComputed:
   title: "{{ product.title }} — BLYCK"
@@ -12,6 +11,7 @@ eleventyComputed:
   ogTitle: "{{ product.title }} — BLYCK"
   ogDescription: "{{ product.lead or product.shortDesc }}"
   permalinkPath: "produkt-{{ product.slug }}.html"
+  navActive: "{{ product.categoryKey }}"
 ---
 <div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb">

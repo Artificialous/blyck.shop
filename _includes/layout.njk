@@ -24,6 +24,7 @@
 <meta name="twitter:image" content="{{ site.domain }}/{{ pageOgImage }}">
 
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 </head>
 <body>
 
@@ -83,8 +84,11 @@
           <span class="sr-only">Kategorie wählen</span>
           <select>
             <option>Alle Kategorien</option>
-            <option>Arbeitsplatz</option>
-            <option>Kaffee &amp; Küche</option>
+            {%- for cat in categories %}
+            {%- if cat.status == 'active' %}
+            <option>{{ cat.label }}</option>
+            {%- endif %}
+            {%- endfor %}
           </select>
           <svg class="ic ic--12"><use href="#i-chev-d"/></svg>
         </label>
@@ -119,8 +123,11 @@
     <span class="mainnav__div" aria-hidden="true"></span>
     <ul class="mainnav__links">
       <li><a href="index.html" {% if navActive == 'start' %}class="is-active"{% endif %}>Start</a></li>
-      <li><a href="index.html#empfehlungen" {% if navActive == 'arbeitsplatz' %}class="is-active"{% endif %}>Arbeitsplatz</a></li>
-      <li><a href="index.html#empfehlungen" {% if navActive == 'kaffee' %}class="is-active"{% endif %}>Kaffee &amp; Küche</a></li>
+      {%- for cat in categories %}
+      {%- if cat.status == 'active' %}
+      <li><a href="index.html#empfehlungen" {% if navActive == cat.key %}class="is-active"{% endif %}>{{ cat.label }}</a></li>
+      {%- endif %}
+      {%- endfor %}
       <li><a href="index.html#magazin" {% if navActive == 'magazin' %}class="is-active"{% endif %}>Magazin</a></li>
     </ul>
   </div>
