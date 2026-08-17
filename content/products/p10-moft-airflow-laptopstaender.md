@@ -26,12 +26,27 @@ images:
     src: assets/uploads/moft-nvisible-airflow-laptopstaender_img2.png
 cardZoom: 125
 cardAiBadge: false
-hasDetailPage: false
-lead: Klebt hauchdünn am Laptop-Deckel, klappt mit offenem Gitter-Design für
-  Luftzirkulation auf — zwei Höhenstufen, wiederverwendbarer Kleber ohne
-  Rückstände.
-pros: []
-cons: []
+hasDetailPage: true
+lead: Der Ständer klebt zusammengefaltet flach an der Laptop-Unterseite und
+  fällt im Alltag kaum auf. Zum Arbeiten klappt er zu einer offenen,
+  dreieckigen Struktur auf, die den Laptop anhebt und dabei einen Luftspalt
+  zur Tischplatte offen lässt — für bessere Kühlung als bei geschlossenen
+  Ständern. Zwei Höhenstufen für Sitz- oder Stehposition, der Kleber ist laut
+  Hersteller wiederverwendbar und hinterlässt beim Ablösen keine Rückstände.
+  Passt laut Hersteller auf Laptops bis 16 Zoll.
+pros:
+  - Offenes Gitter-Design lässt Luft zirkulieren — kühler als bei
+    geschlossenen Laptop-Ständern
+  - Zwei Höhenstufen für Sitz- und Stehposition
+  - Wiederverwendbarer Kleber laut Hersteller, keine Rückstände beim Ablösen
+  - Klappt flach zusammen und bleibt dauerhaft am Laptop — kein Verlegen,
+    kein separates Einpacken
+cons:
+  - Dauerhaft am Laptop-Deckel befestigt — bei häufigem Wechsel zwischen
+    mehreren Geräten eher unpraktisch
+  - Durch das offene Gitter-Design im zusammengeklappten Zustand nicht ganz
+    so papierdünn wie rein flache Ständer ohne Luftspalt
+  - Braucht eine harte, ebene Fläche — auf Schoß oder Bett kein stabiler Halt
 order: 7
 slug: moft-airflow-laptopstaender
 permalink: false
