@@ -14,10 +14,10 @@ priceDate: 17.08.2026
 amazonLink: https://www.amazon.de/Philips-HF3519-01-Sonnenaufgangfunktion-Tageslichtwecker/dp/B08FHXWZPR?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=H9ZJ16UEERM5&dib=eyJ2IjoiMSJ9.BbskO1gdDl_l8-T07mYtskOOMWX9oUFgSMFtGDva5t5Bc60_a1SeSb1pd4wCswy_PwWF_NaOBuLMaXLUkN0b7CqtNigzsUS9r8KWbnEi2EhJAsyHUsht3IwY6HcRNmYjyNzyvoRvwfS7PdImZNAVKtzcy5y_nLU0Ddzp5PA7J9c_pQpRjGMaZqcsgO3huTYr0V6clCjfMlBwb2aBEnaPAGtVR_aVpldmhf3V_kHawJDLCU_vZ2tQEPHA-4KPvCOVjbF68Cq85tr-SD81eyKI1xWs1CFG00RpEZl_EEyl_0k.djYSBI6TyqKpumq35YB2zjPW2MnzCL82uu_yQVFSKqY&dib_tag=se&keywords=Lichtwecker%2BLumie%2BBodyclock%2BGlow%2B150%2Bmit%2B9&qid=1786957196&sprefix=lichtwecker%2Blumie%2Bbodyclock%2Bglow%2B150%2Bmit%2B9%2Caps%2C495&sr=8-15&ufe=app_do%3Aamzn1.fos.02a22033-0416-4642-a047-939dd90dc51b&th=1&linkCode=ll2&tag=blyck21-21&linkId=13a694f9d7d54e3b2daac6d59b870847&ref_=as_li_ss_tl
 heroImage: assets/uploads/philips-wake-up-light_img1.jpg
 heroZoom: 0
-heroAiBadge: true
+heroAiBadge: false
 promoZoom: 0
 promoMoveX: 0
-promoAiBadge: true
+promoAiBadge: false
 images:
   - zoom: 105
     moveX: 0
