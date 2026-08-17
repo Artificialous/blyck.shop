@@ -180,12 +180,6 @@ del{color:var(--tag);font-weight:400;margin-right:6px}
 }
 .mainnav.is-stuck{box-shadow:0 4px 14px rgba(0,0,0,.16)}
 .mainnav__inner{display:flex;align-items:center;gap:24px;min-height:52px}
-.mainnav__cats{
-  display:flex;align-items:center;gap:10px;
-  border:0;background:none;cursor:pointer;
-  font-family:inherit;font-size:13px;font-weight:500;color:#fff;
-}
-.mainnav__div{width:1px;height:22px;background:rgba(255,255,255,.2)}
 .mainnav__links{display:flex;flex-wrap:wrap;gap:28px;flex:1;min-width:0}
 .mainnav__links a{font-size:13px;color:rgba(255,255,255,.88);transition:color .16s}
 .mainnav__links a:hover,.mainnav__links a.is-active{color:var(--orange)}
@@ -331,6 +325,7 @@ del{color:var(--tag);font-weight:400;margin-right:6px}
 .section__link:hover{color:var(--orange)}
 
 .tabs{display:flex;gap:20px;flex-wrap:wrap}
+.tabs--center{justify-content:center;margin-bottom:44px}
 .tabs__btn{
   border:0;background:none;cursor:pointer;padding:0;
   font-family:inherit;font-size:11px;font-weight:600;

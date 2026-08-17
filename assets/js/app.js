@@ -136,29 +136,51 @@
   }
 
   /* ============================================================
-     FILTER-TABS (Meistgeklickt)
+     FILTER-TABS (Meistgeklickt + Handverlesene Empfehlungen)
+     Jede .tabs-Gruppe traegt ihr Ziel-Grid als data-target, damit
+     dieselbe Logik fuer beide Stellen reicht. Ueber ?kategorie=…
+     in der URL kann von aussen (Hauptnav, Footer, Kategorie-Kacheln)
+     direkt gefiltert reingesprungen werden.
      ============================================================ */
   function initTabs() {
-    var tabs = document.querySelectorAll('.tabs__btn');
-    var grid = document.getElementById('rankGrid');
-    if (!tabs.length || !grid) return;
+    document.querySelectorAll('.tabs[data-target]').forEach(function (tabs) {
+      var grid = document.getElementById(tabs.dataset.target);
+      var buttons = tabs.querySelectorAll('.tabs__btn');
+      if (!buttons.length || !grid) return;
 
-    tabs.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        tabs.forEach(function (b) {
-          b.classList.remove('is-active');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-selected', 'true');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          buttons.forEach(function (b) {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-selected', 'true');
 
-        var filter = btn.dataset.filter;
-        grid.querySelectorAll('.product').forEach(function (card) {
-          var show = filter === 'alle' || card.dataset.cat === filter;
-          card.hidden = !show;
+          var filter = btn.dataset.filter;
+          grid.querySelectorAll('.product').forEach(function (card) {
+            var show = filter === 'alle' || card.dataset.cat === filter;
+            card.hidden = !show;
+          });
         });
       });
     });
+
+    /* Deep-Link von aussen: ?kategorie=licht filtert die Empfehlungen
+       direkt beim Laden, ohne dass erst ein Tab geklickt werden muss.
+       Wert kommt aus der URL — per dataset-Vergleich statt Selector-
+       String, damit ein unerwarteter Wert nichts zerschiessen kann. */
+    var kategorie = new URLSearchParams(window.location.search).get('kategorie');
+    if (kategorie) {
+      var empfehlungenTabs = document.querySelector('.tabs[data-target="empfehlungenGrid"]');
+      if (empfehlungenTabs) {
+        var match = Array.prototype.find.call(
+          empfehlungenTabs.querySelectorAll('.tabs__btn'),
+          function (b) { return b.dataset.filter === kategorie; }
+        );
+        if (match) match.click();
+      }
+    }
   }
 
   /* ============================================================

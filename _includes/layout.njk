@@ -115,17 +115,11 @@
 <!-- ==================== NAVIGATION ==================== -->
 <nav class="mainnav">
   <div class="container mainnav__inner">
-    <button class="mainnav__cats" type="button">
-      <svg class="ic ic--18"><use href="#i-menu"/></svg>
-      Alle Kategorien
-      <svg class="ic ic--14"><use href="#i-chev-d"/></svg>
-    </button>
-    <span class="mainnav__div" aria-hidden="true"></span>
     <ul class="mainnav__links">
       <li><a href="index.html" {% if navActive == 'start' %}class="is-active"{% endif %}>Start</a></li>
       {%- for cat in categories %}
       {%- if cat.status == 'active' %}
-      <li><a href="index.html#empfehlungen" {% if navActive == cat.key %}class="is-active"{% endif %}>{{ cat.label }}</a></li>
+      <li><a href="index.html?kategorie={{ cat.key }}#empfehlungen" {% if navActive == cat.key %}class="is-active"{% endif %}>{{ cat.label }}</a></li>
       {%- endif %}
       {%- endfor %}
       <li><a href="index.html#magazin" {% if navActive == 'magazin' %}class="is-active"{% endif %}>Magazin</a></li>
@@ -150,7 +144,7 @@
       <h4 class="footer__head">Kategorien</h4>
       <ul class="footer__list">
         {%- for cat in categories %}
-        <li><a href="{{ cat.status == 'active' and ('index.html#empfehlungen') or 'index.html#' }}"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>{{ cat.label }}</a></li>
+        <li><a href="{{ cat.status == 'active' and ('index.html?kategorie=' ~ cat.key ~ '#empfehlungen') or 'index.html#' }}"><svg class="ic ic--12"><use href="#i-chev-r2"/></svg>{{ cat.label }}</a></li>
         {%- endfor %}
       </ul>
     </div>

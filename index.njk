@@ -124,7 +124,7 @@ transform:translate({{ p.promoMoveX if p.promoMoveX is defined else 0 }}%, {{ p.
     <ul class="cats">
       {%- for cat in categories %}
       {%- if cat.status == 'active' %}
-      <li><a class="cats__item" href="#empfehlungen"><svg class="ic ic--34"><use href="#{{ cat.icon }}"/></svg><span>{{ cat.label }}</span><em class="cats__pill">{{ cat.key | catCount(collections.productsData) }}</em></a></li>
+      <li><a class="cats__item" href="?kategorie={{ cat.key }}#empfehlungen"><svg class="ic ic--34"><use href="#{{ cat.icon }}"/></svg><span>{{ cat.label }}</span><em class="cats__pill">{{ cat.key | catCount(collections.productsData) }}</em></a></li>
       {%- else %}
       <li><span class="cats__item is-soon"><svg class="ic ic--34"><use href="#{{ cat.icon }}"/></svg><span>{{ cat.label }}</span><em class="cats__soon">Bald verfügbar</em></span></li>
       {%- endif %}
@@ -168,7 +168,16 @@ transform:translate({{ p.promoMoveX if p.promoMoveX is defined else 0 }}%, {{ p.
   <div class="container">
     <h2 class="section__title section__title--center">Handverlesene Empfehlungen</h2>
 
-    <div class="grid grid--5">
+    <div class="tabs tabs--center" role="tablist" data-target="empfehlungenGrid">
+      <button class="tabs__btn is-active" data-filter="alle" role="tab" aria-selected="true">Alle</button>
+      {%- for cat in categories %}
+      {%- if cat.status == 'active' %}
+      <button class="tabs__btn" data-filter="{{ cat.key }}" role="tab" aria-selected="false">{{ cat.label }}</button>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+
+    <div class="grid grid--5" id="empfehlungenGrid">
       {%- for p in collections.productsData %}
       {% include "product-card.njk" %}
       {%- endfor %}
@@ -182,11 +191,13 @@ transform:translate({{ p.promoMoveX if p.promoMoveX is defined else 0 }}%, {{ p.
   <div class="container">
     <div class="section__head">
       <h2 class="section__title">Meistgeklickt diesen Monat</h2>
-      <div class="tabs" role="tablist">
+      <div class="tabs" role="tablist" data-target="rankGrid">
         <button class="tabs__btn is-active" data-filter="alle" role="tab" aria-selected="true">Alle</button>
-        <button class="tabs__btn" data-filter="arbeitsplatz" role="tab" aria-selected="false">Arbeitsplatz</button>
-        <button class="tabs__btn" data-filter="kaffee" role="tab" aria-selected="false">Kaffee &amp; Küche</button>
-        <button class="tabs__btn" data-filter="licht" role="tab" aria-selected="false">Licht</button>
+        {%- for cat in categories %}
+        {%- if cat.status == 'active' %}
+        <button class="tabs__btn" data-filter="{{ cat.key }}" role="tab" aria-selected="false">{{ cat.label }}</button>
+        {%- endif %}
+        {%- endfor %}
       </div>
     </div>
 

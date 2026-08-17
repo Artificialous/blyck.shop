@@ -3,7 +3,7 @@
     quadratisch statt breit, dieselben Werte wirken also anders. transform
     statt object-position, damit jeder Wert immer wirkt. -#}
 {%- set cardImgStyle = 'transform:translate(' ~ (p.cardMoveX if p.cardMoveX is defined else 0) ~ '%, ' ~ (p.cardMoveY if p.cardMoveY is defined else 0) ~ '%) scale(' ~ ((p.cardZoom if p.cardZoom is defined else 100) / 100) ~ ')' %}
-<article class="product" data-id="{{ p.id }}" data-clicks="{{ p.baseClicks }}">
+<article class="product" data-cat="{{ p.categoryKey }}" data-id="{{ p.id }}" data-clicks="{{ p.baseClicks }}">
   <div class="product__media">
     {%- if p.badge %}<span class="tagbadge">{{ p.badge }}</span>{% endif %}
     <button class="wish" type="button" data-wish="{{ p.id }}" aria-label="Zur Merkliste hinzufügen">
