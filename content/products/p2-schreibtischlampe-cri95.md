@@ -18,9 +18,9 @@ heroZoom: 100
 heroMoveX: 0
 heroMoveY: 0
 heroAiBadge: false
-promoZoom: 235
-promoMoveX: -35
-promoMoveY: -5
+promoZoom: 180
+promoMoveX: -15
+promoMoveY: -10
 promoAiBadge: false
 images:
   - zoom: 125
