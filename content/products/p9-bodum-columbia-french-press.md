@@ -10,10 +10,16 @@ baseClicks: 1621
 price: 44,99
 oldPrice: ""
 priceDate: 17.08.2026
-amazonLink: https://www.amazon.de/Bodum-Kaffeebereiter-Doppelwandig-Edelstahl-Sp%C3%BClmaschinengeeignet/dp/B001AIDGR0?th=1&linkCode=ll2&tag=blyck21-21&linkId=b8ab74381f4f2ee28a83730957a4546c&ref_=as_li_ss_tl
+amazonLink: https://www.amazon.de/Bodum-Kaffeebereiter-Doppelwandig-Edelstahl-Sp%C3%BClmaschinengeeignet/dp/B001AIDGR0?th=1&linkCode=ll2&tag=blyck21-21&linkId=b8447671ad76260bf8ceea6adafcb307&ref_=as_li_ss_tl
+heroImage: assets/uploads/bodum-doppelwandiger-frenchpress_columbia_img1.jpg
 heroAiBadge: false
 promoAiBadge: false
-images: []
+images:
+  - zoom: 100
+    moveX: 0
+    moveY: 0
+    aiBadge: false
+    src: assets/uploads/bodum-doppelwandiger-frenchpress_columbia_img1.jpg
 cardAiBadge: false
 hasDetailPage: false
 lead: Die doppelwandige Edelstahlkonstruktion hält den Kaffee laut Hersteller
