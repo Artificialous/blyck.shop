@@ -15,11 +15,19 @@ heroImage: assets/uploads/bodum-doppelwandiger-frenchpress_columbia_img1.jpg
 heroAiBadge: false
 promoAiBadge: false
 images:
-  - zoom: 100
+  - zoom: 110
     moveX: 0
     moveY: 0
     aiBadge: false
     src: assets/uploads/bodum-doppelwandiger-frenchpress_columbia_img1.jpg
+  - zoom: 110
+    moveX: 0
+    moveY: -5
+    aiBadge: false
+    src: assets/uploads/bodum-doppelwandiger-frenchpress_columbia_img2.png
+cardZoom: 140
+cardMoveX: -5
+cardMoveY: -5
 cardAiBadge: false
 hasDetailPage: true
 lead: Die doppelwandige Edelstahlkonstruktion hält den Kaffee laut Hersteller
