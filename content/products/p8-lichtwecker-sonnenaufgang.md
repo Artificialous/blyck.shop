@@ -31,7 +31,7 @@ images:
     src: assets/uploads/philips-wake-up-light_img2.png
 cardZoom: 130
 cardAiBadge: false
-hasDetailPage: false
+hasDetailPage: true
 lead: Die Sonnenaufgang-Simulation beginnt 20 bis 40 Minuten vor der
   eingestellten Weckzeit mit warmem Rotlicht, das über Orange bis zu einem
   hellen Gelb ansteigt — die Dauer lässt sich einstellen. Zum Aufwachen stehen
