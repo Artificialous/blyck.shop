@@ -7,7 +7,7 @@ shortDesc: Doppelwandiger Edelstahl statt Glas — hält den Kaffee laut Herstel
 icon: p-drip
 badge: ""
 baseClicks: 1621
-price: 44,99
+price: "149,90"
 oldPrice: ""
 priceDate: 17.08.2026
 amazonLink: https://www.amazon.de/Bodum-Kaffeebereiter-Doppelwandig-Edelstahl-Sp%C3%BClmaschinengeeignet/dp/B001AIDGR0?th=1&linkCode=ll2&tag=blyck21-21&linkId=b8447671ad76260bf8ceea6adafcb307&ref_=as_li_ss_tl
@@ -46,6 +46,9 @@ pros:
   - Von Bodum, der Marke, die die French Press im Massenmarkt bekannt gemacht
     hat — breite Ersatzteilversorgung
 cons:
+  - Mit rund 150 € deutlich teurer als einfache French-Press-Modelle — selbst
+    Bodums eigene Glas-Variante Chambord kostet nur einen Bruchteil, dafür
+    ohne die doppelwandige Isolierung
   - Mit 1,5 Litern für größere Runden gedacht — für eine Tasse allein
     unpraktisch groß
   - Metallgehäuse lässt anders als Glas von außen nicht erkennen, wie viel
