@@ -19,6 +19,11 @@ images:
     moveY: 0
     aiBadge: false
     src: assets/uploads/moft-nvisible-airflow-laptopstaender_img1.jpg
+  - zoom: 110
+    moveX: 0
+    moveY: 5
+    aiBadge: false
+    src: assets/uploads/moft-nvisible-airflow-laptopstaender_img2.png
 cardZoom: 125
 cardAiBadge: false
 hasDetailPage: false
